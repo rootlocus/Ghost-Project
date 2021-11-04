@@ -2,17 +2,14 @@
 
 public class Player : MonoBehaviour
 {
-    private BoxCollider2D boxCollider;
-    private Vector3 moveDelta;
-    private RaycastHit2D hit;
-    private float interactRadius = 0.1f;
-    // private Light2D flashlight;
+    BoxCollider2D boxCollider;
+    Vector3 moveDelta;
+    RaycastHit2D hit;
+    float interactRadius = 0.1f;
     
-    // Start is called before the first frame update
     private void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
-        // flashlight = GetComponentInChildren<Light2D>();
     }
 
     private void Update()

@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Enemy : Collidable
 {
     [Header("Events")]
-    [SerializeField] private GameEvent OnPlayerKill;
+    [SerializeField] GameEvent OnPlayerKill;
 
     protected override void onCollide(Collider2D col) 
     {
