@@ -8,6 +8,7 @@ public class Key : Item
     private bool isActivated = false;
 
     private void Start() {
+        Debug.Log("KEY");
         isConsumable = true;
     }
 

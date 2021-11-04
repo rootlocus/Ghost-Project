@@ -7,7 +7,7 @@ public class Potion : Usable
     protected override void Start() 
     {
         base.Start();
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = itemSprite;
+        // this.gameObject.GetComponent<SpriteRenderer>().sprite = itemSprite;
     }
 
     protected override void Update()

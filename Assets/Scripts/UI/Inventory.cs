@@ -10,8 +10,15 @@ public class Inventory : MonoBehaviour
     [SerializeField] Sprite defaultInventorySprite;
     [SerializeField] Sprite selectedInventorySprite;
     private int selectedIndex = 0;
+    [SerializeField] public GameObject[] defaultItems;
     
-    
+    void OnEnable() {
+        foreach (var item in defaultItems)
+        {
+            AddItem(item);
+        }
+    }
+
     void Start()
     {
         SelectInventory(selectedIndex);

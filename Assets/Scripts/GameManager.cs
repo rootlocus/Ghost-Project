@@ -30,10 +30,10 @@ public class GameManager : MonoBehaviour
     public int experience;
 
     private void Start() {
-        foreach (var item in defaultItems)
-        {
-            inventory.AddItem(item);
-        }
+        // foreach (var item in defaultItems)
+        // {
+        //     inventory.AddItem(item);
+        // }
     }
 
     public void ShowText(string msg, int fontSize, Color color, Vector3 position, Vector3 motion, float duration)

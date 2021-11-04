@@ -4,9 +4,9 @@ using UnityEngine;
 public class Flashlight : Item
 {
     [SerializeField] private bool isActivated = false;
-    private GameObject player;
+    GameObject player;
     public GameObject flashlight;
-    private GameObject playerFlashlight;
+    GameObject playerFlashlight;
     public float intensity = 1.1f;
 
     private void Start() {

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EMF : Item
 {
@@ -10,6 +8,7 @@ public class EMF : Item
     public override void utilise()
     {
         isActivated = !isActivated;
+        // TODO add sound when enemy near emf radius
         Debug.Log("EMF");
     }
 }
