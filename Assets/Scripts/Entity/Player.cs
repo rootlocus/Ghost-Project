@@ -6,13 +6,14 @@ public class Player : MonoBehaviour
     Vector3 moveDelta;
     RaycastHit2D hit;
     float interactRadius = 0.1f;
-    
-    private void Start()
+    public bool isPlayerFreeze = false;
+
+    void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
     }
 
-    private void Update()
+    void Update()
     {
         // PlayerMovementFourDirection();
 
@@ -34,7 +35,10 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        PlayerMovementFourDirection();
+        if (!isPlayerFreeze)
+        {
+            PlayerMovementFourDirection();
+        }
         // PlayerMovementSmooth();
     }
 
@@ -99,6 +103,11 @@ public class Player : MonoBehaviour
         {
             transform.Translate(moveDelta.x * Time.deltaTime, 0, 0);
         }
+    }
+
+    public void ToggleFreeze()
+    {
+        isPlayerFreeze = !isPlayerFreeze;
     }
 
     public void Death()

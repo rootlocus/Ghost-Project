@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,13 +10,16 @@ public class DialogueManager : MonoBehaviour
     public Text dialogueText;
     public Queue<string> sentences;
     public Animator animator;
+    [SerializeField] GameEvent OnDialogueStart;
+    [SerializeField] GameEvent OnDialogueEnd;
 
-    private void Start() {
+    void Start() {
         sentences = new Queue<string>();
     }
 
     public void StartDialogue (Dialogue dialogue)
     {
+        OnDialogueStart.Raise();
         animator.SetBool("isOpen", true);
         nameText.text = dialogue.name;
         sentences.Clear();
@@ -27,7 +31,7 @@ public class DialogueManager : MonoBehaviour
         DisplayNextSentence();
     }
 
-    private void DisplayNextSentence()
+    void DisplayNextSentence()
     {
         if (sentences.Count == 0)
         {
@@ -43,7 +47,7 @@ public class DialogueManager : MonoBehaviour
 
     }
 
-    private IEnumerator TypeSentence (string sentence)
+    IEnumerator TypeSentence (string sentence)
     {
         dialogueText.text = "";
         foreach (char letter in sentence.ToCharArray())
@@ -54,8 +58,9 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    private void EndDialogue()
+    void EndDialogue()
     {
+        OnDialogueEnd.Raise();
         animator.SetBool("isOpen", false);
     }
 
