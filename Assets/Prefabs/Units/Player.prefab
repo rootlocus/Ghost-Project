@@ -86,6 +86,8 @@ GameObject:
   - component: {fileID: 431506908350389941}
   - component: {fileID: 988215014}
   - component: {fileID: 1524766045}
+  - component: {fileID: 1947810981}
+  - component: {fileID: 1947810982}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -171,6 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5a1d2811fc279943884989154dae9b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayerFreeze: 0
 --- !u!61 &431506908350389941
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -237,6 +240,62 @@ MonoBehaviour:
       - m_Target: {fileID: 431506908350389940}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: Death
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1947810981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431506908350389928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e02eb7533882e444be06becdd9807da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 69572f17b68eab9469735cc005bd73af, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 431506908350389940}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: ToggleFreeze
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1947810982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431506908350389928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e02eb7533882e444be06becdd9807da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 1b29d08d47d445c44a92ec8dc0c6f739, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 431506908350389940}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: ToggleFreeze
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

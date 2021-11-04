@@ -193,6 +193,8 @@ MonoBehaviour:
   nameText: {fileID: 2197211136127408686}
   dialogueText: {fileID: 2197211137901884675}
   animator: {fileID: 2197211136838613894}
+  OnDialogueStart: {fileID: 11400000, guid: 1b29d08d47d445c44a92ec8dc0c6f739, type: 2}
+  OnDialogueEnd: {fileID: 11400000, guid: 69572f17b68eab9469735cc005bd73af, type: 2}
 --- !u!1 &2197211137323114637
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,7 +394,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 810395082}
         m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
         m_MethodName: DisplayNextSentence
         m_Mode: 1
