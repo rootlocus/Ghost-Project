@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 6619303621372073024}
   m_Layer: 5
   m_Name: Inventory
-  m_TagString: Untagged
+  m_TagString: Inventory
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,6 +137,11 @@ MonoBehaviour:
   - {fileID: 6619303621832929569}
   defaultInventorySprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
   selectedInventorySprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  defaultItems:
+  - {fileID: 6286348354836928338, guid: 1b0560627be9a8042b4ca6202da4b99b, type: 3}
+  - {fileID: 2309018680627392841, guid: ee53f268f1ea50b43b6feec8184d1f47, type: 3}
+  - {fileID: 5948266463302088759, guid: be09733410d5a744c852e85e8c88ecfe, type: 3}
+  - {fileID: 8877178599389162085, guid: 3db3331b152b3294ab024c0094813aef, type: 3}
 --- !u!1 &6619303621832929569
 GameObject:
   m_ObjectHideFlags: 0

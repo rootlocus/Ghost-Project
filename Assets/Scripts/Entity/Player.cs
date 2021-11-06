@@ -2,11 +2,13 @@
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] bool isPlayerFreeze = false;
+    [SerializeField] public int stress;
+
     BoxCollider2D boxCollider;
     Vector3 moveDelta;
     RaycastHit2D hit;
     float interactRadius = 0.1f;
-    public bool isPlayerFreeze = false;
 
     void Start()
     {
@@ -15,8 +17,6 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        // PlayerMovementFourDirection();
-
         //TODO: maybe highlight object when nearby ?
         if (Input.GetKeyUp(KeyCode.Space)) // cant retrigger if player is busy
         {
@@ -108,6 +108,19 @@ public class Player : MonoBehaviour
     public void ToggleFreeze()
     {
         isPlayerFreeze = !isPlayerFreeze;
+    }
+
+    public void GainStress(int stressGain)
+    {
+        stress += stressGain;
+    }
+
+    public void LoseStress(int stressLost)
+    {
+        stress -= stressLost;
+        if(stress < 0) {
+            stress = 0;
+        }
     }
 
     public void Death()
