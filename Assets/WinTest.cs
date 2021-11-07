@@ -9,7 +9,7 @@ public class WinTest : Collidable
     protected override void onCollide(Collider2D col) 
     {
         if(col.name == "Player") {
-            OnLevelWin.Raise();
+            OnLevelWin?.Raise();
             gameObject.SetActive(false);
         }
     }

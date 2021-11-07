@@ -9,26 +9,66 @@ public class GameManager : MonoBehaviour
     public Player player;
     public FloatingTextManager floatingTextManager;
 
+    [Header("Game BGM")]
     [SerializeField] AudioClip[] bgmClips;
-    AudioSource audioPlayer;
 
-    void Awake() {
+    AudioSource bgmPlayer;
+    AudioSource sfxPlayer;
+    
+    //TODO put into scriptable object? then initialize load
+    [Header("Haunting Assets")]
+    [SerializeField] GameEvent ClueFoundEvent;
+    [SerializeField] List<GameObject> hauntings;
+    [SerializeField] int chosenHaunt = 0;
+    [SerializeField] string ghostName = "Anon";
+    
+    float minTimeClueSound = 2.0f;
+    float maxTimeClueSound = 20.0f;
+    float initTimeSound = 2.0f;
+    void Awake() 
+    {
         instance = this;
         SceneManager.sceneLoaded += SaveState;
         DontDestroyOnLoad(gameObject);
     }
 
-    void Start() {
-        audioPlayer = gameObject.GetComponent<AudioSource>();
-        audioPlayer.clip = bgmClips[Random.Range(0, bgmClips.Length)];
+    void Start()
+    {
+        InitializeLevelBGM();
+        InitializeHauntingRoom();
+    }
+
+    private void InitializeHauntingRoom()
+    {
+        //TODO: Find and Load in all haunting rooms
+        chosenHaunt = Random.Range(0, hauntings.Count);
+        hauntings[chosenHaunt].SetActive(true);
+        InvokeRepeating("ClueFoundTrigger", initTimeSound, Random.Range(minTimeClueSound, maxTimeClueSound));
+    }
+
+    void ClueFoundTrigger()
+    {
+        ClueFoundEvent?.Raise();
+    }
+
+    void Update()
+    {
+        // hauntings[hauntingRoom].PlayRandomSound();
+    }
+
+    void InitializeLevelBGM()
+    {
+        bgmPlayer = gameObject.GetComponent<AudioSource>();
+        bgmPlayer.clip = bgmClips[Random.Range(0, bgmClips.Length)];
         ToggleAudioPlayer();
     }
 
-    public void ToggleAudioPlayer() {
-        if (audioPlayer.isPlaying) {
-            audioPlayer.Stop();
+    public void ToggleAudioPlayer() 
+    {
+        if (bgmPlayer.isPlaying) {
+            bgmPlayer.Stop();
         } else {
-            audioPlayer.Play();
+            bgmPlayer.Play();
         }
     }
 

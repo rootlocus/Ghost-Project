@@ -8,7 +8,7 @@ public class Enemy : Collidable
     protected override void onCollide(Collider2D col) 
     {
         if(col.name == "Player")
-            OnPlayerKill.Raise();
+            OnPlayerKill?.Raise();
     }
 
 

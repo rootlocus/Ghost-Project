@@ -19,7 +19,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue (Dialogue dialogue)
     {
-        OnDialogueStart.Raise();
+        OnDialogueStart?.Raise();
         animator.SetBool("isOpen", true);
         nameText.text = dialogue.name;
         sentences.Clear();
@@ -60,7 +60,7 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
-        OnDialogueEnd.Raise();
+        OnDialogueEnd?.Raise();
         animator.SetBool("isOpen", false);
     }
 

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1256434730472039423
+--- !u!1 &9079248810268059215
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,25 +8,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1256434730472039393}
-  - component: {fileID: 5151098818799582883}
-  - component: {fileID: 1256434730472039422}
-  - component: {fileID: 928510162}
-  - component: {fileID: 2674305660243114157}
+  - component: {fileID: 9079248810268059211}
+  - component: {fileID: 9079248810268059212}
+  - component: {fileID: 9079248810268059213}
+  - component: {fileID: 6907807876891479021}
+  - component: {fileID: 2855727077488520528}
   m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
+  m_Name: Haunting
+  m_TagString: Haunting
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1256434730472039393
-Transform:
+  m_IsActive: 0
+--- !u!224 &9079248810268059211
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1256434730472039423}
+  m_GameObject: {fileID: 9079248810268059215}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -34,30 +34,61 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &5151098818799582883
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -1.059, y: 1.024}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!61 &9079248810268059212
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9079248810268059215}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.014071405, y: -0.16006255}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8030001, y: 1.1442323}
+  m_EdgeRadius: 0
+--- !u!82 &9079248810268059213
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1256434730472039423}
+  m_GameObject: {fileID: 9079248810268059215}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 3176858388224333202, guid: 299e774d8bfeee94e90a530d969bb2eb, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 299a7d288bc155947a9c02babe7e4085, type: 3}
+  OutputAudioMixerGroup: {fileID: 8174501545520705435, guid: 299e774d8bfeee94e90a530d969bb2eb, type: 2}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  MinDistance: 0.1
+  MaxDistance: 2
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -90,7 +121,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -130,45 +161,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1256434730472039422
+--- !u!114 &6907807876891479021
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1256434730472039423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc6116d8b26c2b14788525241f298e8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  floatingTextManager: {fileID: 0}
-  bgmClips:
-  - {fileID: 8300000, guid: 3575314eaf42cd843a8b0e7018794f62, type: 3}
-  - {fileID: 8300000, guid: 7b1b98949f3df384e8a724e01ed07b9b, type: 3}
-  - {fileID: 8300000, guid: 944be18e3827c0d4ab4b43faf172262c, type: 3}
-  - {fileID: 8300000, guid: ee277b87feb8aa543beb1b1c59febbab, type: 3}
-  - {fileID: 8300000, guid: d02ff982a4e5d494b9663b59742f0be4, type: 3}
---- !u!114 &928510162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1256434730472039423}
+  m_GameObject: {fileID: 9079248810268059215}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e02eb7533882e444be06becdd9807da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 5439838a68de05e48a886b6be7b3d132, type: 2}
+  gameEvent: {fileID: 11400000, guid: a8dabcef4cdfe0f4f86fac04c065ab8e, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1256434730472039422}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: ToggleAudioPlayer
+      - m_Target: {fileID: 2855727077488520528}
+        m_TargetAssemblyTypeName: Haunting, Assembly-CSharp
+        m_MethodName: PlayRandomSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -178,31 +189,29 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2674305660243114157
+--- !u!114 &2855727077488520528
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1256434730472039423}
+  m_GameObject: {fileID: 9079248810268059215}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e02eb7533882e444be06becdd9807da, type: 3}
+  m_Script: {fileID: 11500000, guid: 934e12ed11ad9ca4cb2a32c1990ac05f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 377c765dc400d3847a0f7b33360d267a, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1256434730472039422}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: ToggleAudioPlayer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  ghostSounds:
+  - {fileID: 8300000, guid: 86621675e22a29e4984d3b95108ea1bb, type: 3}
+  - {fileID: 8300000, guid: cc2d8bdccc148bf428ad3543a57e81ee, type: 3}
+  - {fileID: 8300000, guid: af391a39f42d5384b8edd3ebacdb946c, type: 3}
+  - {fileID: 8300000, guid: 6198b5dc408f9e14cbb431b0e5d8024e, type: 3}
+  - {fileID: 8300000, guid: 502b3ed8bc8320e48bc0253f142ab0a9, type: 3}
+  - {fileID: 8300000, guid: 262214f25a9efde4fb17fe2a6030d906, type: 3}
+  - {fileID: 8300000, guid: b3357611ed6609d47a8d94521ea500da, type: 3}
+  - {fileID: 8300000, guid: df968e81a21f4a84f99a9b713387510c, type: 3}
+  - {fileID: 8300000, guid: 440398739a9b6e94fb935d2c8331b860, type: 3}
+  - {fileID: 8300000, guid: 4b20e38c67598cc4786bb6c61c94a299, type: 3}
+  - {fileID: 8300000, guid: 9d7e9d1dec4a4334f894b27ca859ba00, type: 3}
+  - {fileID: 8300000, guid: 2d25213a8d9211e49a1df890d0ccaf23, type: 3}
+  - {fileID: 8300000, guid: ca0b7a7c415f6a34c945362bbd5638fd, type: 3}
