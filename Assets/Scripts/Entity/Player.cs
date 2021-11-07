@@ -4,6 +4,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] bool isPlayerFreeze = false;
     [SerializeField] public int stress;
+    [SerializeField] GameEvent OnLevelLose;
 
     BoxCollider2D boxCollider;
     Vector3 moveDelta;
@@ -128,6 +129,7 @@ public class Player : MonoBehaviour
         this.gameObject.transform.Rotate(new Vector3(0f, 0f, 90f));
         this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
         this.gameObject.GetComponent<Player>().enabled = false;
+        OnLevelLose?.Raise();
     }
 
 }

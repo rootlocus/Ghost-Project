@@ -1030,7 +1030,6 @@ MonoBehaviour:
   - {fileID: 1173903013}
   - {fileID: 1009709980}
   - {fileID: 1134042992}
-  player: {fileID: 0}
 --- !u!1 &431506908350389928
 GameObject:
   m_ObjectHideFlags: 0
@@ -1135,6 +1134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerFreeze: 0
   stress: 100
+  OnLevelLose: {fileID: 11400000, guid: 377c765dc400d3847a0f7b33360d267a, type: 2}
 --- !u!61 &431506908350389941
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class WinTest : Collidable
 {
-    [SerializeField] GameEvent OnLevelComplete;
+    [SerializeField] GameEvent OnLevelWin;
 
     protected override void onCollide(Collider2D col) 
     {
         if(col.name == "Player") {
-            OnLevelComplete.Raise();
+            OnLevelWin.Raise();
             gameObject.SetActive(false);
         }
     }

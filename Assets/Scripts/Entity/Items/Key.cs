@@ -5,10 +5,9 @@ using UnityEngine;
 public class Key : Item
 {
     [SerializeField]
-    private bool isActivated = false;
+    bool isActivated = false;
 
-    private void Start() {
-        Debug.Log("KEY");
+    void Start() {
         isConsumable = true;
     }
 

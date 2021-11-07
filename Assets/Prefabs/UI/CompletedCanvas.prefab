@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 5763786011784238101}
   - component: {fileID: 5763786011784238089}
   - component: {fileID: 5763786011784238088}
+  - component: {fileID: 323776487}
+  - component: {fileID: 3596084899016194921}
   m_Layer: 5
   m_Name: CompletedCanvas
   m_TagString: Untagged
@@ -114,6 +116,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c933c0576c98f344f9a88216bd77f87d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  winBackground: {fileID: 21300000, guid: 169f7622be888694bb87c8272212457c, type: 3}
+  loseBackground: {fileID: 21300000, guid: 33613bd958ce3294db0480dfeee651fb, type: 3}
+  winBGM: {fileID: 8300000, guid: ef30e8103d460904ea81fdb397419e26, type: 3}
+  loseBGM: {fileID: 8300000, guid: 299a7d288bc155947a9c02babe7e4085, type: 3}
 --- !u!82 &5763786011784238088
 AudioSource:
   m_ObjectHideFlags: 0
@@ -124,7 +130,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ef30e8103d460904ea81fdb397419e26, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -210,6 +216,62 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &323776487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5763786011784238098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e02eb7533882e444be06becdd9807da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 5439838a68de05e48a886b6be7b3d132, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5763786011784238089}
+        m_TargetAssemblyTypeName: CompleteScreenUI, Assembly-CSharp
+        m_MethodName: ToggleWinScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3596084899016194921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5763786011784238098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e02eb7533882e444be06becdd9807da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 377c765dc400d3847a0f7b33360d267a, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5763786011784238089}
+        m_TargetAssemblyTypeName: CompleteScreenUI, Assembly-CSharp
+        m_MethodName: ToggleLoseScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5763786012186764037
 GameObject:
   m_ObjectHideFlags: 0
