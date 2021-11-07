@@ -388,50 +388,6 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 1038814659564820844, guid: 8220aa41877cbb44cb0f8f017873ee9e, type: 3}
   m_PrefabInstance: {fileID: 563433434}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &323776480 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5763786011784238098, guid: dc74f04997e05be40a565de4c5251342, type: 3}
-  m_PrefabInstance: {fileID: 5763786013342724153}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &323776482 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5763786011784238089, guid: dc74f04997e05be40a565de4c5251342, type: 3}
-  m_PrefabInstance: {fileID: 5763786013342724153}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 323776480}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c933c0576c98f344f9a88216bd77f87d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &323776487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 323776480}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e02eb7533882e444be06becdd9807da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: b2106e37e284e3a438c198f2ecde51a7, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 323776482}
-        m_TargetAssemblyTypeName: CompleteScreenUI, Assembly-CSharp
-        m_MethodName: ToggleCompletedTitle
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &334417007 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3682668620609924619, guid: f56496253842fc1478f7d5cc59179400, type: 3}
@@ -1750,7 +1706,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  OnLevelComplete: {fileID: 11400000, guid: b2106e37e284e3a438c198f2ecde51a7, type: 2}
+  OnLevelWin: {fileID: 11400000, guid: 5439838a68de05e48a886b6be7b3d132, type: 2}
 --- !u!212 &708480872
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1943,50 +1899,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &928510158 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1256434730472039423, guid: d24d552ddcc842948af786c77fb6ee7e, type: 3}
-  m_PrefabInstance: {fileID: 2115950339}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &928510159 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1256434730472039422, guid: d24d552ddcc842948af786c77fb6ee7e, type: 3}
-  m_PrefabInstance: {fileID: 2115950339}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 928510158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc6116d8b26c2b14788525241f298e8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &928510162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 928510158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e02eb7533882e444be06becdd9807da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: b2106e37e284e3a438c198f2ecde51a7, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 928510159}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: ToggleAudioPlayer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!4 &952354172 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5874366115817328798, guid: 6d181b6c83d76f042bfcb52ae5c898f3, type: 3}
@@ -5803,10 +5715,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7045888934176354113, guid: cdc6880a900debc46800f114ac69e00c, type: 3}
-      propertyPath: LevelCompelete
-      value: 
-      objectReference: {fileID: 11400000, guid: b2106e37e284e3a438c198f2ecde51a7, type: 2}
     - target: {fileID: 7045888934176354117, guid: cdc6880a900debc46800f114ac69e00c, type: 3}
       propertyPath: m_Name
       value: Enemy
