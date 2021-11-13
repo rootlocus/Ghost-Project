@@ -1046,6 +1046,8 @@ GameObject:
   - component: {fileID: 1524766045}
   - component: {fileID: 1947810981}
   - component: {fileID: 1947810982}
+  - component: {fileID: 1270522883}
+  - component: {fileID: 1270522884}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -1132,7 +1134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5a1d2811fc279943884989154dae9b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayerFreeze: 0
   stress: 100
   OnLevelLose: {fileID: 11400000, guid: 377c765dc400d3847a0f7b33360d267a, type: 2}
 --- !u!61 &431506908350389941
@@ -1226,8 +1227,8 @@ MonoBehaviour:
   response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 431506908350389940}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+      - m_Target: {fileID: 1270522884}
+        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
         m_MethodName: ToggleFreeze
         m_Mode: 1
         m_Arguments:
@@ -1254,8 +1255,8 @@ MonoBehaviour:
   response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 431506908350389940}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+      - m_Target: {fileID: 1270522884}
+        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
         m_MethodName: ToggleFreeze
         m_Mode: 1
         m_Arguments:
@@ -1266,3 +1267,24 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!81 &1270522883
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431506908350389928}
+  m_Enabled: 1
+--- !u!114 &1270522884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431506908350389928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cea55f0191dfbc9468c8051c23f07aa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerFreeze: 0
