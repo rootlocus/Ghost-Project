@@ -9,6 +9,7 @@ TagManager:
   - UI
   - Inventory
   - Haunting
+  - Furniture
   layers:
   - Default
   - TransparentFX

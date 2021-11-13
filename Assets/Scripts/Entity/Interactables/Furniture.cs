@@ -4,10 +4,27 @@ using UnityEngine;
 
 public class Furniture : Interactable
 {
-    public bool hasClue = false;
+    [Header("Furniture Clue")]
+    [SerializeField] bool HasClue = false;
+    [SerializeField] GameEvent OnClueFound;
 
     public override void Interact()
     {
-        PlayDialogue();
+        base.Interact();
+        FoundClue();
+    }
+
+    void FoundClue()
+    {
+        if (!HasClue)
+        {
+            HasClue = true;
+            OnClueFound?.Raise();
+        }
+    }
+
+    public void AddClue()
+    {
+        HasClue = true;
     }
 }

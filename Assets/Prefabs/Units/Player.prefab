@@ -1287,4 +1287,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cea55f0191dfbc9468c8051c23f07aa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayerFreeze: 0
+  isEntityFreeze: 0

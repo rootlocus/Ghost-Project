@@ -4,15 +4,31 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    public Dialogue dialogue;
-    
+    [SerializeField] Dialogue dialogue;
+    [SerializeField] AudioClip interactSFX;
+    AudioSource audio;
+
+    void Awake()
+    {
+        audio = GetComponent<AudioSource>();
+    }
+
     public virtual void Interact()
     {
-        Debug.Log("INTERACTED");
+        PlayInteractEffect();
+    }
+
+    private void PlayInteractEffect()
+    {
+        if (interactSFX)
+        {
+            audio.clip = interactSFX;
+            audio.Play();
+        }
     }
 
     public virtual void PlayDialogue()
     {
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+        //FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
     }
 }

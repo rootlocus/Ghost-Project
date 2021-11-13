@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,23 +11,29 @@ public class GameManager : MonoBehaviour
     public FloatingTextManager floatingTextManager;
 
     [Header("Game BGM")]
-    [SerializeField] AudioClip[] bgmClips;
-
     AudioSource bgmPlayer;
     AudioSource sfxPlayer;
+    [SerializeField] AudioClip[] bgmClips;
     
     //TODO put into scriptable object? then initialize load
     [Header("Haunting Assets")]
-    [SerializeField] GameEvent ClueFoundEvent;
     [SerializeField] List<GameObject> hauntings;
     [SerializeField] int chosenHaunt = 0;
     [SerializeField] string ghostName = "Anon";
-    
+
+    [Header("Clues Assets")]
     float minTimeClueSound = 2.0f;
     float maxTimeClueSound = 20.0f;
     float initTimeSound = 2.0f;
+    [SerializeField] GameObject[] furnitures;
+    [SerializeField] int maxClues = 2;
+
     void Awake() 
     {
+        if (furnitures.Length == 0)
+        {
+            furnitures = GameObject.FindGameObjectsWithTag("Furniture");
+        }
         instance = this;
         SceneManager.sceneLoaded += SaveState;
         DontDestroyOnLoad(gameObject);
@@ -36,20 +43,48 @@ public class GameManager : MonoBehaviour
     {
         InitializeLevelBGM();
         InitializeHauntingRoom();
+        SpawnCluesOnFurnitures();
     }
 
-    private void InitializeHauntingRoom()
+    void SpawnCluesOnFurnitures()
+    {
+        furnitures = ShuffleGameObjects(furnitures);
+        for (int i = 0; i < maxClues; i++)
+        {
+            furnitures[i].GetComponent<Furniture>().AddClue();
+        }
+    }
+    GameObject[] ShuffleGameObjects(GameObject[] gameObjects)
+    {
+        // Loops through array
+        for (int i = gameObjects.Length - 1; i > 0; i--)
+        {
+            // Randomize a number between 0 and i (so that the range decreases each time)
+            int rnd = Random.Range(0, i);
+
+            // Save the value of the current i, otherwise it'll overright when we swap the values
+            GameObject temp = gameObjects[i];
+
+            // Swap the new and old values
+            gameObjects[i] = gameObjects[rnd];
+            gameObjects[rnd] = temp;
+        }
+
+        return gameObjects;
+    }
+
+    void InitializeHauntingRoom()
     {
         //TODO: Find and Load in all haunting rooms
         chosenHaunt = Random.Range(0, hauntings.Count);
         hauntings[chosenHaunt].SetActive(true);
-        InvokeRepeating("ClueFoundTrigger", initTimeSound, Random.Range(minTimeClueSound, maxTimeClueSound));
+        //InvokeRepeating("ClueFoundTrigger", initTimeSound, Random.Range(minTimeClueSound, maxTimeClueSound));
     }
 
-    void ClueFoundTrigger()
-    {
-        ClueFoundEvent?.Raise();
-    }
+    //void ClueFoundTrigger()
+    //{
+    //    ClueFoundEvent?.Raise();
+    //}
 
     void Update()
     {
