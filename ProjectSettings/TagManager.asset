@@ -59,3 +59,6 @@ TagManager:
   - name: Interactable
     uniqueID: 3876637293
     locked: 0
+  - name: Decorations
+    uniqueID: 4149427083
+    locked: 0

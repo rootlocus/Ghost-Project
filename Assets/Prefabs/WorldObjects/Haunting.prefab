@@ -189,6 +189,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2855727077488520528}
+        m_TargetAssemblyTypeName: Haunting, Assembly-CSharp
+        m_MethodName: TriggerHorror
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2855727077488520528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,3 +227,4 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9d7e9d1dec4a4334f894b27ca859ba00, type: 3}
   - {fileID: 8300000, guid: 2d25213a8d9211e49a1df890d0ccaf23, type: 3}
   - {fileID: 8300000, guid: ca0b7a7c415f6a34c945362bbd5638fd, type: 3}
+  horrors: []
