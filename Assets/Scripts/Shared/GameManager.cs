@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Sirenix.OdinInspector;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,16 +17,24 @@ public class GameManager : MonoBehaviour
     [SerializeField] AudioClip[] bgmClips;
     
     //TODO put into scriptable object? then initialize load
-    [Header("Haunting Assets")]
+    [BoxGroup("Haunting")]
+    [GUIColor(0.3f, 0.8f, 0.8f, 1f)]
     [SerializeField] List<GameObject> hauntings;
+    [BoxGroup("Haunting")]
+    [SerializeField] AudioClip[] hauntingSFX;
+    [BoxGroup("Haunting")]
+    [GUIColor(0.3f, 0.8f, 0.8f, 1f)]
     [SerializeField] int chosenHaunt = 0;
+    [BoxGroup("Haunting")]
+    [GUIColor(0.3f, 0.8f, 0.8f, 1f)]
     [SerializeField] string ghostName = "Anon";
 
-    [Header("Clues Assets")]
     float minTimeClueSound = 2.0f;
     float maxTimeClueSound = 20.0f;
     float initTimeSound = 2.0f;
+    [BoxGroup("Clues")]
     [SerializeField] GameObject[] furnitures;
+    [BoxGroup("Clues")]
     [SerializeField] int maxClues = 2;
 
     void Awake() 
@@ -44,6 +53,22 @@ public class GameManager : MonoBehaviour
         InitializeLevelBGM();
         InitializeHauntingRoom();
         SpawnCluesOnFurnitures();
+    }
+
+    [Button("Initialization Prefil", ButtonSizes.Large)]
+    void PrefilPrefabs()
+    {
+        // Find way to not deactive gameobject
+        GameObject[] hauntingGroupings = GameObject.FindGameObjectsWithTag("Haunting");
+
+        foreach (GameObject haunt in hauntingGroupings)
+        {
+            hauntings.Add(haunt);
+        }
+
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        floatingTextManager = GameObject.Find("FloatingTextManager").GetComponent<FloatingTextManager>();
+        furnitures = GameObject.FindGameObjectsWithTag("Furniture");
     }
 
     void SpawnCluesOnFurnitures()

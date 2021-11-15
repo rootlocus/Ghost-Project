@@ -150,9 +150,21 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 944be18e3827c0d4ab4b43faf172262c, type: 3}
   - {fileID: 8300000, guid: ee277b87feb8aa543beb1b1c59febbab, type: 3}
   - {fileID: 8300000, guid: d02ff982a4e5d494b9663b59742f0be4, type: 3}
-  hauntings:
-  - {fileID: 0}
-  - {fileID: 0}
+  hauntings: []
+  hauntingSFX:
+  - {fileID: 8300000, guid: 82be34c841947f7419e96a3638156f4a, type: 3}
+  - {fileID: 8300000, guid: 515ea12131d0d5e47b634264cbd1c44a, type: 3}
+  - {fileID: 8300000, guid: d249cd549ce5a08459c85389a35690bb, type: 3}
+  - {fileID: 8300000, guid: 89b0640248ebeba4788729b67f4927fd, type: 3}
+  - {fileID: 8300000, guid: 8a0863a2bc8580a478936a4e37249d37, type: 3}
+  - {fileID: 8300000, guid: b313774b35e462842905c18c396842db, type: 3}
+  - {fileID: 8300000, guid: 326451791d6c62646a3d50335515795a, type: 3}
+  - {fileID: 8300000, guid: b65971b45ec1d0c45bbd9fb8a755e5e0, type: 3}
+  - {fileID: 8300000, guid: cdc340fcec37ca447bb1a29dc4336e14, type: 3}
+  - {fileID: 8300000, guid: 3309270f0ee28254a981e4ad310d3bf9, type: 3}
+  - {fileID: 8300000, guid: 9bfb2124be22dd84281f6951dc66a2df, type: 3}
+  - {fileID: 8300000, guid: 0f5ecc2a0e294b24393401038557a22f, type: 3}
+  - {fileID: 8300000, guid: f0e1f1cb447c97e4292e8955d27db19b, type: 3}
   chosenHaunt: 0
   ghostName: Anon
   furnitures: []

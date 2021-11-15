@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class Haunting : MonoBehaviour
 {
@@ -15,6 +16,11 @@ public class Haunting : MonoBehaviour
     {
         sfxPlayer = gameObject.GetComponent<AudioSource>();
         hauntingZone = gameObject.GetComponent<BoxCollider2D>();
+    }
+
+    [Button("Prefill Demon")]
+    public void GetDemon()
+    {
         demon = GameObject.FindGameObjectWithTag("Enemy");
     }
 
@@ -24,7 +30,7 @@ public class Haunting : MonoBehaviour
         sfxPlayer.Play();
     }
 
-    [ContextMenu("Trigger Horror")]
+    [Button("Trigger Horror")]
     public void TriggerHorror()
     {
         if (horrors.Count != 0)
@@ -34,7 +40,7 @@ public class Haunting : MonoBehaviour
         }
     }
 
-    [ContextMenu("Trigger Scare")]
+    [Button("Trigger Scare")]
     public void TriggerScare()
     {
         StartCoroutine("DemonPresense");
