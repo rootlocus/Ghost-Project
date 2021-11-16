@@ -43,15 +43,17 @@ public class GameManager : MonoBehaviour
         {
             furnitures = GameObject.FindGameObjectsWithTag("Furniture");
         }
+        InitializeHauntingRoom();
+
         instance = this;
         SceneManager.sceneLoaded += SaveState;
         DontDestroyOnLoad(gameObject);
+
     }
 
     void Start()
     {
         InitializeLevelBGM();
-        InitializeHauntingRoom();
         SpawnCluesOnFurnitures();
     }
 
@@ -79,6 +81,7 @@ public class GameManager : MonoBehaviour
             furnitures[i].GetComponent<Furniture>().AddClue();
         }
     }
+
     GameObject[] ShuffleGameObjects(GameObject[] gameObjects)
     {
         // Loops through array
@@ -101,7 +104,7 @@ public class GameManager : MonoBehaviour
     void InitializeHauntingRoom()
     {
         //TODO: Find and Load in all haunting rooms
-        chosenHaunt = Random.Range(0, hauntings.Count);
+        chosenHaunt = Random.Range(0, hauntings.Count-1);
         hauntings[chosenHaunt].SetActive(true);
         //InvokeRepeating("ClueFoundTrigger", initTimeSound, Random.Range(minTimeClueSound, maxTimeClueSound));
     }

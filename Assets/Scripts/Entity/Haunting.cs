@@ -24,6 +24,7 @@ public class Haunting : MonoBehaviour
         demon = GameObject.FindGameObjectWithTag("Enemy");
     }
 
+    [Button("Play Clue Sound")]
     public void PlayRandomSound()
     {
         sfxPlayer.clip = ghostSounds[Random.Range(0, ghostSounds.Length)];
