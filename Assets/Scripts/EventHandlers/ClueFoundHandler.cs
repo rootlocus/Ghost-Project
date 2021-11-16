@@ -23,7 +23,7 @@ public class ClueFoundHandler : MonoBehaviour
 
     void InitializeAudioManager()
     {
-        if (!audioManager) audioManager = GameObject.Find("SoundManager").GetComponent<AudioManager>();
+        if (!audioManager) audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
 
     void InitializePlayer()
@@ -39,7 +39,7 @@ public class ClueFoundHandler : MonoBehaviour
     [Button("Clue Found Event")]
     public void Execute()
     {
-        audioManager.PlaySFX("ClueFound");
+        audioManager.Play("ClueFound");
         haunting.PlayRandomSound();
         haunting.TriggerHorror();
     }

@@ -12,8 +12,7 @@ public class CompleteScreenUI : MonoBehaviour
 
     [SerializeField] Sprite winBackground;
     [SerializeField] Sprite loseBackground;
-    [SerializeField] AudioClip winBGM;
-    [SerializeField] AudioClip loseBGM;
+
 
     void Start()
     {
@@ -25,14 +24,14 @@ public class CompleteScreenUI : MonoBehaviour
     public void ToggleWinScreen()
     {
         imageDisplay.sprite = winBackground;
-        audioPlayer.clip = winBGM;
+        //audioPlayer.clip = winBGM;
         ToggleTitleScreen();
     }
 
     public void ToggleLoseScreen()
     {
         imageDisplay.sprite = loseBackground;
-        audioPlayer.clip = loseBGM;
+        //audioPlayer.clip = loseBGM;
         ToggleTitleScreen();
     }
 

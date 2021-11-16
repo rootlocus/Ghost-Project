@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField] Sound[] sfxSounds;
+    [SerializeField] Sound[] sounds;
     [SerializeField] AudioClip[] bgmClips;
     AudioSource bgmPlayer;
     public static AudioManager instance;
@@ -15,7 +15,7 @@ public class AudioManager : MonoBehaviour
     {
         bgmPlayer = GameObject.Find("BGM").GetComponent<AudioSource>();
         MaintainSingletonInstance();
-        InitializeAudioSources(sfxSounds);
+        InitializeAudioSources(sounds);
     }
 
     private void MaintainSingletonInstance()
@@ -45,9 +45,9 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlaySFX (string name)
+    public void Play (string name)
     {
-        Sound selectedSound = Array.Find(sfxSounds, sound => sound.name == name);
+        Sound selectedSound = Array.Find(sounds, sound => sound.name == name);
         if (selectedSound == null)
         {
             Debug.LogWarning("Sound: " + selectedSound + " not found!");

@@ -5,12 +5,12 @@ using Sirenix.OdinInspector;
 
 public class PlayerDeathHandler : MonoBehaviour
 {
-    [SerializeField] CompleteScreenUI ui;
+    //[SerializeField] CompleteScreenUI ui;
     [SerializeField] Player player;
 
     void Awake()
     {
-        if (!ui) ui = GameObject.Find("CompletedCanvas").GetComponent<CompleteScreenUI>();
+        //if (!ui) ui = GameObject.Find("CompletedCanvas").GetComponent<CompleteScreenUI>();
         if (!player) player = GameObject.Find("Player").GetComponent<Player>();
     }
 
@@ -18,6 +18,6 @@ public class PlayerDeathHandler : MonoBehaviour
     public void Execute()
     {
         player.Death();
-        ui.ToggleLoseScreen();
+        //ui.ToggleLoseScreen();
     }
 }
