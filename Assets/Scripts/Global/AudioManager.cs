@@ -7,13 +7,12 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] Sound[] sounds;
-    [SerializeField] AudioClip[] bgmClips;
     AudioSource bgmPlayer;
     public static AudioManager instance;
 
     void Awake()
     {
-        bgmPlayer = GameObject.Find("BGM").GetComponent<AudioSource>();
+        if (!bgmPlayer) bgmPlayer = GameObject.Find("BGM").GetComponent<AudioSource>();
         MaintainSingletonInstance();
         InitializeAudioSources(sounds);
     }
@@ -54,5 +53,18 @@ public class AudioManager : MonoBehaviour
             return;
         }
         selectedSound.source.Play();
+    }
+
+    public void PlayBGM (string name)
+    {
+        Sound selectedSound = Array.Find(sounds, sound => sound.name == name);
+        if (selectedSound == null)
+        {
+            Debug.LogWarning("Sound: " + selectedSound + " not found!");
+            return;
+        }
+        bgmPlayer.Stop();
+        bgmPlayer.clip = selectedSound.clip;
+        bgmPlayer.Play();
     }
 }

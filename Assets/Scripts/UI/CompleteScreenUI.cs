@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class CompleteScreenUI : MonoBehaviour
 {
     Canvas canvas;
-    AudioSource audioPlayer;
     Image imageDisplay;
 
     [SerializeField] Sprite winBackground;
@@ -18,27 +17,23 @@ public class CompleteScreenUI : MonoBehaviour
     {
         canvas = gameObject.GetComponent<Canvas>();
         imageDisplay = gameObject.GetComponentInChildren<Image>();
-        audioPlayer = gameObject.GetComponent<AudioSource>();
     }
 
     public void ToggleWinScreen()
     {
         imageDisplay.sprite = winBackground;
-        //audioPlayer.clip = winBGM;
         ToggleTitleScreen();
     }
 
     public void ToggleLoseScreen()
     {
         imageDisplay.sprite = loseBackground;
-        //audioPlayer.clip = loseBGM;
         ToggleTitleScreen();
     }
 
     void ToggleTitleScreen()
     {
         canvas.enabled = !canvas.enabled;
-        audioPlayer.Play();
     }
 
     public void ReloadLevel()

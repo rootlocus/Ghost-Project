@@ -37,12 +37,14 @@ public class GameManager : MonoBehaviour
     [BoxGroup("Clues")]
     [SerializeField] int maxClues = 2;
     [SerializeField] AudioManager audioManager;
+    [SerializeField] CompleteScreenUI levelCompleteUI;
 
     void Awake() 
     {
         if (furnitures.Length == 0) furnitures = GameObject.FindGameObjectsWithTag("Furniture");
         InitializeHauntingRoom();
-        if (audioManager) audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        if (!audioManager) audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        if (!levelCompleteUI) levelCompleteUI = GameObject.Find("CompletedCanvas").GetComponent<CompleteScreenUI>();
 
         instance = this;
         SceneManager.sceneLoaded += SaveState;
@@ -122,7 +124,7 @@ public class GameManager : MonoBehaviour
     {
         bgmPlayer = gameObject.GetComponent<AudioSource>();
         bgmPlayer.clip = bgmClips[Random.Range(0, bgmClips.Length)];
-        //ToggleAudioPlayer();
+        audioManager.PlayBGM("BGM_1");
     }
 
     public void ToggleAudioPlayer() 
@@ -165,11 +167,13 @@ public class GameManager : MonoBehaviour
 
     public void LoseGame()
     {
-        //trigger ui
-        //trigger new music
+        levelCompleteUI.ToggleLoseScreen();
+        audioManager.PlayBGM("LevelLose");
     }
 
     public void WinGame()
     {
+        levelCompleteUI.ToggleWinScreen();
+        audioManager.PlayBGM("LevelWin");
     }
 }
