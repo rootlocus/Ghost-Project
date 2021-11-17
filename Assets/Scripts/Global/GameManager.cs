@@ -11,22 +11,12 @@ public class GameManager : MonoBehaviour
     public Player player;
     public FloatingTextManager floatingTextManager;
 
-    [Header("Game BGM")]
-    AudioSource bgmPlayer;
-    AudioSource sfxPlayer;
-    [SerializeField] AudioClip[] bgmClips;
-    
     //TODO put into scriptable object? then initialize load
-    [BoxGroup("Haunting")]
-    [GUIColor(0.3f, 0.8f, 0.8f, 1f)]
+    [BoxGroup("Haunting"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
     [SerializeField] List<GameObject> hauntings;
-    [BoxGroup("Haunting")]
-    [SerializeField] AudioClip[] hauntingSFX;
-    [BoxGroup("Haunting")]
-    [GUIColor(0.3f, 0.8f, 0.8f, 1f)]
+    [BoxGroup("Haunting"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
     [SerializeField] int chosenHaunt = 0;
-    [BoxGroup("Haunting")]
-    [GUIColor(0.3f, 0.8f, 0.8f, 1f)]
+    [BoxGroup("Haunting"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
     [SerializeField] string ghostName = "Anon";
 
     float minTimeClueSound = 2.0f;
@@ -46,10 +36,18 @@ public class GameManager : MonoBehaviour
         if (!audioManager) audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         if (!levelCompleteUI) levelCompleteUI = GameObject.Find("CompletedCanvas").GetComponent<CompleteScreenUI>();
 
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
         SceneManager.sceneLoaded += SaveState;
-        DontDestroyOnLoad(gameObject);
 
+        DontDestroyOnLoad(gameObject);
     }
 
     void Start()
@@ -110,11 +108,6 @@ public class GameManager : MonoBehaviour
         //InvokeRepeating("ClueFoundTrigger", initTimeSound, Random.Range(minTimeClueSound, maxTimeClueSound));
     }
 
-    //void ClueFoundTrigger()
-    //{
-    //    ClueFoundEvent?.Raise();
-    //}
-
     void Update()
     {
         // hauntings[hauntingRoom].PlayRandomSound();
@@ -122,18 +115,7 @@ public class GameManager : MonoBehaviour
 
     void InitializeLevelBGM()
     {
-        bgmPlayer = gameObject.GetComponent<AudioSource>();
-        bgmPlayer.clip = bgmClips[Random.Range(0, bgmClips.Length)];
         audioManager.PlayBGM("BGM_1");
-    }
-
-    public void ToggleAudioPlayer() 
-    {
-        if (bgmPlayer.isPlaying) {
-            bgmPlayer.Stop();
-        } else {
-            bgmPlayer.Play();
-        }
     }
 
     public void ShowText(string msg, int fontSize, Color color, Vector3 position, Vector3 motion, float duration)

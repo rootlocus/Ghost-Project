@@ -41,16 +41,20 @@ public class Haunting : MonoBehaviour
         }
     }
 
-    [Button("Trigger Scare")]
-    public void TriggerScare()
+
+    [Button("Spawn Ghost In Room")]
+    public void SpawnGhost()
     {
-        StartCoroutine("DemonPresense");
+        StartCoroutine("SpawnDemonInArea");
+        //Play atmosphere
+        // play ghost breathing
+        //audioManager.Play("ClueFound");
         //get main demon from gamemanager
         // spawn in room
         //disappear after a few seconds
 
     }
-    IEnumerator DemonPresense()
+    IEnumerator SpawnDemonInArea()
     {
         Vector2 hauntHere = RandomPointInBounds(hauntingZone.bounds);
         demon.transform.position = hauntHere;

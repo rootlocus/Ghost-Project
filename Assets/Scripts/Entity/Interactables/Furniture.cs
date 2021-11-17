@@ -16,15 +16,16 @@ public class Furniture : Interactable
 
     void FoundClue()
     {
-        if (!HasClue)
+        if (HasClue)
         {
-            HasClue = true;
+            HasClue = false;
             OnClueFound?.Raise();
         }
     }
 
     public void AddClue()
     {
+        Debug.Log("CLUE ADDED");
         HasClue = true;
     }
 }
