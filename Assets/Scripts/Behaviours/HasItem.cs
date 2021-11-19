@@ -5,10 +5,10 @@ using UnityEngine;
 public class HasItem : Interactable
 {
     public List<GameObject> items;
-    public Inventory inventory;
+    public InventoryUI inventory;
 
     private void Start() {
-        inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
+        inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryUI>();
     }
 
     public void ObtainItem() {

@@ -4,12 +4,25 @@ using UnityEngine;
 
 public class Radio : Item
 {
-    [SerializeField]
-    private bool isActivated = false;
+    [SerializeField] GameEvent OnRadioUse;
+    [SerializeField] AudioSource player;
 
+    void Awake()
+    {
+        player = GetComponent<AudioSource>();
+    }
     public override void utilise()
     {
-        isActivated = !isActivated;
-        Debug.Log("Radio");
+        StartCoroutine("PlaySFX");
+        OnRadioUse?.Raise();
+    }
+
+    IEnumerator PlaySFX()
+    {
+        player.Play();
+
+        yield return new WaitForSeconds(.5f);
+
+        player.Pause();
     }
 }

@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class Flashlight : Item
 {
-    [SerializeField] private bool isActivated = false;
+    [SerializeField] bool isActivated = false;
+    [SerializeField] float intensity = 1.1f;
     GameObject player;
-    public GameObject flashlight;
     GameObject playerFlashlight;
-    public float intensity = 1.1f;
+    public GameObject flashlight;
 
     private void Start() {
         player = GameObject.Find("Player");

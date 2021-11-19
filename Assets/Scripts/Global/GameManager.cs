@@ -29,12 +29,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] AudioManager audioManager;
     [SerializeField] CompleteScreenUI levelCompleteUI;
 
+    [BoxGroup("Inventory")]
+    [SerializeField] GameObject[] defaultItems;
+    [SerializeField] InventoryUI inventoryUI;
+
     void Awake() 
     {
-        if (furnitures.Length == 0) furnitures = GameObject.FindGameObjectsWithTag("Furniture");
-        InitializeHauntingRoom();
         if (!audioManager) audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         if (!levelCompleteUI) levelCompleteUI = GameObject.Find("CompletedCanvas").GetComponent<CompleteScreenUI>();
+        if (!inventoryUI) inventoryUI = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryUI>();
+        if (furnitures.Length == 0) furnitures = GameObject.FindGameObjectsWithTag("Furniture");
+        InitializeHauntingRoom();
 
         if (instance == null)
         {
@@ -52,8 +57,17 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        InitializePlayerInventory();
         InitializeLevelBGM();
         SpawnCluesOnFurnitures();
+    }
+
+    void InitializePlayerInventory()
+    {
+        foreach (var item in defaultItems)
+        {
+            inventoryUI.AddItem(item);
+        }
     }
 
     [Button("Initialization Prefil", ButtonSizes.Large)]

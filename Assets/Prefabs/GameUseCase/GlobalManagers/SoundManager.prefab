@@ -220,3 +220,21 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
+  - name: PressureAtmos01
+    clip: {fileID: 8300000, guid: ade882a52d091e243a48dcb59fa463ea, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: GhostBreath_01
+    clip: {fileID: 8300000, guid: 22bac986953e9514a8deff8db2dce5f2, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: GhostAttack
+    clip: {fileID: 8300000, guid: 6797570d751b7494d99c983210bd296a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}

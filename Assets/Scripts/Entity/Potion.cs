@@ -7,16 +7,15 @@ public class Potion : Usable
     protected override void Start() 
     {
         base.Start();
-        // this.gameObject.GetComponent<SpriteRenderer>().sprite = itemSprite;
     }
 
     protected override void Update()
     {
         base.Update();
-        if(Input.GetKeyUp(KeyCode.Space))
-        {
-            this.onUse();
-        }
+        //if(Input.GetKeyUp(KeyCode.Space))
+        //{
+        //    this.onUse();
+        //}
     }
     
     protected override void execute()

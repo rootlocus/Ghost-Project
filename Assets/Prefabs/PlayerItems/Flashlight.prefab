@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6ac3da9544d56234f9a767a6a1c0b996, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 145bfc9060104994b811e882f2352867, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -135,5 +135,5 @@ MonoBehaviour:
   itemName: 
   isConsumable: 0
   isActivated: 0
-  flashlight: {fileID: 3652549774923912263, guid: ba2df18ad7bbf5a4b89ffbc6c48ade11, type: 3}
   intensity: 1.1
+  flashlight: {fileID: 3652549774923912263, guid: ba2df18ad7bbf5a4b89ffbc6c48ade11, type: 3}
