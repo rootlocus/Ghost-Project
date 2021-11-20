@@ -41,7 +41,7 @@ public class ClueFoundHandler : MonoBehaviour
     {
         audioManager.Play("ClueFound");
         haunting.PlayRandomSound();
-        haunting.TriggerHorror();
+        haunting.TriggerMarking();
     }
 
 }

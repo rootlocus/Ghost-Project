@@ -7,7 +7,7 @@ public class Haunting : MonoBehaviour
 {
     [Header("Room Sounds")]
     [SerializeField] AudioClip[] ghostSounds;
-    [SerializeField] List<GameObject> horrors;
+    [SerializeField] List<GameObject> markings;
     [SerializeField] GameObject demon;
     BoxCollider2D hauntingZone;
     AudioSource sfxPlayer;
@@ -16,6 +16,11 @@ public class Haunting : MonoBehaviour
     {
         sfxPlayer = gameObject.GetComponent<AudioSource>();
         hauntingZone = gameObject.GetComponent<BoxCollider2D>();
+        GameObject[] markings = GameObject.FindGameObjectsWithTag("Markings");
+        foreach (GameObject marking in markings)
+        {
+            marking.SetActive(false);
+        }
     }
 
     [Button("Prefill Demon")]
@@ -31,13 +36,13 @@ public class Haunting : MonoBehaviour
         sfxPlayer.Play();
     }
 
-    [Button("Trigger Horror")]
-    public void TriggerHorror()
+    [Button("Trigger Markings")]
+    public void TriggerMarking()
     {
-        if (horrors.Count != 0)
+        if (markings.Count != 0)
         {
-            horrors[0].SetActive(true);
-            horrors.Remove(horrors[0]);
+            markings[0].SetActive(true);
+            markings.Remove(markings[0]);
         }
     }
 
