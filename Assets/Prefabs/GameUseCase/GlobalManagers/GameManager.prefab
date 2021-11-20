@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1256434730472039422}
   - component: {fileID: 928510162}
   - component: {fileID: 2674305660243114157}
+  - component: {fileID: 1270313946}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -47,29 +48,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   floatingTextManager: {fileID: 0}
-  bgmClips:
-  - {fileID: 8300000, guid: 3575314eaf42cd843a8b0e7018794f62, type: 3}
-  - {fileID: 8300000, guid: 7b1b98949f3df384e8a724e01ed07b9b, type: 3}
-  - {fileID: 8300000, guid: 944be18e3827c0d4ab4b43faf172262c, type: 3}
-  - {fileID: 8300000, guid: ee277b87feb8aa543beb1b1c59febbab, type: 3}
-  - {fileID: 8300000, guid: d02ff982a4e5d494b9663b59742f0be4, type: 3}
   hauntings:
   - {fileID: 0}
   - {fileID: 0}
-  hauntingSFX:
-  - {fileID: 8300000, guid: 82be34c841947f7419e96a3638156f4a, type: 3}
-  - {fileID: 8300000, guid: 515ea12131d0d5e47b634264cbd1c44a, type: 3}
-  - {fileID: 8300000, guid: d249cd549ce5a08459c85389a35690bb, type: 3}
-  - {fileID: 8300000, guid: 89b0640248ebeba4788729b67f4927fd, type: 3}
-  - {fileID: 8300000, guid: 8a0863a2bc8580a478936a4e37249d37, type: 3}
-  - {fileID: 8300000, guid: b313774b35e462842905c18c396842db, type: 3}
-  - {fileID: 8300000, guid: 326451791d6c62646a3d50335515795a, type: 3}
-  - {fileID: 8300000, guid: b65971b45ec1d0c45bbd9fb8a755e5e0, type: 3}
-  - {fileID: 8300000, guid: cdc340fcec37ca447bb1a29dc4336e14, type: 3}
-  - {fileID: 8300000, guid: 3309270f0ee28254a981e4ad310d3bf9, type: 3}
-  - {fileID: 8300000, guid: 9bfb2124be22dd84281f6951dc66a2df, type: 3}
-  - {fileID: 8300000, guid: 0f5ecc2a0e294b24393401038557a22f, type: 3}
-  - {fileID: 8300000, guid: f0e1f1cb447c97e4292e8955d27db19b, type: 3}
   chosenHaunt: 0
   ghostName: Anon
   furnitures:
@@ -77,8 +58,16 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   maxClues: 2
+  foundMemorabilia: 0
+  defaultItems:
+  - {fileID: 6286348354836928338, guid: 1b0560627be9a8042b4ca6202da4b99b, type: 3}
+  - {fileID: 2309018680627392841, guid: ee53f268f1ea50b43b6feec8184d1f47, type: 3}
+  - {fileID: 5948266463302088759, guid: be09733410d5a744c852e85e8c88ecfe, type: 3}
+  - {fileID: 8877178599389162085, guid: 3db3331b152b3294ab024c0094813aef, type: 3}
+  inventoryUI: {fileID: 0}
   audioManager: {fileID: 0}
   levelCompleteUI: {fileID: 0}
+  foundAllMemorabilia: {fileID: 11400000, guid: d5e25baf628da424489b3aed82972eb6, type: 2}
 --- !u!114 &928510162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,6 +115,34 @@ MonoBehaviour:
       - m_Target: {fileID: 1256434730472039422}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: LoseGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1270313946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256434730472039423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e02eb7533882e444be06becdd9807da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: a8dabcef4cdfe0f4f86fac04c065ab8e, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1256434730472039422}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: FoundMemorabilia
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

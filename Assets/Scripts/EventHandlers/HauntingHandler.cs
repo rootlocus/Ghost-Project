@@ -5,14 +5,18 @@ using Sirenix.OdinInspector;
 
 public class HauntingHandler : MonoBehaviour
 {
+    [BoxGroup("Managers")]
     [SerializeField] AudioManager audioManager;
+    [BoxGroup("Haunt Objects")]
     [SerializeField] Haunting haunting;
+    [BoxGroup("Haunt Objects")]
     [SerializeField] Zone zone;
     [Range(0, 10)]
-    [SerializeField] int HauntCheckChance = 8;
+    [SerializeField] int hauntCheckChance = 8;
     [SerializeField] string ghostBreathing = "GhostBreath_01";
     [SerializeField] string ghostEntranceBGM = "PressureAtmos01";
     [SerializeField] int ghostScareDuration = 5;
+    [SerializeField] GameEvent foundNameEvent;
 
     void Awake()
     {
@@ -49,19 +53,18 @@ public class HauntingHandler : MonoBehaviour
         {
             zone.FoundTheZone();
             audioManager.Play("ClueFound");
-            //TODO: trigger name found
+            foundNameEvent?.Raise();
         }
         else
         {
             float randomNumber = Random.Range(0, 10);
 
-            if (randomNumber <= HauntCheckChance)
+            if (randomNumber <= hauntCheckChance)
             {
                 audioManager.Play("GhostAttack");
                 SpawnGhost(); // spawn attack instead next time
             }
         }
-
 
     }
 }

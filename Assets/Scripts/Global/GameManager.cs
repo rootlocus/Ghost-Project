@@ -24,14 +24,22 @@ public class GameManager : MonoBehaviour
     float initTimeSound = 2.0f;
     [BoxGroup("Clues")]
     [SerializeField] GameObject[] furnitures;
-    [BoxGroup("Clues")]
+    [BoxGroup("Clues")] 
     [SerializeField] int maxClues = 2;
-    [SerializeField] AudioManager audioManager;
-    [SerializeField] CompleteScreenUI levelCompleteUI;
+    [SerializeField, BoxGroup("Clues"), DisableInEditorMode]
+    int foundMemorabilia = 0;
 
     [BoxGroup("Inventory")]
     [SerializeField] GameObject[] defaultItems;
+    [BoxGroup("Inventory")]
     [SerializeField] InventoryUI inventoryUI;
+
+    [BoxGroup("Other Managers")]
+    [SerializeField] AudioManager audioManager;
+    [BoxGroup("Other Managers")]
+    [SerializeField] CompleteScreenUI levelCompleteUI;
+    [BoxGroup("Other Managers")]
+    [SerializeField] GameEvent foundAllMemorabilia;
 
     void Awake() 
     {
@@ -59,7 +67,7 @@ public class GameManager : MonoBehaviour
     {
         InitializePlayerInventory();
         InitializeLevelBGM();
-        SpawnCluesOnFurnitures();
+        SpawnMemorabiliaOnFurnitures();
     }
 
     void InitializePlayerInventory()
@@ -86,7 +94,7 @@ public class GameManager : MonoBehaviour
         furnitures = GameObject.FindGameObjectsWithTag("Furniture");
     }
 
-    void SpawnCluesOnFurnitures()
+    void SpawnMemorabiliaOnFurnitures()
     {
         furnitures = ShuffleGameObjects(furnitures);
         for (int i = 0; i < maxClues; i++)
@@ -120,11 +128,6 @@ public class GameManager : MonoBehaviour
         chosenHaunt = Random.Range(0, hauntings.Count-1);
         hauntings[chosenHaunt].SetActive(true);
         //InvokeRepeating("ClueFoundTrigger", initTimeSound, Random.Range(minTimeClueSound, maxTimeClueSound));
-    }
-
-    void Update()
-    {
-        // hauntings[hauntingRoom].PlayRandomSound();
     }
 
     void InitializeLevelBGM()
@@ -171,5 +174,14 @@ public class GameManager : MonoBehaviour
     {
         levelCompleteUI.ToggleWinScreen();
         audioManager.PlayBGM("LevelWin");
+    }
+
+    public void FoundMemorabilia()
+    {
+        foundMemorabilia++;
+        if (foundMemorabilia == maxClues)
+        {
+            foundAllMemorabilia?.Raise();
+        }
     }
 }

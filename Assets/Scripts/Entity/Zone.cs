@@ -25,6 +25,6 @@ public class Zone : MonoBehaviour
 
     public void FoundTheZone()
     {
-        FoundZone = false;
+        FoundZone = true;
     }
 }
