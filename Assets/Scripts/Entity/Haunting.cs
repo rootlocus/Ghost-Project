@@ -9,6 +9,7 @@ public class Haunting : MonoBehaviour
     [SerializeField] AudioClip[] ghostSounds;
     [SerializeField] List<GameObject> markings;
     [SerializeField] GameObject demon;
+    [SerializeField] bool isActivated;
     BoxCollider2D hauntingZone;
     AudioSource sfxPlayer;
 

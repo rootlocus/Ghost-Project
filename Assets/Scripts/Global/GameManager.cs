@@ -11,14 +11,6 @@ public class GameManager : MonoBehaviour
     public Player player;
     public FloatingTextManager floatingTextManager;
 
-    //TODO put into scriptable object? then initialize load
-    [BoxGroup("Haunting"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
-    [SerializeField] List<GameObject> hauntings;
-    [BoxGroup("Haunting"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
-    [SerializeField] int chosenHaunt = 0;
-    [BoxGroup("Haunting"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
-    [SerializeField] string ghostName = "Anon";
-
     float minTimeClueSound = 2.0f;
     float maxTimeClueSound = 20.0f;
     float initTimeSound = 2.0f;
@@ -47,7 +39,6 @@ public class GameManager : MonoBehaviour
         if (!levelCompleteUI) levelCompleteUI = GameObject.Find("CompletedCanvas").GetComponent<CompleteScreenUI>();
         if (!inventoryUI) inventoryUI = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryUI>();
         if (furnitures.Length == 0) furnitures = GameObject.FindGameObjectsWithTag("Furniture");
-        InitializeHauntingRoom();
 
         if (instance == null)
         {
@@ -81,14 +72,6 @@ public class GameManager : MonoBehaviour
     [Button("Initialization Prefil", ButtonSizes.Large)]
     void PrefilPrefabs()
     {
-        // Find way to not deactive gameobject
-        GameObject[] hauntingGroupings = GameObject.FindGameObjectsWithTag("Haunting");
-
-        foreach (GameObject haunt in hauntingGroupings)
-        {
-            hauntings.Add(haunt);
-        }
-
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         floatingTextManager = GameObject.Find("FloatingTextManager").GetComponent<FloatingTextManager>();
         furnitures = GameObject.FindGameObjectsWithTag("Furniture");
@@ -120,14 +103,6 @@ public class GameManager : MonoBehaviour
         }
 
         return gameObjects;
-    }
-
-    void InitializeHauntingRoom()
-    {
-        //TODO: Find and Load in all haunting rooms
-        chosenHaunt = Random.Range(0, hauntings.Count-1);
-        hauntings[chosenHaunt].SetActive(true);
-        //InvokeRepeating("ClueFoundTrigger", initTimeSound, Random.Range(minTimeClueSound, maxTimeClueSound));
     }
 
     void InitializeLevelBGM()

@@ -5,28 +5,57 @@ using Sirenix.OdinInspector;
 
 public class HauntingHandler : MonoBehaviour
 {
-    [BoxGroup("Managers")]
-    [SerializeField] AudioManager audioManager;
-    [BoxGroup("Haunt Objects")]
+    [BoxGroup("Haunting Room"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
+    [SerializeField] List<GameObject> possibleHauntings;
+    [BoxGroup("Haunting Room"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
+    [SerializeField] int chosenHaunt = 0;
+    [BoxGroup("Haunting Room"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
+    [SerializeField] string ghostName = "Anon";
+    [BoxGroup("Haunting Room"), Range(0, 10), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
+    [SerializeField] int hauntCheckChance = 8;
+    [BoxGroup("Haunting Room"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
+    [SerializeField] int ghostScareDuration = 5;
+    [BoxGroup("Haunting Room"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
+    [SerializeField] string ghostBreathing = "GhostBreath_01";
+    [BoxGroup("Haunting Room"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
+    [SerializeField] string ghostEntranceBGM = "PressureAtmos01";
+    [BoxGroup("Haunting Room"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
     [SerializeField] Haunting haunting;
     [BoxGroup("Haunt Objects")]
     [SerializeField] Zone zone;
-    [Range(0, 10)]
-    [SerializeField] int hauntCheckChance = 8;
-    [SerializeField] string ghostBreathing = "GhostBreath_01";
-    [SerializeField] string ghostEntranceBGM = "PressureAtmos01";
-    [SerializeField] int ghostScareDuration = 5;
-    [SerializeField] GameEvent foundNameEvent;
 
+    [BoxGroup("Managers")]
+    [SerializeField] AudioManager audioManager;
+    [SerializeField] GameEvent foundNameEvent;
+    [SerializeField] List<GameObject> scares;
+    [SerializeField] Player player;
     void Awake()
     {
         if (!zone) zone = GameObject.FindGameObjectWithTag("Zone").GetComponent<Zone>();
         if (!audioManager) audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        InitializeHauntingRooms();
+        ChooseHauntingRoom();
     }
 
-    void Start()
+    void InitializeHauntingRooms()
     {
-        if (!haunting) haunting = GameObject.FindGameObjectWithTag("Haunting").GetComponent<Haunting>(); //todo make haunting not hidden
+        GameObject[] hauntingGroupings = GameObject.FindGameObjectsWithTag("Haunting");
+
+        foreach (GameObject haunt in hauntingGroupings)
+        {
+            possibleHauntings.Add(haunt);
+        }
+    }
+
+    void ChooseHauntingRoom()
+    {
+        chosenHaunt = Random.Range(0, possibleHauntings.Count - 1);
+        for (int i = 0; i < possibleHauntings.Count; i++)
+        {
+            if (chosenHaunt != i) possibleHauntings[i].SetActive(false);
+        }
+        haunting = possibleHauntings[chosenHaunt].GetComponent<Haunting>();
+        //InvokeRepeating("ClueFoundTrigger", initTimeSound, Random.Range(minTimeClueSound, maxTimeClueSound));
     }
 
     [Button("Spawn Ghost Scare")]
@@ -62,9 +91,18 @@ public class HauntingHandler : MonoBehaviour
             if (randomNumber <= hauntCheckChance)
             {
                 audioManager.Play("GhostAttack");
-                SpawnGhost(); // spawn attack instead next time
+
+                Scare();
+                //SpawnGhost(); // spawn attack instead next time
             }
         }
 
+    }
+
+    [Button("Scare Player")]
+    public void Scare()
+    {
+        Instantiate(scares[0], player.transform);
+        scares[0].SetActive(true);
     }
 }

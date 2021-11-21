@@ -25,7 +25,6 @@ public class Furniture : Interactable
 
     public void AddClue()
     {
-        Debug.Log("CLUE ADDED");
         HasClue = true;
     }
 }
