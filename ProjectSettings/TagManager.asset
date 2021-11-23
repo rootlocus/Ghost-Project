@@ -58,11 +58,11 @@ TagManager:
   - name: Actor
     uniqueID: 386178293
     locked: 0
-  - name: Interactable
-    uniqueID: 3876637293
-    locked: 0
   - name: Markings
     uniqueID: 4149427083
+    locked: 0
+  - name: Interactable
+    uniqueID: 3876637293
     locked: 0
   - name: Test
     uniqueID: 286044837

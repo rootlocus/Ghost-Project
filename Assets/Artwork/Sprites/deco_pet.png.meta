@@ -1,19 +1,7 @@
 fileFormatVersion: 2
-guid: 9cb13d11e61a5e743a3165d3e52b5178
+guid: 43b4fa8cafd237d4aab63b22b4dd48b3
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 2174984996156672296
-    second: toilet_sink_12
-  - first:
-      213: -8225930258916692872
-    second: washing_machine_01
-  - first:
-      213: 4994961425347423746
-    second: toilet_white_03
-  - first:
-      213: -1738875996544719036
-    second: mirror_brown_01
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -123,91 +111,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: toilet_sink_12
-      rect:
-        serializedVersion: 2
-        x: 49
-        y: 32
-        width: 15
-        height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 82909b794591f2e10800000000000000
-      internalID: 2174984996156672296
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: washing_machine_01
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 16
-        height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 87c222a2300a7dd80800000000000000
-      internalID: -8225930258916692872
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: toilet_white_03
-      rect:
-        serializedVersion: 2
-        x: 161
-        y: 32
-        width: 13
-        height: 22
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 20eac90b3faa15540800000000000000
-      internalID: 4994961425347423746
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mirror_brown_01
-      rect:
-        serializedVersion: 2
-        x: 306
-        y: 83
-        width: 11
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 447af7d7e754ed7e0800000000000000
-      internalID: -1738875996544719036
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
