@@ -16,14 +16,26 @@ public class Door : Interactable
     }
     public override void Interact()
     {
-        openDoor();
+        if (!isOpen)
+        {
+            OpenDoor();
+        } else
+        {
+            CloseDoor();
+        }
     }
 
-    private void openDoor()
+    void OpenDoor()
     {
         isOpen = true;
         this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        //this.gameObject.GetComponent<BoxCollider2D>().enabled = !isOpen;
         doorCollider.enabled = false;
+    }
+
+    void CloseDoor()
+    {
+        isOpen = false;
+        this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        doorCollider.enabled = true;
     }
 }
