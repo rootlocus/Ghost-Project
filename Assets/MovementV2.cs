@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.Tilemaps;
 using UnityEngine;
 
 public class MovementV2 : MonoBehaviour
@@ -15,7 +14,7 @@ public class MovementV2 : MonoBehaviour
     [SerializeField] bool onGizmos = false;
     [SerializeField] Animator animator;
 
-    void Start()
+    void Awake()
     {
         movePoint.parent = null; // moves the point outside
     }
@@ -39,9 +38,7 @@ public class MovementV2 : MonoBehaviour
                 {
                     movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal") * distancePerGrid, 0f, 0f);
                 }
-                animator.SetFloat("Horizontal", Input.GetAxisRaw("Horizontal"));
-                animator.SetFloat("Vertical", 0);
-
+                SetHorizontalAnimation();
             }
             else if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
             {
@@ -49,13 +46,33 @@ public class MovementV2 : MonoBehaviour
                 {
                     movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical") * distancePerGrid, 0f);
                 }
-                animator.SetFloat("Horizontal", 0);
-                animator.SetFloat("Vertical", Input.GetAxisRaw("Vertical"));
+                SetVerticalAnimation();
             }
         }
 
+        SetIdleAnimation();
+    }
+
+    private void SetIdleAnimation()
+    {
         float hasInput = Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f || Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f ? 1 : 0;
         animator.SetFloat("Speed", hasInput);
+    }
+
+    void SetVerticalAnimation()
+    {
+        animator.SetFloat("Horizontal", 0);
+        animator.SetFloat("Vertical", Input.GetAxisRaw("Vertical"));
+        bool isFacingUp = Input.GetAxisRaw("Vertical") == 1;
+        animator.SetFloat("Direction", isFacingUp ? 0 : 0.3f);
+    }
+
+    void SetHorizontalAnimation()
+    {
+        animator.SetFloat("Horizontal", Input.GetAxisRaw("Horizontal"));
+        animator.SetFloat("Vertical", 0);
+        bool isFacingRight = Input.GetAxisRaw("Horizontal") == 1;
+        animator.SetFloat("Direction", isFacingRight ? 0.5f : 0.8f);
     }
 
     void OnDrawGizmos()
