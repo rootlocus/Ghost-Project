@@ -7,7 +7,6 @@ public class Movement : MonoBehaviour
     BoxCollider2D boxCollider;
     Vector3 moveDelta;
     RaycastHit2D hit;
-
     [SerializeField] bool isEntityFreeze = false;
 
     void Awake()
@@ -42,14 +41,14 @@ public class Movement : MonoBehaviour
             case KeyCode.D: moveDelta.x = 1; break;
         }
         // here you use direction variable to set animator params etc.
-        if (moveDelta.x > 0)
-        {
-            transform.localScale = Vector3.one;
-        }
-        else if (moveDelta.x < 0)
-        {
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
+        //if (moveDelta.x > 0)
+        //{
+        //    transform.localScale = Vector3.one;
+        //}
+        //else if (moveDelta.x < 0)
+        //{
+        //    transform.localScale = new Vector3(-1, 1, 1);
+        //}
 
         hit = Physics2D.BoxCast(transform.position, boxCollider.size, 0, new Vector2(0, moveDelta.y), Mathf.Abs(moveDelta.y * Time.deltaTime), LayerMask.GetMask("Actor", "Blocking"));
         if (hit.collider == null)

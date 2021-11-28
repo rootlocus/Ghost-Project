@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
     {
         InitializePlayerInventory();
         InitializeLevelBGM();
-        SpawnMemorabiliaOnFurnitures();
+        SpawnMemorabiliaOnFurnitures(); // if no furnitures then skip
     }
 
     void InitializePlayerInventory()
@@ -72,6 +72,9 @@ public class GameManager : MonoBehaviour
     [Button("Initialization Prefil", ButtonSizes.Large)]
     void PrefilPrefabs()
     {
+        if (!audioManager) audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        if (!levelCompleteUI) levelCompleteUI = GameObject.Find("CompletedCanvas").GetComponent<CompleteScreenUI>();
+
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         floatingTextManager = GameObject.Find("FloatingTextManager").GetComponent<FloatingTextManager>();
         furnitures = GameObject.FindGameObjectsWithTag("Furniture");

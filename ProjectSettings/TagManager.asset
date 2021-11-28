@@ -49,14 +49,11 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Wall
+    uniqueID: 984026239
+    locked: 0
   - name: Floor
     uniqueID: 2874567
-    locked: 0
-  - name: Player
-    uniqueID: 4179342683
-    locked: 0
-  - name: Actor
-    uniqueID: 386178293
     locked: 0
   - name: Markings
     uniqueID: 4149427083
@@ -64,6 +61,15 @@ TagManager:
   - name: Interactable
     uniqueID: 3876637293
     locked: 0
-  - name: Test
+  - name: Player
+    uniqueID: 4179342683
+    locked: 0
+  - name: WallOverlay
+    uniqueID: 2912922661
+    locked: 0
+  - name: UI
     uniqueID: 286044837
+    locked: 0
+  - name: Actor
+    uniqueID: 386178293
     locked: 0

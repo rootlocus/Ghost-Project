@@ -6,12 +6,17 @@ public class Furniture : Interactable
 {
     [Header("Furniture Clue")]
     [SerializeField] bool HasClue = false;
+    [SerializeField] bool isChecked = false;
     [SerializeField] GameEvent OnClueFound;
 
     public override void Interact()
     {
-        base.Interact();
-        FoundClue();
+        if (!isChecked)
+        {
+            base.Interact();
+            isChecked = true;
+            FoundClue();
+        }
     }
 
     void FoundClue()
@@ -26,5 +31,10 @@ public class Furniture : Interactable
     public void AddClue()
     {
         HasClue = true;
+    }
+
+    public bool GetIsChecked()
+    {
+        return isChecked;
     }
 }

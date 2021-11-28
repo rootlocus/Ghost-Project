@@ -82,7 +82,7 @@ SpriteRenderer:
   m_Size: {x: 0.32, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &6829677730434349132
@@ -128,6 +128,7 @@ MonoBehaviour:
     sentences: []
   interactSFX: {fileID: 8300000, guid: 7d5ebebfbe8dacf4686cc0d3d6ce0ce8, type: 3}
   HasClue: 0
+  isChecked: 0
   OnClueFound: {fileID: 11400000, guid: a8dabcef4cdfe0f4f86fac04c065ab8e, type: 2}
 --- !u!82 &1876786244
 AudioSource:

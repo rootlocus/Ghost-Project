@@ -31,7 +31,7 @@ public class HauntingHandler : MonoBehaviour
     [SerializeField] Player player;
     void Awake()
     {
-        if (!zone) zone = GameObject.FindGameObjectWithTag("Zone").GetComponent<Zone>();
+        if (!zone) zone = GameObject.FindGameObjectWithTag("Zone").GetComponent<Zone>(); // if no zone then skip
         if (!audioManager) audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         InitializeHauntingRooms();
         ChooseHauntingRoom();
