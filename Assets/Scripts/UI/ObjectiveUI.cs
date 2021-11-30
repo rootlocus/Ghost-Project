@@ -6,10 +6,10 @@ using Sirenix.OdinInspector;
 
 public class ObjectiveUI : MonoBehaviour
 {
-    [SerializeField] TMP_Text label;
-    [SerializeField] TMP_Text nameObjective;
-    [SerializeField] TMP_Text memorabiliaObjective;
-    [SerializeField] TMP_Text exorcistObjective;
+    [SerializeField] TMP_Text label = null;
+    [SerializeField] TMP_Text nameObjective = null;
+    [SerializeField] TMP_Text memorabiliaObjective = null;
+    [SerializeField] TMP_Text exorcistObjective = null;
 
     private void Start()
     {

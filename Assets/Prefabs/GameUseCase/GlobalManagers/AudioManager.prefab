@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 2650862009486129016}
   - component: {fileID: 2650862009486129023}
   m_Layer: 0
-  m_Name: SoundManager
+  m_Name: AudioManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -234,6 +234,12 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: GhostAttack
     clip: {fileID: 8300000, guid: 6797570d751b7494d99c983210bd296a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: BGM_6
+    clip: {fileID: 8300000, guid: a66ddbdfd88fbb04d8b5b75a94f6b6db, type: 3}
     volume: 1
     pitch: 1
     loop: 0

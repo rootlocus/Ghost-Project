@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 9079248810268059212}
   - component: {fileID: 9079248810268059213}
   - component: {fileID: 2855727077488520528}
+  - component: {fileID: 1294458417851393183}
+  - component: {fileID: 6541876206443874855}
+  - component: {fileID: 8611717745467629198}
   m_Layer: 0
   m_Name: Haunting
   m_TagString: Haunting
@@ -180,7 +183,95 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 440398739a9b6e94fb935d2c8331b860, type: 3}
   - {fileID: 8300000, guid: 9d7e9d1dec4a4334f894b27ca859ba00, type: 3}
   - {fileID: 8300000, guid: b3357611ed6609d47a8d94521ea500da, type: 3}
-  horrors:
-  - {fileID: 0}
-  - {fileID: 0}
+  markings: []
   demon: {fileID: 0}
+  isActivated: 0
+  isPlayerInHauntingRoom: 0
+  hasFoundMemorabilia: 0
+  hasFoundName: 0
+  hasExorcist: 0
+  OnLevelWin: {fileID: 11400000, guid: 5439838a68de05e48a886b6be7b3d132, type: 2}
+--- !u!114 &1294458417851393183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9079248810268059215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e02eb7533882e444be06becdd9807da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: d5e25baf628da424489b3aed82972eb6, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2855727077488520528}
+        m_TargetAssemblyTypeName: Haunting, Assembly-CSharp
+        m_MethodName: FoundMemorabilia
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6541876206443874855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9079248810268059215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e02eb7533882e444be06becdd9807da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: fe9125f04fac8b144be4bec888d4b710, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2855727077488520528}
+        m_TargetAssemblyTypeName: Haunting, Assembly-CSharp
+        m_MethodName: FoundName
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8611717745467629198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9079248810268059215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e02eb7533882e444be06becdd9807da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: fc3dca9ca38ea1b4f85b59c3808283dd, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2855727077488520528}
+        m_TargetAssemblyTypeName: Haunting, Assembly-CSharp
+        m_MethodName: OnExorcist
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

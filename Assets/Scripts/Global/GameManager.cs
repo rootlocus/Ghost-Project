@@ -11,15 +11,17 @@ public class GameManager : MonoBehaviour
     public Player player;
     public FloatingTextManager floatingTextManager;
 
-    float minTimeClueSound = 2.0f;
-    float maxTimeClueSound = 20.0f;
-    float initTimeSound = 2.0f;
+    //float minTimeClueSound = 2.0f;
+    //float maxTimeClueSound = 20.0f;
+    //float initTimeSound = 2.0f;
     [BoxGroup("Clues")]
     [SerializeField] GameObject[] furnitures;
     [BoxGroup("Clues")] 
     [SerializeField] int maxClues = 2;
     [SerializeField, BoxGroup("Clues"), DisableInEditorMode]
     int foundMemorabilia = 0;
+    [BoxGroup("Clues")]
+    [SerializeField] Zone zone;
 
     [BoxGroup("Inventory")]
     [SerializeField] GameObject[] defaultItems;
@@ -39,6 +41,7 @@ public class GameManager : MonoBehaviour
         if (!levelCompleteUI) levelCompleteUI = GameObject.Find("CompletedCanvas").GetComponent<CompleteScreenUI>();
         if (!inventoryUI) inventoryUI = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryUI>();
         if (furnitures.Length == 0) furnitures = GameObject.FindGameObjectsWithTag("Furniture");
+        if (!zone) zone = GameObject.FindGameObjectWithTag("Zone").GetComponent<Zone>();
 
         if (instance == null)
         {
@@ -87,6 +90,7 @@ public class GameManager : MonoBehaviour
         {
             furnitures[i].GetComponent<Furniture>().AddClue();
         }
+        zone.transform.position = furnitures[0].transform.position;
     }
 
     GameObject[] ShuffleGameObjects(GameObject[] gameObjects)
@@ -150,6 +154,7 @@ public class GameManager : MonoBehaviour
 
     public void WinGame()
     {
+        Debug.Log("WIN");
         levelCompleteUI.ToggleWinScreen();
         audioManager.PlayBGM("LevelWin");
     }
@@ -158,8 +163,6 @@ public class GameManager : MonoBehaviour
     {
         foundMemorabilia++;
         if (foundMemorabilia == maxClues)
-        {
             foundAllMemorabilia?.Raise();
-        }
     }
 }

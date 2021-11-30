@@ -48,21 +48,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   floatingTextManager: {fileID: 0}
-  hauntings:
-  - {fileID: 0}
-  - {fileID: 0}
-  chosenHaunt: 0
-  ghostName: Anon
   furnitures:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   maxClues: 2
   foundMemorabilia: 0
+  zone: {fileID: 0}
   defaultItems:
   - {fileID: 6286348354836928338, guid: 1b0560627be9a8042b4ca6202da4b99b, type: 3}
-  - {fileID: 2309018680627392841, guid: ee53f268f1ea50b43b6feec8184d1f47, type: 3}
-  - {fileID: 5948266463302088759, guid: be09733410d5a744c852e85e8c88ecfe, type: 3}
+  - {fileID: 9105414418057939599, guid: d1f8e8d079e45da469bdc0df2c365828, type: 3}
+  - {fileID: 656915152145817138, guid: 6fbedcefcdd8f0b4e810628ea2d6ddec, type: 3}
   - {fileID: 8877178599389162085, guid: 3db3331b152b3294ab024c0094813aef, type: 3}
   inventoryUI: {fileID: 0}
   audioManager: {fileID: 0}

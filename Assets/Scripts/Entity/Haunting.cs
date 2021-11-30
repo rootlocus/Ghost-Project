@@ -10,8 +10,14 @@ public class Haunting : MonoBehaviour
     [SerializeField] List<GameObject> markings;
     [SerializeField] GameObject demon;
     [SerializeField] bool isActivated;
+    [SerializeField] bool isPlayerInHauntingRoom;
+    [SerializeField] bool hasFoundMemorabilia = false;
+    [SerializeField] bool hasFoundName = false;
+    [SerializeField] bool hasExorcist = false;
     BoxCollider2D hauntingZone;
     AudioSource sfxPlayer;
+
+    [SerializeField] GameEvent OnLevelWin;
 
     void Awake()
     {
@@ -75,5 +81,47 @@ public class Haunting : MonoBehaviour
             Random.Range(bounds.min.x, bounds.max.x),
             Random.Range(bounds.min.y, bounds.max.y)
         );
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            isPlayerInHauntingRoom = true;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            isPlayerInHauntingRoom = false;
+        }
+    }
+
+    public void FoundMemorabilia()
+    {
+        hasFoundMemorabilia = true;
+    }
+
+    public void FoundName()
+    {
+        hasFoundName = true;
+    }
+
+    public void OnExorcist()
+    {
+        if (isPlayerInHauntingRoom && hasFoundMemorabilia && hasFoundName)
+        {
+            hasExorcist = true;
+            StartCoroutine(DelayToWin());
+        }
+    }
+
+    IEnumerator DelayToWin()
+    {
+        yield return new WaitForSeconds(5f);
+
+        OnLevelWin?.Raise();
     }
 }

@@ -44,14 +44,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8591f5c6d3ab1f541b21c927cd71d3e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioManager: {fileID: 0}
-  haunting: {fileID: 0}
-  zone: {fileID: 0}
+  possibleHauntings: []
+  chosenHaunt: 0
+  ghostName: Anon
   hauntCheckChance: 8
+  ghostScareDuration: 5
   ghostBreathing: GhostBreath_01
   ghostEntranceBGM: PressureAtmos01
-  ghostScareDuration: 5
+  haunting: {fileID: 0}
+  zone: {fileID: 0}
+  audioManager: {fileID: 0}
   foundNameEvent: {fileID: 11400000, guid: fe9125f04fac8b144be4bec888d4b710, type: 2}
+  scares: []
+  player: {fileID: 0}
 --- !u!114 &5565063765720171773
 MonoBehaviour:
   m_ObjectHideFlags: 0

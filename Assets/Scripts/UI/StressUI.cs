@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class StressUI : MonoBehaviour
 {
-    [SerializeField] Image[] stressPoints;
+    [SerializeField] Image[] stressPoints = null;
 
     void DisplayStressBar(int stressLevel)
     {

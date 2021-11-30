@@ -6,12 +6,12 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-    [SerializeField] Text nameText;
-    [SerializeField] Text dialogueText;
-    [SerializeField] Queue<string> sentences;
-    [SerializeField] Animator animator;
-    [SerializeField] GameEvent OnDialogueStart;
-    [SerializeField] GameEvent OnDialogueEnd;
+    [SerializeField] Text nameText = null;
+    [SerializeField] Text dialogueText = null;
+    [SerializeField] Queue<string> sentences = null;
+    [SerializeField] Animator animator = null;
+    [SerializeField] GameEvent OnDialogueStart = null;
+    [SerializeField] GameEvent OnDialogueEnd = null;
 
     void Start() {
         sentences = new Queue<string>();
