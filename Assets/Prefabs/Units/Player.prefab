@@ -742,7 +742,7 @@ GameObject:
   m_Layer: 9
   m_Name: MovePoint
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1061,7 +1061,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1697494620}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1082,11 +1082,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.867
+  m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.5
+  m_Intensity: 0.8
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 00000000c7dc2b00f59c04176dca10e7
+  m_ApplyToSortingLayers: 00000000c7dc2b007f0ca73a8b3b53f777ebaa17555b03635bb51bf96dca10e725ac9fada5b20c11f59c0417
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0
@@ -1095,8 +1095,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensity: 0
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0.05
-  m_PointLightOuterRadius: 0.4
+  m_PointLightInnerRadius: 0.1
+  m_PointLightOuterRadius: 0.2
   m_PointLightDistance: 3
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 5
@@ -1379,7 +1379,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -115624613
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 9042222039657049189, guid: 346352c32f7aa8c4a818218fb2107457, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1627,8 +1627,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0d58869eacfe234594a543fdbbcd5e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.7
-  distancePerGrid: 0.16
+  moveSpeed: 0.5
+  distancePerGrid: 0.08
   nextDistanceCheck: 0.08
   circleSize: 0.04
   movePoint: {fileID: 1072140461}

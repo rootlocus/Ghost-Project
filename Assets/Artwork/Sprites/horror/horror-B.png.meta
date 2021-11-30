@@ -95,6 +95,15 @@ TextureImporter:
   - first:
       213: -4742446503296752570
     second: hand_touch_01
+  - first:
+      213: 4350489252874075462
+    second: horror-B_33
+  - first:
+      213: -414106195664572003
+    second: horror-B_34
+  - first:
+      213: -7554935694428930593
+    second: horror-B_35
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -139,7 +148,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -894,6 +903,69 @@ TextureImporter:
       bones: []
       spriteID: 010371efa9a21c250800000000000000
       internalID: 5963094226791510032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: horror-B_33
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 3
+        width: 19
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64db6b4fcea006c30800000000000000
+      internalID: 4350489252874075462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: horror-B_34
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d91ff1ceb9cc04af0800000000000000
+      internalID: -414106195664572003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: horror-B_35
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fddf4a0830a772790800000000000000
+      internalID: -7554935694428930593
       vertices: []
       indices: 
       edges: []

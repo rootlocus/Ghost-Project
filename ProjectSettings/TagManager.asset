@@ -49,17 +49,20 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Wall
-    uniqueID: 984026239
-    locked: 0
   - name: Floor
     uniqueID: 2874567
     locked: 0
-  - name: Markings
+  - name: Wall
+    uniqueID: 984026239
+    locked: 0
+  - name: MarkingsBack
     uniqueID: 4149427083
     locked: 0
   - name: InteractableBack
     uniqueID: 397077367
+    locked: 0
+  - name: MarkingFront
+    uniqueID: 1661164373
     locked: 0
   - name: Player
     uniqueID: 4179342683

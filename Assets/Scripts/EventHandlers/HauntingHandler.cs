@@ -29,6 +29,7 @@ public class HauntingHandler : MonoBehaviour
     [SerializeField] GameEvent foundNameEvent;
     [SerializeField] List<GameObject> scares;
     [SerializeField] Player player;
+
     void Awake()
     {
         if (!zone) zone = GameObject.FindGameObjectWithTag("Zone").GetComponent<Zone>(); // if no zone then skip

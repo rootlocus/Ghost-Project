@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
 
     void InitializeLevelBGM()
     {
-        audioManager.PlayBGM("BGM_1");
+        audioManager.PlayBGM("BGM_6");
     }
 
     public void ShowText(string msg, int fontSize, Color color, Vector3 position, Vector3 motion, float duration)
