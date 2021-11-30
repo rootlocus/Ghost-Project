@@ -6,11 +6,11 @@ public class Interactable : MonoBehaviour
 {
     [SerializeField] Dialogue dialogue;
     [SerializeField] AudioClip interactSFX;
-    AudioSource audio;
+    AudioSource player;
 
     void Awake()
     {
-        audio = GetComponent<AudioSource>();
+        player = GetComponent<AudioSource>();
     }
 
     public virtual void Interact()
@@ -22,8 +22,8 @@ public class Interactable : MonoBehaviour
     {
         if (interactSFX)
         {
-            audio.clip = interactSFX;
-            audio.Play();
+            player.clip = interactSFX;
+            player.Play();
         }
     }
 

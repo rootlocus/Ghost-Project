@@ -85,18 +85,18 @@ public class HauntingHandler : MonoBehaviour
             audioManager.Play("ClueFound");
             foundNameEvent?.Raise();
         }
-        else
-        {
-            float randomNumber = Random.Range(0, 10);
+        //else
+        //{
+        //    float randomNumber = Random.Range(0, 10);
 
-            if (randomNumber <= hauntCheckChance)
-            {
-                audioManager.Play("GhostAttack");
+        //    if (randomNumber <= hauntCheckChance)
+        //    {
+        //        audioManager.Play("GhostAttack");
 
-                Scare();
-                //SpawnGhost(); // spawn attack instead next time
-            }
-        }
+        //        Scare();
+        //        //SpawnGhost(); // spawn attack instead next time
+        //    }
+        //}
 
     }
 

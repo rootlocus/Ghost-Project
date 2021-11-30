@@ -2,13 +2,30 @@
 
 public class EMF : Item
 {
-    [SerializeField]
+    [SerializeField] AudioSource audioPlayer;
+    [SerializeField] Zone zone;
     private bool isActivated = false;
+
+    void Awake()
+    {
+        audioPlayer = GetComponent<AudioSource>();
+        zone = GameObject.FindGameObjectWithTag("Zone").GetComponent<Zone>();
+    }
 
     public override void utilise()
     {
         isActivated = !isActivated;
-        // TODO add sound when enemy near emf radius
-        Debug.Log("EMF");
+    }
+
+    public void PlaySound()
+    {
+        if (!audioPlayer.isPlaying && isActivated)
+            audioPlayer.Play();
+    }
+
+    public void StopSound()
+    {
+        if (audioPlayer.isPlaying)
+            audioPlayer.Stop();
     }
 }

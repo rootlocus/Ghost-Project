@@ -5,12 +5,13 @@ using UnityEngine;
 public class Radio : Item
 {
     [SerializeField] GameEvent OnRadioUse;
-    [SerializeField] AudioSource player;
+    [SerializeField] AudioSource audioPlayer;
 
     void Awake()
     {
-        player = GetComponent<AudioSource>();
+        audioPlayer = GetComponent<AudioSource>();
     }
+
     public override void utilise()
     {
         StartCoroutine("PlaySFX");
@@ -19,10 +20,10 @@ public class Radio : Item
 
     IEnumerator PlaySFX()
     {
-        player.Play();
+        audioPlayer.Play();
 
         yield return new WaitForSeconds(.5f);
 
-        player.Pause();
+        audioPlayer.Pause();
     }
 }

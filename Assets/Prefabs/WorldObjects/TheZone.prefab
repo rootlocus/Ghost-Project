@@ -47,7 +47,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.20996332}
   serializedVersion: 2
-  m_Radius: 0.29003668
+  m_Radius: 0.2
 --- !u!114 &4058932234772363621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,3 +62,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InZone: 0
   FoundZone: 0
+  PlayerInZone: {fileID: 11400000, guid: 72e8f478fab5ccb438c4c8346dc3270a, type: 2}
+  PlayerExitZone: {fileID: 11400000, guid: 345838add4174c44d99308621f4d29c6, type: 2}
+  zoneCollider: {fileID: 0}
