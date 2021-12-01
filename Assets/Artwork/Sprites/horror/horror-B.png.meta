@@ -104,6 +104,9 @@ TextureImporter:
   - first:
       213: -7554935694428930593
     second: horror-B_35
+  - first:
+      213: 287894903442857643
+    second: horror-B_36
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -937,7 +940,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -958,7 +961,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -966,6 +969,27 @@ TextureImporter:
       bones: []
       spriteID: fddf4a0830a772790800000000000000
       internalID: -7554935694428930593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: horror-B_36
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 97
+        width: 25
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bae5b5ca3eecef300800000000000000
+      internalID: 287894903442857643
       vertices: []
       indices: 
       edges: []
