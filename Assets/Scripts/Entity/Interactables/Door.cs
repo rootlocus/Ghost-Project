@@ -5,19 +5,21 @@ using System.Linq;
 
 public class Door : Interactable
 {
-    public Sprite door;
-    public bool isOpen = false;
-    public BoxCollider2D doorCollider;
+    [SerializeField] bool isOpen = false;
+    [SerializeField] BoxCollider2D doorCollider;
     // public bool isLock = false;
 
     void Awake()
     {
+        player = gameObject.GetComponent<AudioSource>();
         doorCollider = GetComponentsInChildren<BoxCollider2D>().FirstOrDefault(x => x.gameObject != this.gameObject); ;
     }
+
     public override void Interact()
     {
         if (!isOpen)
         {
+            base.Interact();
             OpenDoor();
         } else
         {

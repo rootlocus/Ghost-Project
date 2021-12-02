@@ -6,11 +6,11 @@ public class Interactable : MonoBehaviour
 {
     [SerializeField] Dialogue dialogue;
     [SerializeField] AudioClip interactSFX;
-    AudioSource player;
+    public AudioSource player;
 
     void Awake()
     {
-        player = GetComponent<AudioSource>();
+        player = gameObject.GetComponent<AudioSource>();
     }
 
     public virtual void Interact()
