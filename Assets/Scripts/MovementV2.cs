@@ -16,6 +16,7 @@ public class MovementV2 : MonoBehaviour
 
     void Awake()
     {
+        animator = GetComponent<Animator>();
         movePoint.parent = null; // moves the point outside
     }
 

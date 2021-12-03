@@ -7,11 +7,14 @@ public class Door : Interactable
 {
     [SerializeField] bool isOpen = false;
     [SerializeField] BoxCollider2D doorCollider;
+    [SerializeField] Animator animator;
+
     // public bool isLock = false;
 
     void Awake()
     {
-        player = gameObject.GetComponent<AudioSource>();
+        player = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
         doorCollider = GetComponentsInChildren<BoxCollider2D>().FirstOrDefault(x => x.gameObject != this.gameObject); ;
     }
 
@@ -21,23 +24,20 @@ public class Door : Interactable
         {
             base.Interact();
             OpenDoor();
-        } else
-        {
-            CloseDoor();
-        }
+        } 
     }
 
     void OpenDoor()
     {
         isOpen = true;
-        this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        animator.SetBool("IsOpen", true);
         doorCollider.enabled = false;
     }
 
     void CloseDoor()
     {
         isOpen = false;
-        this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        animator.SetBool("IsOpen", false);
         doorCollider.enabled = true;
     }
 }
