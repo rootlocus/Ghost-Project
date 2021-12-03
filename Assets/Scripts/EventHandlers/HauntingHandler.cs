@@ -9,10 +9,10 @@ public class HauntingHandler : MonoBehaviour
     [SerializeField] List<GameObject> possibleHauntings;
     [BoxGroup("Haunting Room"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
     [SerializeField] int chosenHaunt = 0;
-    [BoxGroup("Haunting Room"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
-    [SerializeField] string ghostName = "Anon";
-    [BoxGroup("Haunting Room"), Range(0, 10), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
-    [SerializeField] int hauntCheckChance = 8;
+    //[BoxGroup("Haunting Room"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
+    //[SerializeField] string ghostName = "Anon";
+    //[BoxGroup("Haunting Room"), Range(0, 10), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
+    //[SerializeField] int hauntCheckChance = 8;
     [BoxGroup("Haunting Room"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
     [SerializeField] int ghostScareDuration = 5;
     [BoxGroup("Haunting Room"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
@@ -27,8 +27,8 @@ public class HauntingHandler : MonoBehaviour
     [BoxGroup("Managers")]
     [SerializeField] AudioManager audioManager;
     [SerializeField] GameEvent foundNameEvent;
-    [SerializeField] List<GameObject> scares;
-    [SerializeField] Player player;
+    //[SerializeField] List<GameObject> scares;
+    //[SerializeField] Player player;
 
     void Awake()
     {
@@ -100,10 +100,10 @@ public class HauntingHandler : MonoBehaviour
 
     }
 
-    [Button("Scare Player")]
-    public void Scare()
-    {
-        Instantiate(scares[0], player.transform);
-        scares[0].SetActive(true);
-    }
+    //[Button("Scare Player")]
+    //public void Scare()
+    //{
+    //    Instantiate(scares[0], player.transform);
+    //    scares[0].SetActive(true);
+    //}
 }

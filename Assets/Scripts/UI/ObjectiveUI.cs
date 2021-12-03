@@ -10,10 +10,19 @@ public class ObjectiveUI : MonoBehaviour
     [SerializeField] TMP_Text nameObjective = null;
     [SerializeField] TMP_Text memorabiliaObjective = null;
     [SerializeField] TMP_Text exorcistObjective = null;
+    [SerializeField] bool isDisplaying = false;
 
-    private void Start()
+    void Start()
     {
         StartCoroutine("CheckObjectives");
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.J) && !isDisplaying)
+        {
+            StartCoroutine("CheckObjectives");
+        }
     }
 
     [Button("Found Name")]
@@ -57,10 +66,12 @@ public class ObjectiveUI : MonoBehaviour
 
     IEnumerator CheckObjectives()
     {
+        isDisplaying = true;
         ShowAllObjectives();
         yield return new WaitForSeconds(5);
         HideAllObjectives();
-
+        yield return new WaitForSeconds(2);
+        isDisplaying = false;
     }
 
     IEnumerator FadeInObjectives(float timeSpeed, TMP_Text text)
