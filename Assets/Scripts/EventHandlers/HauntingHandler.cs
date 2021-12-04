@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
 public class HauntingHandler : MonoBehaviour
 {
     [BoxGroup("Haunting Room"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
-    [SerializeField] List<GameObject> rooms;
+    [SerializeField] List<GameObject> roomsGO;
+    [BoxGroup("Haunting Room"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
+    [SerializeField] List<Room> rooms;
     [BoxGroup("Haunting Room"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
     [SerializeField] int chosenHauntIndex = 0;
     //[BoxGroup("Haunting Room"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
@@ -39,13 +42,13 @@ public class HauntingHandler : MonoBehaviour
         ChooseHauntingRoom();
     }
 
-    IEnumerator CheckPlayerExitRoom(Room room)
+    IEnumerator CheckPlayerExitRoom(Room currentRoom, Haunting currentHaunt)
     {
-        while (room.IsPlayerInRoom())
+        while (currentRoom.IsPlayerInRoom())
         {
             yield return new WaitForSeconds(1f);
         }
-        TransitionRoomHauntInactive();
+        TransitionRoomHauntInactive(currentHaunt);
     }
 
     void InitializeHauntingRooms()
@@ -54,35 +57,39 @@ public class HauntingHandler : MonoBehaviour
 
         foreach (GameObject haunt in hauntingGroupings)
         {
-            rooms.Add(haunt);
+            roomsGO.Add(haunt);
+            rooms.Add(haunt.GetComponent<Room>());
         }
     }
 
     void ChooseHauntingRoom()
     {
-        chosenHauntIndex = Random.Range(0, rooms.Count - 1);
-        for (int i = 0; i < rooms.Count; i++)
-        {
-            if (chosenHauntIndex != i) rooms[i].SetActive(false);
-        }
-        chosenHauntingRoom = rooms[chosenHauntIndex].GetComponent<Haunting>();
-        chosenRoom = rooms[chosenHauntIndex].GetComponent<Room>();
+        chosenHauntIndex = Random.Range(0, roomsGO.Count - 1);
+        chosenHauntingRoom = roomsGO[chosenHauntIndex].GetComponent<Haunting>();
+        chosenHauntingRoom.SetChosenHauntingRoom();
+        chosenRoom = rooms[chosenHauntIndex];
+
         //InvokeRepeating("ClueFoundTrigger", initTimeSound, Random.Range(minTimeClueSound, maxTimeClueSound));
     }
 
     [Button("Spawn Ghost Haunt")]
     public void TransitionRoomHaunt()
     {
+        GameObject currentRoomGO = roomsGO.Find(room => room.GetComponent<Room>().IsPlayerInRoom());
+        Room currentRoom = currentRoomGO.GetComponent<Room>();
+        Haunting currentHaunting = currentRoomGO.GetComponent<Haunting>();
+
         audioManager.Play(ghostBreathing);
-        chosenHauntingRoom.EnableRoomAttack(); // next time can use room that player is in
+        currentHaunting.EnableRoomAttack();
         audioManager.PlayBGM(ghostEntranceBGM);
-        StartCoroutine(CheckPlayerExitRoom(chosenRoom));
+
+        StartCoroutine(CheckPlayerExitRoom(currentRoom, currentHaunting));
     }
 
     [Button("Despawn Ghost Haunt")]
-    public void TransitionRoomHauntInactive()
+    public void TransitionRoomHauntInactive(Haunting currentHaunting)
     {
-        chosenHauntingRoom.DisableRoomAttack();
+        currentHaunting.DisableRoomAttack();
         audioManager.PlayBGM("BGM_1");
     }
 

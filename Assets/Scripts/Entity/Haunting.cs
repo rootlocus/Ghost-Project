@@ -17,14 +17,15 @@ public class Haunting : MonoBehaviour
     [SerializeField, BoxGroup("Haunting Objectives")] bool hasFoundName = false;
     [SerializeField, BoxGroup("Haunting Objectives")] bool hasExorcist = false;
 
+    [SerializeField] bool isChosenHauntingRoom;
     [SerializeField] GameEvent OnLevelWin;
-    BoxCollider2D hauntingZone;
+    PolygonCollider2D hauntingZone;
     AudioSource sfxPlayer;
 
     void Awake()
     {
         sfxPlayer = GetComponent<AudioSource>();
-        hauntingZone = GetComponent<BoxCollider2D>();
+        hauntingZone = GetComponent<PolygonCollider2D>();
         room = GetComponent<Room>();
         InitializeRoomHaunt();
         InitializeMarkings();
@@ -67,12 +68,12 @@ public class Haunting : MonoBehaviour
         demon = GameObject.FindGameObjectWithTag("Enemy");
     }
 
-    [Button("Play Clue Sound")]
-    public void PlayRandomSound()
-    {
-        sfxPlayer.clip = roomSounds[Random.Range(0, roomSounds.Length)];
-        sfxPlayer.Play();
-    }
+    //[Button("Play Clue Sound")]
+    //public void PlayRandomSound()
+    //{
+    //    sfxPlayer.clip = roomSounds[Random.Range(0, roomSounds.Length)];
+    //    sfxPlayer.Play();
+    //}
 
     [Button("Trigger Markings")]
     public void TriggerMarking()
@@ -116,9 +117,24 @@ public class Haunting : MonoBehaviour
         hasFoundName = true;
     }
 
+    public void SetChosenHauntingRoom()
+    {
+        isChosenHauntingRoom = true;
+    }
+
+    bool PlayerInChosenHauntingRoom()
+    {
+        return room.IsPlayerInRoom() && isChosenHauntingRoom;
+    }
+
+    bool FoundRestOfObjectives()
+    {
+        return hasFoundMemorabilia && hasFoundName;
+    }
+
     public void OnExorcist()
     {
-        if (room.IsPlayerInRoom() && hasFoundMemorabilia && hasFoundName)
+        if (PlayerInChosenHauntingRoom() && FoundRestOfObjectives())
         {
             hasExorcist = true;
             StartCoroutine(DelayToWin());

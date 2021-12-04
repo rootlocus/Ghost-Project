@@ -40,7 +40,7 @@ public class ClueFoundHandler : MonoBehaviour
     public void Execute()
     {
         audioManager.Play("ClueFound");
-        haunting.PlayRandomSound();
+        //haunting.PlayRandomSound();
         haunting.TriggerMarking();
     }
 
