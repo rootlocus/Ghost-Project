@@ -26,9 +26,20 @@ public class MovementV2 : MonoBehaviour
         {
             GridMovement();
         }
+
+        CheckIfMoving();
     }
 
-    private void GridMovement()
+    public bool CheckIfMoving()
+    {
+        if ( Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0 || Mathf.Abs(Input.GetAxisRaw("Vertical")) > 0 )
+        {
+            return true;
+        } 
+        return false;
+    }
+
+    void GridMovement()
     {
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
         if (Vector3.Distance(transform.position, movePoint.position) == 0) // if havent reach to point
@@ -54,7 +65,7 @@ public class MovementV2 : MonoBehaviour
         SetIdleAnimation();
     }
 
-    private void SetIdleAnimation()
+    void SetIdleAnimation()
     {
         float hasInput = Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f || Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f ? 1 : 0;
         animator.SetFloat("Speed", hasInput);

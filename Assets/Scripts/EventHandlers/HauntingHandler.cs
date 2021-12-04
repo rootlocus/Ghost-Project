@@ -6,21 +6,22 @@ using Sirenix.OdinInspector;
 public class HauntingHandler : MonoBehaviour
 {
     [BoxGroup("Haunting Room"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
-    [SerializeField] List<GameObject> possibleHauntings;
+    [SerializeField] List<GameObject> rooms;
     [BoxGroup("Haunting Room"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
-    [SerializeField] int chosenHaunt = 0;
+    [SerializeField] int chosenHauntIndex = 0;
     //[BoxGroup("Haunting Room"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
     //[SerializeField] string ghostName = "Anon";
-    //[BoxGroup("Haunting Room"), Range(0, 10), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
-    //[SerializeField] int hauntCheckChance = 8;
+    [BoxGroup("Haunting Room"), Range(0, 10), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
+    [SerializeField] int hauntThreshold = 8;
     [BoxGroup("Haunting Room"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
-    [SerializeField] int ghostScareDuration = 5;
+    [SerializeField] int roomHauntDuration = 5;
     [BoxGroup("Haunting Room"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
     [SerializeField] string ghostBreathing = "GhostBreath_01";
     [BoxGroup("Haunting Room"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
     [SerializeField] string ghostEntranceBGM = "PressureAtmos01";
     [BoxGroup("Haunting Room"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
-    [SerializeField] Haunting haunting;
+    [SerializeField] Haunting chosenHauntingRoom;
+    [SerializeField] Room chosenRoom;
     [BoxGroup("Haunt Objects")]
     [SerializeField] Zone zone;
 
@@ -38,72 +39,84 @@ public class HauntingHandler : MonoBehaviour
         ChooseHauntingRoom();
     }
 
+    IEnumerator CheckPlayerExitRoom(Room room)
+    {
+        while (room.IsPlayerInRoom())
+        {
+            yield return new WaitForSeconds(1f);
+        }
+        TransitionRoomHauntInactive();
+    }
+
     void InitializeHauntingRooms()
     {
         GameObject[] hauntingGroupings = GameObject.FindGameObjectsWithTag("Haunting");
 
         foreach (GameObject haunt in hauntingGroupings)
         {
-            possibleHauntings.Add(haunt);
+            rooms.Add(haunt);
         }
     }
 
     void ChooseHauntingRoom()
     {
-        chosenHaunt = Random.Range(0, possibleHauntings.Count - 1);
-        for (int i = 0; i < possibleHauntings.Count; i++)
+        chosenHauntIndex = Random.Range(0, rooms.Count - 1);
+        for (int i = 0; i < rooms.Count; i++)
         {
-            if (chosenHaunt != i) possibleHauntings[i].SetActive(false);
+            if (chosenHauntIndex != i) rooms[i].SetActive(false);
         }
-        haunting = possibleHauntings[chosenHaunt].GetComponent<Haunting>();
+        chosenHauntingRoom = rooms[chosenHauntIndex].GetComponent<Haunting>();
+        chosenRoom = rooms[chosenHauntIndex].GetComponent<Room>();
         //InvokeRepeating("ClueFoundTrigger", initTimeSound, Random.Range(minTimeClueSound, maxTimeClueSound));
     }
 
-    [Button("Spawn Ghost Scare")]
-    public void SpawnGhost()
+    [Button("Spawn Ghost Haunt")]
+    public void TransitionRoomHaunt()
     {
         audioManager.Play(ghostBreathing);
-        haunting.SpawnGhost();
-        StartCoroutine("PlayGhostEnterBGM"); //todo make fade in and out ?
+        chosenHauntingRoom.EnableRoomAttack(); // next time can use room that player is in
+        audioManager.PlayBGM(ghostEntranceBGM);
+        StartCoroutine(CheckPlayerExitRoom(chosenRoom));
     }
 
-    IEnumerator PlayGhostEnterBGM()
+    [Button("Despawn Ghost Haunt")]
+    public void TransitionRoomHauntInactive()
     {
-        audioManager.PlayBGM(ghostEntranceBGM);
-
-        yield return new WaitForSeconds(ghostScareDuration);
-
+        chosenHauntingRoom.DisableRoomAttack();
         audioManager.PlayBGM("BGM_1");
     }
+
+    //IEnumerator PlayGhostEnterBGM()
+    //{
+    //    audioManager.PlayBGM(ghostEntranceBGM);
+
+    //    yield return new WaitForSeconds(roomHauntDuration);
+
+    //    audioManager.PlayBGM("BGM_1");
+    //}
 
     [Button("Radio Check")]
     public void CheckRadioTrigger()
     {
         if (zone.IsInZone())
-        {
-            zone.FoundTheZone();
-            audioManager.Play("ClueFound");
-            foundNameEvent?.Raise();
-        }
-        //else
-        //{
-        //    float randomNumber = Random.Range(0, 10);
-
-        //    if (randomNumber <= hauntCheckChance)
-        //    {
-        //        audioManager.Play("GhostAttack");
-
-        //        Scare();
-        //        //SpawnGhost(); // spawn attack instead next time
-        //    }
-        //}
+            TriggerNameFound();
+        else
+            CheckHauntThreshold();
 
     }
 
-    //[Button("Scare Player")]
-    //public void Scare()
-    //{
-    //    Instantiate(scares[0], player.transform);
-    //    scares[0].SetActive(true);
-    //}
+    void TriggerNameFound()
+    {
+        zone.DisableZone();
+        audioManager.Play("ClueFound");
+        foundNameEvent?.Raise();
+    }
+
+    void CheckHauntThreshold()
+    {
+        float hauntPlayerRoll = Random.Range(0, 10);
+
+        if (hauntPlayerRoll >= hauntThreshold)
+            TransitionRoomHaunt();
+    }
 }

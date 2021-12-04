@@ -47,7 +47,7 @@ public class Zone : MonoBehaviour
         return InZone;
     }
 
-    public void FoundTheZone()
+    public void DisableZone()
     {
         FoundZone = true;
         zoneCollider.enabled = false;

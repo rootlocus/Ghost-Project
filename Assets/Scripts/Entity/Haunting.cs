@@ -5,29 +5,60 @@ using Sirenix.OdinInspector;
 
 public class Haunting : MonoBehaviour
 {
-    [Header("Room Sounds")]
-    [SerializeField] AudioClip[] ghostSounds;
-    [SerializeField] List<GameObject> markings;
-    [SerializeField] GameObject demon;
-    [SerializeField] bool isActivated;
-    [SerializeField] bool isPlayerInHauntingRoom;
-    [SerializeField] bool hasFoundMemorabilia = false;
-    [SerializeField] bool hasFoundName = false;
-    [SerializeField] bool hasExorcist = false;
+    [SerializeField, BoxGroup("Entities")] AudioClip[] roomSounds;
+    [SerializeField, BoxGroup("Entities")] List<GameObject> markings;
+    [SerializeField, BoxGroup("Entities")] GameObject demon;
+    [SerializeField, BoxGroup("Entities")] Room room;
+
+    [SerializeField, BoxGroup("Haunting Mode")] bool isAttacking;
+    [SerializeField, BoxGroup("Haunting Mode")] RoomHaunt roomHaunt;
+
+    [SerializeField, BoxGroup("Haunting Objectives")] bool hasFoundMemorabilia = false;
+    [SerializeField, BoxGroup("Haunting Objectives")] bool hasFoundName = false;
+    [SerializeField, BoxGroup("Haunting Objectives")] bool hasExorcist = false;
+
+    [SerializeField] GameEvent OnLevelWin;
     BoxCollider2D hauntingZone;
     AudioSource sfxPlayer;
 
-    [SerializeField] GameEvent OnLevelWin;
-
     void Awake()
     {
-        sfxPlayer = gameObject.GetComponent<AudioSource>();
-        hauntingZone = gameObject.GetComponent<BoxCollider2D>();
+        sfxPlayer = GetComponent<AudioSource>();
+        hauntingZone = GetComponent<BoxCollider2D>();
+        room = GetComponent<Room>();
+        InitializeRoomHaunt();
+        InitializeMarkings();
+    }
+
+    void InitializeMarkings()
+    {
         GameObject[] markings = GameObject.FindGameObjectsWithTag("Markings");
         foreach (GameObject marking in markings)
         {
             marking.SetActive(false);
         }
+    }
+
+    void InitializeRoomHaunt()
+    {
+        roomHaunt = GetComponentInChildren<RoomHaunt>();
+        roomHaunt.gameObject.SetActive(false);
+    }
+
+    IEnumerator DelayToWin()
+    {
+        yield return new WaitForSeconds(5f);
+
+        OnLevelWin?.Raise();
+    }
+
+    IEnumerator SpawnDemonInArea()
+    {
+        Vector2 hauntHere = RandomPointInBounds(hauntingZone.bounds);
+        demon.transform.position = hauntHere;
+
+        yield return new WaitForSeconds(5);
+        demon.transform.position = new Vector2(1000f, 0f);
     }
 
     [Button("Prefill Demon")]
@@ -39,7 +70,7 @@ public class Haunting : MonoBehaviour
     [Button("Play Clue Sound")]
     public void PlayRandomSound()
     {
-        sfxPlayer.clip = ghostSounds[Random.Range(0, ghostSounds.Length)];
+        sfxPlayer.clip = roomSounds[Random.Range(0, roomSounds.Length)];
         sfxPlayer.Play();
     }
 
@@ -53,50 +84,26 @@ public class Haunting : MonoBehaviour
         }
     }
 
-
-    [Button("Spawn Ghost In Room")]
-    public void SpawnGhost()
+    [Button("Attack Now")]
+    public void EnableRoomAttack()
     {
-        StartCoroutine("SpawnDemonInArea");
-        //Play atmosphere
-        // play ghost breathing
-        //audioManager.Play("ClueFound");
-        //get main demon from gamemanager
-        // spawn in room
-        //disappear after a few seconds
-
-    }
-    IEnumerator SpawnDemonInArea()
-    {
-        Vector2 hauntHere = RandomPointInBounds(hauntingZone.bounds);
-        demon.transform.position = hauntHere;
-
-        yield return new WaitForSeconds(5);
-        demon.transform.position = new Vector2(1000f, 0f);
+        isAttacking = true;
+        roomHaunt.gameObject.SetActive(true);
     }
 
-    public static Vector2 RandomPointInBounds(Bounds bounds)
+    [Button("Stop Attacking")]
+    public void DisableRoomAttack()
+    {
+        isAttacking = false;
+        roomHaunt.gameObject.SetActive(false);
+    }
+
+    static Vector2 RandomPointInBounds(Bounds bounds)
     {
         return new Vector2(
             Random.Range(bounds.min.x, bounds.max.x),
             Random.Range(bounds.min.y, bounds.max.y)
         );
-    }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
-        {
-            isPlayerInHauntingRoom = true;
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
-        {
-            isPlayerInHauntingRoom = false;
-        }
     }
 
     public void FoundMemorabilia()
@@ -111,17 +118,10 @@ public class Haunting : MonoBehaviour
 
     public void OnExorcist()
     {
-        if (isPlayerInHauntingRoom && hasFoundMemorabilia && hasFoundName)
+        if (room.IsPlayerInRoom() && hasFoundMemorabilia && hasFoundName)
         {
             hasExorcist = true;
             StartCoroutine(DelayToWin());
         }
-    }
-
-    IEnumerator DelayToWin()
-    {
-        yield return new WaitForSeconds(5f);
-
-        OnLevelWin?.Raise();
     }
 }
