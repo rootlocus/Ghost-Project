@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
 
     public void SaveState(Scene s, LoadSceneMode mode)
     {
-        Debug.Log("save");
+        //Debug.Log("save");
         // string s = "";
         // s += "0" + "|";
         // s += money.ToString() + "|";

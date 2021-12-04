@@ -6,7 +6,7 @@ using Sirenix.OdinInspector;
 
 public class ObjectiveUI : MonoBehaviour
 {
-    [SerializeField] TMP_Text label = null;
+    //[SerializeField] TMP_Text label = null;
     [SerializeField] TMP_Text nameObjective = null;
     [SerializeField] TMP_Text memorabiliaObjective = null;
     [SerializeField] TMP_Text exorcistObjective = null;
@@ -49,7 +49,7 @@ public class ObjectiveUI : MonoBehaviour
     [Button("Fade In")]
     public void ShowAllObjectives()
     {
-        StartCoroutine(FadeInObjectives(0.5f, label));
+        //StartCoroutine(FadeInObjectives(0.5f, label));
         StartCoroutine(FadeInObjectives(0.5f, nameObjective));
         StartCoroutine(FadeInObjectives(0.5f, memorabiliaObjective));
         StartCoroutine(FadeInObjectives(0.5f, exorcistObjective));
@@ -58,7 +58,7 @@ public class ObjectiveUI : MonoBehaviour
     [Button("Fade Out")]
     public void HideAllObjectives()
     {
-        StartCoroutine(FadeOutObjectives(0.5f, label));
+        //StartCoroutine(FadeOutObjectives(0.5f, label));
         StartCoroutine(FadeOutObjectives(0.5f, nameObjective));
         StartCoroutine(FadeOutObjectives(0.5f, memorabiliaObjective));
         StartCoroutine(FadeOutObjectives(0.5f, exorcistObjective));
