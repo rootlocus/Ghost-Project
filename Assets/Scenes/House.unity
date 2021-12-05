@@ -9204,6 +9204,106 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 796513131}
+    - target: {fileID: 322131931, guid: a28fafa4ea8454f4ea92a7b74981c34b, type: 3}
+      propertyPath: m_Name
+      value: Heart
+      objectReference: {fileID: 0}
+    - target: {fileID: 322131932, guid: a28fafa4ea8454f4ea92a7b74981c34b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 322131932, guid: a28fafa4ea8454f4ea92a7b74981c34b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 322131932, guid: a28fafa4ea8454f4ea92a7b74981c34b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 322131932, guid: a28fafa4ea8454f4ea92a7b74981c34b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 659482576, guid: a28fafa4ea8454f4ea92a7b74981c34b, type: 3}
+      propertyPath: m_Name
+      value: Heart
+      objectReference: {fileID: 0}
+    - target: {fileID: 659482577, guid: a28fafa4ea8454f4ea92a7b74981c34b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 659482577, guid: a28fafa4ea8454f4ea92a7b74981c34b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 659482577, guid: a28fafa4ea8454f4ea92a7b74981c34b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 659482577, guid: a28fafa4ea8454f4ea92a7b74981c34b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 741101954, guid: a28fafa4ea8454f4ea92a7b74981c34b, type: 3}
+      propertyPath: m_Name
+      value: Heart
+      objectReference: {fileID: 0}
+    - target: {fileID: 741101955, guid: a28fafa4ea8454f4ea92a7b74981c34b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 741101955, guid: a28fafa4ea8454f4ea92a7b74981c34b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 741101955, guid: a28fafa4ea8454f4ea92a7b74981c34b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 741101955, guid: a28fafa4ea8454f4ea92a7b74981c34b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968809677, guid: a28fafa4ea8454f4ea92a7b74981c34b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968809679, guid: a28fafa4ea8454f4ea92a7b74981c34b, type: 3}
+      propertyPath: stressPoints.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968809679, guid: a28fafa4ea8454f4ea92a7b74981c34b, type: 3}
+      propertyPath: stressPoints.Array.data[3]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968809679, guid: a28fafa4ea8454f4ea92a7b74981c34b, type: 3}
+      propertyPath: stressPoints.Array.data[4]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968809679, guid: a28fafa4ea8454f4ea92a7b74981c34b, type: 3}
+      propertyPath: stressPoints.Array.data[5]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968809679, guid: a28fafa4ea8454f4ea92a7b74981c34b, type: 3}
+      propertyPath: stressPoints.Array.data[6]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968809679, guid: a28fafa4ea8454f4ea92a7b74981c34b, type: 3}
+      propertyPath: stressPoints.Array.data[7]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968809679, guid: a28fafa4ea8454f4ea92a7b74981c34b, type: 3}
+      propertyPath: stressPoints.Array.data[8]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968809679, guid: a28fafa4ea8454f4ea92a7b74981c34b, type: 3}
+      propertyPath: lostHealthSprite
+      value: 
+      objectReference: {fileID: 8577977540222702475, guid: 83ed1b68687026c4783ed2a322d535a8, type: 3}
+    - target: {fileID: 1968809679, guid: a28fafa4ea8454f4ea92a7b74981c34b, type: 3}
+      propertyPath: defaultHealthSprite
+      value: 
+      objectReference: {fileID: -5570893669191367072, guid: 83ed1b68687026c4783ed2a322d535a8, type: 3}
     - target: {fileID: 431506908350389928, guid: a28fafa4ea8454f4ea92a7b74981c34b, type: 3}
       propertyPath: m_Name
       value: Player

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1256434730472039393}
   - component: {fileID: 1256434730472039422}
+  - component: {fileID: 1454995433905382977}
   - component: {fileID: 928510162}
   - component: {fileID: 2674305660243114157}
   - component: {fileID: 1270313946}
@@ -84,6 +85,21 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   levelCompleteUI: {fileID: 0}
   foundAllMemorabilia: {fileID: 11400000, guid: d5e25baf628da424489b3aed82972eb6, type: 2}
+--- !u!114 &1454995433905382977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256434730472039423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cea2ef6c5864bbc4fa2be71dc75375b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  audioManager: {fileID: 0}
+  haunting: {fileID: 0}
 --- !u!114 &928510162
 MonoBehaviour:
   m_ObjectHideFlags: 0

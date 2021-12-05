@@ -23,14 +23,17 @@ public class Door : Interactable
         if (!isOpen)
         {
             base.Interact();
-            OpenDoor();
+            StartCoroutine(OpenDoor());
         } 
     }
 
-    void OpenDoor()
+    IEnumerator OpenDoor()
     {
         isOpen = true;
         animator.SetBool("IsOpen", true);
+
+        yield return new WaitForSeconds(1f);
+
         doorCollider.enabled = false;
     }
 

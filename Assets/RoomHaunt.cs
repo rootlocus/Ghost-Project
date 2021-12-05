@@ -11,7 +11,7 @@ public class RoomHaunt : MonoBehaviour
     [SerializeField] bool isLooking = false;
     [SerializeField, BoxGroup("Attack Config")] float maxDurationLook = 5f;
     [SerializeField, BoxGroup("Attack Config")] float maxDurationChill = 3f;
-    [SerializeField] GameEvent OnLevelLose;
+    [SerializeField] GameEvent OnHauntStop;
 
     void Awake()
     {
@@ -25,7 +25,6 @@ public class RoomHaunt : MonoBehaviour
         StartCoroutine(HauntingMode());
         StartCoroutine(FlickerLight());
         StartCoroutine(CheckPlayerSpotted());
-
     }
 
     void OnDisable()
@@ -41,10 +40,10 @@ public class RoomHaunt : MonoBehaviour
         {
             yield return new WaitForSeconds(0.7f);
 
-            if (playerMovement.CheckIfMoving() && isLooking && room.IsPlayerInRoom())
+            if (IsPlayerSpotted())
             {
+                OnHauntStop?.Raise();
                 isLooking = false;
-                //TODO damage player 
                 gameObject.SetActive(false);
             }
         }
@@ -75,4 +74,8 @@ public class RoomHaunt : MonoBehaviour
         }
     }
 
+    bool IsPlayerSpotted()
+    {
+        return playerMovement.CheckIfMoving() && isLooking && room.IsPlayerInRoom();
+    }
 }

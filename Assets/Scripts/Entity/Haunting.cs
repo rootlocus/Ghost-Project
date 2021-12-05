@@ -138,6 +138,9 @@ public class Haunting : MonoBehaviour
         {
             hasExorcist = true;
             StartCoroutine(DelayToWin());
+        } else
+        {
+            //TODO: take damage
         }
     }
 }

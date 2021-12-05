@@ -31,8 +31,6 @@ public class HauntingHandler : MonoBehaviour
     [BoxGroup("Managers")]
     [SerializeField] AudioManager audioManager;
     [SerializeField] GameEvent foundNameEvent;
-    //[SerializeField] List<GameObject> scares;
-    //[SerializeField] Player player;
 
     void Awake()
     {
@@ -42,13 +40,14 @@ public class HauntingHandler : MonoBehaviour
         ChooseHauntingRoom();
     }
 
+    // move into haunting
     IEnumerator CheckPlayerExitRoom(Room currentRoom, Haunting currentHaunt)
     {
         while (currentRoom.IsPlayerInRoom())
         {
             yield return new WaitForSeconds(1f);
         }
-        TransitionRoomHauntInactive(currentHaunt);
+        TransitionOutOfHaunt(currentHaunt);
     }
 
     void InitializeHauntingRooms()
@@ -72,8 +71,9 @@ public class HauntingHandler : MonoBehaviour
         //InvokeRepeating("ClueFoundTrigger", initTimeSound, Random.Range(minTimeClueSound, maxTimeClueSound));
     }
 
+    // move into haunting
     [Button("Spawn Ghost Haunt")]
-    public void TransitionRoomHaunt()
+    public void TransitionIntoHaunt()
     {
         GameObject currentRoomGO = roomsGO.Find(room => room.GetComponent<Room>().IsPlayerInRoom());
         Room currentRoom = currentRoomGO.GetComponent<Room>();
@@ -86,21 +86,13 @@ public class HauntingHandler : MonoBehaviour
         StartCoroutine(CheckPlayerExitRoom(currentRoom, currentHaunting));
     }
 
+    // move into haunting
     [Button("Despawn Ghost Haunt")]
-    public void TransitionRoomHauntInactive(Haunting currentHaunting)
+    public void TransitionOutOfHaunt(Haunting currentHaunting)
     {
         currentHaunting.DisableRoomAttack();
         audioManager.PlayBGM("BGM_1");
     }
-
-    //IEnumerator PlayGhostEnterBGM()
-    //{
-    //    audioManager.PlayBGM(ghostEntranceBGM);
-
-    //    yield return new WaitForSeconds(roomHauntDuration);
-
-    //    audioManager.PlayBGM("BGM_1");
-    //}
 
     [Button("Radio Check")]
     public void CheckRadioTrigger()
@@ -108,8 +100,8 @@ public class HauntingHandler : MonoBehaviour
         if (zone.IsInZone())
             TriggerNameFound();
         else
+            //get player room 
             CheckHauntThreshold();
-
     }
 
     void TriggerNameFound()
@@ -119,11 +111,11 @@ public class HauntingHandler : MonoBehaviour
         foundNameEvent?.Raise();
     }
 
-    void CheckHauntThreshold()
+    void CheckHauntThreshold() // pass room parameter
     {
         float hauntPlayerRoll = Random.Range(0, 10);
 
         if (hauntPlayerRoll >= hauntThreshold)
-            TransitionRoomHaunt();
+            TransitionIntoHaunt(); // room transition haunt
     }
 }

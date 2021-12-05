@@ -2,6 +2,7 @@
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] StressUI stressUi;
     [SerializeField] public int stress;
     [SerializeField] GameEvent OnLevelLose;
     float interactRadius = 0.1f;
@@ -30,17 +31,14 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void GainStress(int stressGain)
+    public int GetStress()
     {
-        stress += stressGain;
+        return stress;
     }
 
-    public void LoseStress(int stressLost)
+    public void TakeDamage()
     {
-        stress -= stressLost;
-        if(stress < 0) {
-            stress = 0;
-        }
+        stress = --stress;
     }
 
     public void Death()
