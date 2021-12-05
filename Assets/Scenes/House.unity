@@ -1243,7 +1243,7 @@ PrefabInstance:
       objectReference: {fileID: 781049544}
     - target: {fileID: 3065871339496187686, guid: 8288578c8b8426548b3871c7e3f411c7, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8797169533228155771, guid: 8288578c8b8426548b3871c7e3f411c7, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.size
@@ -1926,7 +1926,7 @@ PrefabInstance:
       objectReference: {fileID: 1990536271}
     - target: {fileID: 3065871339496187686, guid: 8288578c8b8426548b3871c7e3f411c7, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3065871339496187686, guid: 8288578c8b8426548b3871c7e3f411c7, type: 3}
       propertyPath: m_LocalScale.x
@@ -2725,50 +2725,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &409581190 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1968809677, guid: a28fafa4ea8454f4ea92a7b74981c34b, type: 3}
-  m_PrefabInstance: {fileID: 592995658}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &409581193 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1968809679, guid: a28fafa4ea8454f4ea92a7b74981c34b, type: 3}
-  m_PrefabInstance: {fileID: 592995658}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 409581190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc81ecd7a6d5e3248b9ae9632ca163d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &409581195
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 409581190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e02eb7533882e444be06becdd9807da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: fbaaa24e89a29cf478e1b45a2225c661, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 409581193}
-        m_TargetAssemblyTypeName: StressUI, Assembly-CSharp
-        m_MethodName: DisplayStressBar
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &431660806
 GameObject:
   m_ObjectHideFlags: 0
@@ -3950,7 +3906,7 @@ PrefabInstance:
       objectReference: {fileID: 310521901}
     - target: {fileID: 3065871339496187686, guid: 8288578c8b8426548b3871c7e3f411c7, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3065871339496187686, guid: 8288578c8b8426548b3871c7e3f411c7, type: 3}
       propertyPath: m_LocalScale.x
@@ -9126,10 +9082,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 178891746, guid: a28fafa4ea8454f4ea92a7b74981c34b, type: 3}
-      propertyPath: audioManager
-      value: 
-      objectReference: {fileID: 796513131}
     - target: {fileID: 322131932, guid: a28fafa4ea8454f4ea92a7b74981c34b, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
@@ -9178,18 +9130,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1947810981, guid: a28fafa4ea8454f4ea92a7b74981c34b, type: 3}
-      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1947810982, guid: a28fafa4ea8454f4ea92a7b74981c34b, type: 3}
-      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1968809679, guid: a28fafa4ea8454f4ea92a7b74981c34b, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1078277051}
     - target: {fileID: 431506908350389928, guid: a28fafa4ea8454f4ea92a7b74981c34b, type: 3}
       propertyPath: m_Name
       value: Player
@@ -13366,7 +13306,7 @@ PrefabInstance:
       objectReference: {fileID: 666761311}
     - target: {fileID: 3065871339496187686, guid: 8288578c8b8426548b3871c7e3f411c7, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3065871339496187686, guid: 8288578c8b8426548b3871c7e3f411c7, type: 3}
       propertyPath: m_LocalScale.x
@@ -13919,7 +13859,7 @@ PrefabInstance:
       objectReference: {fileID: 1822845032}
     - target: {fileID: 3065871339496187686, guid: 8288578c8b8426548b3871c7e3f411c7, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3065871339496187686, guid: 8288578c8b8426548b3871c7e3f411c7, type: 3}
       propertyPath: m_LocalScale.x
@@ -14781,9 +14721,13 @@ PrefabInstance:
       propertyPath: markings.Array.data[5]
       value: 
       objectReference: {fileID: 53067160}
+    - target: {fileID: 2855727077488520528, guid: 8288578c8b8426548b3871c7e3f411c7, type: 3}
+      propertyPath: roomHaunt
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3065871339496187686, guid: 8288578c8b8426548b3871c7e3f411c7, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3065871339496187686, guid: 8288578c8b8426548b3871c7e3f411c7, type: 3}
       propertyPath: m_LocalScale.x
@@ -16576,34 +16520,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5565063765720171744, guid: 2b97e0ad93401414c95434b9925d8b11, type: 3}
   m_PrefabInstance: {fileID: 1951709139}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1586149615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1586149614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e02eb7533882e444be06becdd9807da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 8618fd5121dcf55459e9eaa27e17f6c5, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1586149616}
-        m_TargetAssemblyTypeName: HauntingHandler, Assembly-CSharp
-        m_MethodName: TransitionOutOfHaunt
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: Haunting, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1586149616 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5565063765720171775, guid: 2b97e0ad93401414c95434b9925d8b11, type: 3}
@@ -16615,6 +16531,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8591f5c6d3ab1f541b21c927cd71d3e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1586149619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586149614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e02eb7533882e444be06becdd9807da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 22e291257e9eed2488fe47be9cc1b81a, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1586149616}
+        m_TargetAssemblyTypeName: HauntingHandler, Assembly-CSharp
+        m_MethodName: StartHauntingEffects
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1587455795
 GameObject:
   m_ObjectHideFlags: 0
@@ -23314,6 +23258,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1586149615, guid: 2b97e0ad93401414c95434b9925d8b11, type: 3}
+      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StopHauntingEffects
+      objectReference: {fileID: 0}
+    - target: {fileID: 1586149615, guid: 2b97e0ad93401414c95434b9925d8b11, type: 3}
+      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1586149615, guid: 2b97e0ad93401414c95434b9925d8b11, type: 3}
+      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5565063765720171744, guid: 2b97e0ad93401414c95434b9925d8b11, type: 3}
       propertyPath: m_Name
       value: HauntingManager

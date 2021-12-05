@@ -11,15 +11,17 @@ public class Haunting : MonoBehaviour
     [SerializeField, BoxGroup("Entities")] Room room;
 
     //[SerializeField, BoxGroup("Haunting Mode")] bool isAttacking;
-    [SerializeField, BoxGroup("Haunting Mode")] public RoomHaunt roomHaunt;
+    [SerializeField, BoxGroup("Initializations")] RoomHaunt roomHaunt;
+    [SerializeField, BoxGroup("Initializations")] bool isChosenHauntingRoom;
 
     [SerializeField, BoxGroup("Haunting Objectives")] bool hasFoundMemorabilia = false;
     [SerializeField, BoxGroup("Haunting Objectives")] bool hasFoundName = false;
     [SerializeField, BoxGroup("Haunting Objectives")] bool hasExorcist = false;
 
-    [SerializeField] bool isChosenHauntingRoom;
-    [SerializeField] GameEvent OnLevelWin;
-    [SerializeField] GameEvent OnDamageTaken;
+    [SerializeField, BoxGroup("Events")] GameEvent OnLevelWin;
+    [SerializeField, BoxGroup("Events")] GameEvent OnDamageTaken;
+    [SerializeField, BoxGroup("Events")] GameEvent OnHauntStart;
+    [SerializeField, BoxGroup("Events")] GameEvent OnHauntEnd;
     PolygonCollider2D hauntingZone;
     AudioSource sfxPlayer;
 
@@ -81,17 +83,20 @@ public class Haunting : MonoBehaviour
         }
     }
 
-    [Button("Attack Now")]
+    [Button("Activate RG Attack")]
     public void EnableRoomAttack() // maybe in future can decide what kind of room puzzle attack
     {
+        OnHauntStart?.Raise();
         roomHaunt.gameObject.SetActive(true);
         roomHaunt.ActivateRoomAttack();
     }
 
-    [Button("Stop Attacking")]
-    public void DisableRoomAttack()
-    {
-        roomHaunt.gameObject.SetActive(false);
+    [Button("Stop RG Attack")]
+    public void DisableRoomAttack() 
+    { 
+        if (roomHaunt.gameObject.activeInHierarchy)
+           roomHaunt.gameObject.SetActive(false);
+        OnHauntEnd?.Raise();
     }
 
     static Vector2 RandomPointInBounds(Bounds bounds)

@@ -87,4 +87,15 @@ public class HauntingHandler : MonoBehaviour
             roomDirector.EnableRoomAttack();
         }
     }
+
+    public void StartHauntingEffects()
+    {
+        audioManager.Play(ghostBreathing);
+        audioManager.PlayBGM(ghostEntranceBGM);
+    }
+
+    public void StopHauntingEffects()
+    {
+        audioManager.PlayBGM("BGM_6");
+    }
 }

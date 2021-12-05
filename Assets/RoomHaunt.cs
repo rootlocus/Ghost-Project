@@ -12,7 +12,7 @@ public class RoomHaunt : MonoBehaviour
     [SerializeField] bool isLooking = false;
     [SerializeField, BoxGroup("Attack Config")] float maxDurationLook = 5f;
     [SerializeField, BoxGroup("Attack Config")] float maxDurationChill = 3f;
-    [SerializeField] GameEvent OnHauntStop;
+    [SerializeField] GameEvent OnHauntEnd;
 
     void Awake()
     {
@@ -40,7 +40,7 @@ public class RoomHaunt : MonoBehaviour
             if (IsPlayerSpotted())
             {
                 roomDirector.HurtPlayer();
-                OnHauntStop?.Raise();
+                roomDirector.DisableRoomAttack();
                 gameObject.SetActive(false);
             }
         }
@@ -96,17 +96,19 @@ public class RoomHaunt : MonoBehaviour
     public void TransitionOutOfHaunt()
     {
         //audioManager.PlayBGM("BGM_1");
+        roomDirector.DisableRoomAttack();
         gameObject.SetActive(false);
     }
 
-    [Button("Spawn Ghost Haunt")]
-    public void TransitionIntoHaunt()
-    {
-        if (room.IsPlayerInRoom())
-        {
-            //audioManager.Play(ghostBreathing);
-            //audioManager.PlayBGM(ghostEntranceBGM);
-            StartCoroutine(CheckPlayerExitRoom());
-        }
-    }
+    //[Button("Spawn Ghost Haunt")]
+    //public void TransitionIntoHaunt()
+    //{
+    //    if (room.IsPlayerInRoom())
+    //    {
+    //        //audioManager.Play(ghostBreathing);
+    //        //audioManager.PlayBGM(ghostEntranceBGM);
+
+    //        StartCoroutine(CheckPlayerExitRoom());
+    //    }
+    //}
 }
