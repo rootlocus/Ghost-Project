@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
         InteractInteractables();
     }
 
-    private void InteractInteractables()
+    void InteractInteractables()
     {
         //TODO: maybe highlight object when nearby ?
         if (Input.GetKeyUp(KeyCode.Space)) // cant retrigger if player is busy

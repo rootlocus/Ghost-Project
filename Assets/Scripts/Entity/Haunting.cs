@@ -7,7 +7,7 @@ public class Haunting : MonoBehaviour
 {
     [SerializeField, BoxGroup("Entities")] AudioClip[] roomSounds;
     [SerializeField, BoxGroup("Entities")] List<GameObject> markings;
-    [SerializeField, BoxGroup("Entities")] GameObject demon;
+    [SerializeField, BoxGroup("Entities")] GameObject enemy;
     [SerializeField, BoxGroup("Entities")] Room room;
 
     //[SerializeField, BoxGroup("Haunting Mode")] bool isAttacking;
@@ -31,6 +31,7 @@ public class Haunting : MonoBehaviour
         hauntingZone = GetComponent<PolygonCollider2D>();
         room = GetComponent<Room>();
         roomHaunt = gameObject.GetComponentInChildren<RoomHaunt>();
+        enemy = GameObject.FindGameObjectWithTag("Enemy");
         roomHaunt.gameObject.SetActive(false);
         InitializeMarkings();
     }
@@ -54,16 +55,16 @@ public class Haunting : MonoBehaviour
     IEnumerator SpawnDemonInArea()
     {
         Vector2 hauntHere = RandomPointInBounds(hauntingZone.bounds);
-        demon.transform.position = hauntHere;
+        enemy.transform.position = hauntHere;
 
         yield return new WaitForSeconds(5);
-        demon.transform.position = new Vector2(1000f, 0f);
+        enemy.transform.position = new Vector2(1000f, 0f);
     }
 
     [Button("Prefill Demon")]
     public void GetDemon()
     {
-        demon = GameObject.FindGameObjectWithTag("Enemy");
+        enemy = GameObject.FindGameObjectWithTag("Enemy");
     }
 
     //[Button("Play Clue Sound")]

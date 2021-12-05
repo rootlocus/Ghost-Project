@@ -9,7 +9,7 @@ public class EchoEffect : MonoBehaviour
 
     [SerializeField] GameObject echo;
     Vector3 lastPosition;
-    // Update is called once per frame
+
     void Update()
     {
         // change this to ui position instead

@@ -7,8 +7,8 @@ using Sirenix.OdinInspector;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public Player player;
-    public FloatingTextManager floatingTextManager;
+    [SerializeField] Player player;
+    [SerializeField] FloatingTextManager floatingTextManager;
 
     //float minTimeClueSound = 2.0f;
     //float maxTimeClueSound = 20.0f;
