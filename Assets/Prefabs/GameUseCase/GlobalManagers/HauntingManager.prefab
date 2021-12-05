@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5565063765720171774}
   - component: {fileID: 5565063765720171775}
   - component: {fileID: 5565063765720171773}
+  - component: {fileID: 1586149615}
   m_Layer: 0
   m_Name: HauntingManager
   m_TagString: Untagged
@@ -44,19 +45,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8591f5c6d3ab1f541b21c927cd71d3e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possibleHauntings: []
-  chosenHaunt: 0
-  ghostName: Anon
-  hauntCheckChance: 8
-  ghostScareDuration: 5
+  roomsGO: []
+  rooms: []
+  chosenHauntIndex: 0
+  hauntThreshold: 8
+  roomHauntDuration: 5
   ghostBreathing: GhostBreath_01
   ghostEntranceBGM: PressureAtmos01
-  haunting: {fileID: 0}
+  chosenHauntingRoom: {fileID: 0}
+  chosenRoom: {fileID: 0}
   zone: {fileID: 0}
   audioManager: {fileID: 0}
   foundNameEvent: {fileID: 11400000, guid: fe9125f04fac8b144be4bec888d4b710, type: 2}
-  scares: []
-  player: {fileID: 0}
 --- !u!114 &5565063765720171773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,6 +80,34 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1586149615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5565063765720171744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e02eb7533882e444be06becdd9807da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 8618fd5121dcf55459e9eaa27e17f6c5, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5565063765720171775}
+        m_TargetAssemblyTypeName: HauntingHandler, Assembly-CSharp
+        m_MethodName: TransitionOutOfHaunt
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: Haunting, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

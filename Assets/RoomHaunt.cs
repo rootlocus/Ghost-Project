@@ -7,6 +7,7 @@ public class RoomHaunt : MonoBehaviour
 {
     [SerializeField, BoxGroup("Entities")] MovementV2 playerMovement;
     [SerializeField, BoxGroup("Entities")] Room room;
+    [SerializeField, BoxGroup("Entities")] Haunting roomDirector;
     [SerializeField, BoxGroup("Entities")] Light2D hauntingLight; 
     [SerializeField] bool isLooking = false;
     [SerializeField, BoxGroup("Attack Config")] float maxDurationLook = 5f;
@@ -17,21 +18,17 @@ public class RoomHaunt : MonoBehaviour
     {
         playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<MovementV2>();
         room = GetComponentInParent<Room>();
+        roomDirector = GetComponentInParent<Haunting>();
         hauntingLight = GetComponent<Light2D>();
-    }
-
-    void OnEnable()
-    {
-        StartCoroutine(HauntingMode());
-        StartCoroutine(FlickerLight());
-        StartCoroutine(CheckPlayerSpotted());
     }
 
     void OnDisable()
     {
+        isLooking = false;
         StopCoroutine(HauntingMode());
         StopCoroutine(FlickerLight());
         StopCoroutine(CheckPlayerSpotted());
+        StopCoroutine(CheckPlayerExitRoom());
     }
 
     IEnumerator CheckPlayerSpotted()
@@ -42,8 +39,8 @@ public class RoomHaunt : MonoBehaviour
 
             if (IsPlayerSpotted())
             {
+                roomDirector.HurtPlayer();
                 OnHauntStop?.Raise();
-                isLooking = false;
                 gameObject.SetActive(false);
             }
         }
@@ -74,8 +71,42 @@ public class RoomHaunt : MonoBehaviour
         }
     }
 
+    IEnumerator CheckPlayerExitRoom()
+    {
+        while (room.IsPlayerInRoom())
+        {
+            yield return new WaitForSeconds(1f);
+        }
+        TransitionOutOfHaunt();
+    }
+
     bool IsPlayerSpotted()
     {
         return playerMovement.CheckIfMoving() && isLooking && room.IsPlayerInRoom();
+    }
+    public void ActivateRoomAttack()
+    {
+        StartCoroutine(HauntingMode());
+        StartCoroutine(FlickerLight());
+        StartCoroutine(CheckPlayerSpotted());
+        StartCoroutine(CheckPlayerExitRoom());
+    }
+
+    [Button("Despawn Ghost Haunt")]
+    public void TransitionOutOfHaunt()
+    {
+        //audioManager.PlayBGM("BGM_1");
+        gameObject.SetActive(false);
+    }
+
+    [Button("Spawn Ghost Haunt")]
+    public void TransitionIntoHaunt()
+    {
+        if (room.IsPlayerInRoom())
+        {
+            //audioManager.Play(ghostBreathing);
+            //audioManager.PlayBGM(ghostEntranceBGM);
+            StartCoroutine(CheckPlayerExitRoom());
+        }
     }
 }

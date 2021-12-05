@@ -10,10 +10,10 @@ public class StressUI : MonoBehaviour
 
     void Awake()
     {
-        if (!player) player = GameObject.Find("Player").GetComponent<Player>();
+        if (!player) player = GetComponentInParent<Player>();
     }
 
-    public void DisplayStressBar()
+    public void UpdateStressUi()
     {
         int stressIndex = player.GetStress() - 1;
         for (int i = 0; i < stressPoints.Length; i++)

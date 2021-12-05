@@ -40,16 +40,6 @@ public class HauntingHandler : MonoBehaviour
         ChooseHauntingRoom();
     }
 
-    // move into haunting
-    IEnumerator CheckPlayerExitRoom(Room currentRoom, Haunting currentHaunt)
-    {
-        while (currentRoom.IsPlayerInRoom())
-        {
-            yield return new WaitForSeconds(1f);
-        }
-        TransitionOutOfHaunt(currentHaunt);
-    }
-
     void InitializeHauntingRooms()
     {
         GameObject[] hauntingGroupings = GameObject.FindGameObjectsWithTag("Haunting");
@@ -71,36 +61,12 @@ public class HauntingHandler : MonoBehaviour
         //InvokeRepeating("ClueFoundTrigger", initTimeSound, Random.Range(minTimeClueSound, maxTimeClueSound));
     }
 
-    // move into haunting
-    [Button("Spawn Ghost Haunt")]
-    public void TransitionIntoHaunt()
-    {
-        GameObject currentRoomGO = roomsGO.Find(room => room.GetComponent<Room>().IsPlayerInRoom());
-        Room currentRoom = currentRoomGO.GetComponent<Room>();
-        Haunting currentHaunting = currentRoomGO.GetComponent<Haunting>();
-
-        audioManager.Play(ghostBreathing);
-        currentHaunting.EnableRoomAttack();
-        audioManager.PlayBGM(ghostEntranceBGM);
-
-        StartCoroutine(CheckPlayerExitRoom(currentRoom, currentHaunting));
-    }
-
-    // move into haunting
-    [Button("Despawn Ghost Haunt")]
-    public void TransitionOutOfHaunt(Haunting currentHaunting)
-    {
-        currentHaunting.DisableRoomAttack();
-        audioManager.PlayBGM("BGM_1");
-    }
-
     [Button("Radio Check")]
     public void CheckRadioTrigger()
     {
         if (zone.IsInZone())
             TriggerNameFound();
         else
-            //get player room 
             CheckHauntThreshold();
     }
 
@@ -111,11 +77,14 @@ public class HauntingHandler : MonoBehaviour
         foundNameEvent?.Raise();
     }
 
-    void CheckHauntThreshold() // pass room parameter
+    void CheckHauntThreshold()
     {
         float hauntPlayerRoll = Random.Range(0, 10);
 
         if (hauntPlayerRoll >= hauntThreshold)
-            TransitionIntoHaunt(); // room transition haunt
+        {
+            Haunting roomDirector = roomsGO.Find(room => room.GetComponent<Room>().IsPlayerInRoom()).GetComponent<Haunting>();
+            roomDirector.EnableRoomAttack();
+        }
     }
 }

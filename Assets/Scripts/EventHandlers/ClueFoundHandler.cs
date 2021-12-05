@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
@@ -33,7 +34,9 @@ public class ClueFoundHandler : MonoBehaviour
 
     void InitializeHaunting()
     {
-        if (!haunting) haunting = GameObject.FindGameObjectWithTag("Haunting").GetComponent<Haunting>();
+        if (!haunting) haunting = GameObject.FindGameObjectsWithTag("Haunting")
+                .FirstOrDefault(room => room.GetComponent<Haunting>().GetIsChosenHauntingRoom())
+                .GetComponent<Haunting>();
     }
 
     [Button("Clue Found Event")]

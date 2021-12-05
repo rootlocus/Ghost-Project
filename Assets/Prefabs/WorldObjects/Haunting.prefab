@@ -155,13 +155,13 @@ MonoBehaviour:
   markings: []
   demon: {fileID: 0}
   room: {fileID: 0}
-  isAttacking: 0
   roomHaunt: {fileID: 0}
   hasFoundMemorabilia: 0
   hasFoundName: 0
   hasExorcist: 0
   isChosenHauntingRoom: 0
   OnLevelWin: {fileID: 11400000, guid: 5439838a68de05e48a886b6be7b3d132, type: 2}
+  OnDamageTaken: {fileID: 11400000, guid: fbaaa24e89a29cf478e1b45a2225c661, type: 2}
 --- !u!114 &1294458417851393183
 MonoBehaviour:
   m_ObjectHideFlags: 0

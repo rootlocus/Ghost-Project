@@ -10,8 +10,8 @@ public class Haunting : MonoBehaviour
     [SerializeField, BoxGroup("Entities")] GameObject demon;
     [SerializeField, BoxGroup("Entities")] Room room;
 
-    [SerializeField, BoxGroup("Haunting Mode")] bool isAttacking;
-    [SerializeField, BoxGroup("Haunting Mode")] RoomHaunt roomHaunt;
+    //[SerializeField, BoxGroup("Haunting Mode")] bool isAttacking;
+    [SerializeField, BoxGroup("Haunting Mode")] public RoomHaunt roomHaunt;
 
     [SerializeField, BoxGroup("Haunting Objectives")] bool hasFoundMemorabilia = false;
     [SerializeField, BoxGroup("Haunting Objectives")] bool hasFoundName = false;
@@ -19,6 +19,7 @@ public class Haunting : MonoBehaviour
 
     [SerializeField] bool isChosenHauntingRoom;
     [SerializeField] GameEvent OnLevelWin;
+    [SerializeField] GameEvent OnDamageTaken;
     PolygonCollider2D hauntingZone;
     AudioSource sfxPlayer;
 
@@ -27,7 +28,8 @@ public class Haunting : MonoBehaviour
         sfxPlayer = GetComponent<AudioSource>();
         hauntingZone = GetComponent<PolygonCollider2D>();
         room = GetComponent<Room>();
-        InitializeRoomHaunt();
+        roomHaunt = gameObject.GetComponentInChildren<RoomHaunt>();
+        roomHaunt.gameObject.SetActive(false);
         InitializeMarkings();
     }
 
@@ -38,12 +40,6 @@ public class Haunting : MonoBehaviour
         {
             marking.SetActive(false);
         }
-    }
-
-    void InitializeRoomHaunt()
-    {
-        roomHaunt = GetComponentInChildren<RoomHaunt>();
-        roomHaunt.gameObject.SetActive(false);
     }
 
     IEnumerator DelayToWin()
@@ -86,16 +82,15 @@ public class Haunting : MonoBehaviour
     }
 
     [Button("Attack Now")]
-    public void EnableRoomAttack()
+    public void EnableRoomAttack() // maybe in future can decide what kind of room puzzle attack
     {
-        isAttacking = true;
         roomHaunt.gameObject.SetActive(true);
+        roomHaunt.ActivateRoomAttack();
     }
 
     [Button("Stop Attacking")]
     public void DisableRoomAttack()
     {
-        isAttacking = false;
         roomHaunt.gameObject.SetActive(false);
     }
 
@@ -122,6 +117,11 @@ public class Haunting : MonoBehaviour
         isChosenHauntingRoom = true;
     }
 
+    public bool GetIsChosenHauntingRoom()
+    {
+        return isChosenHauntingRoom;
+    }
+
     bool PlayerInChosenHauntingRoom()
     {
         return room.IsPlayerInRoom() && isChosenHauntingRoom;
@@ -140,7 +140,13 @@ public class Haunting : MonoBehaviour
             StartCoroutine(DelayToWin());
         } else
         {
-            //TODO: take damage
+            HurtPlayer();
         }
+    }
+
+    public void HurtPlayer()
+    {
+        //show other animations
+        OnDamageTaken?.Raise();
     }
 }

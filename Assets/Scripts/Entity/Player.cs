@@ -7,6 +7,11 @@ public class Player : MonoBehaviour
     [SerializeField] GameEvent OnLevelLose;
     float interactRadius = 0.1f;
 
+    void Awake()
+    {
+        stressUi = GetComponentInChildren<StressUI>();    
+    }
+
     void Update()
     {
         InteractInteractables();
@@ -39,6 +44,7 @@ public class Player : MonoBehaviour
     public void TakeDamage()
     {
         stress = --stress;
+        stressUi.UpdateStressUi();
     }
 
     public void Death()
