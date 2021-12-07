@@ -5,10 +5,12 @@ public class Player : MonoBehaviour
     [SerializeField] StressUI stressUi;
     [SerializeField] public int stress;
     [SerializeField] GameEvent OnLevelLose;
+    [SerializeField] Animator animator;
     float interactRadius = 0.1f;
 
     void Awake()
     {
+        animator = GetComponent<Animator>();
         stressUi = GetComponentInChildren<StressUI>();    
     }
 
@@ -55,4 +57,8 @@ public class Player : MonoBehaviour
         OnLevelLose?.Raise();
     }
 
+    public void ActivateRosaryAnimation()
+    {
+        animator.SetTrigger("UseRosary");
+    }
 }

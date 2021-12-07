@@ -12546,10 +12546,6 @@ PrefabInstance:
       propertyPath: levelCompleteUI
       value: 
       objectReference: {fileID: 295187477}
-    - target: {fileID: 1256434730472039422, guid: d24d552ddcc842948af786c77fb6ee7e, type: 3}
-      propertyPath: inventoryUI
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1256434730472039423, guid: d24d552ddcc842948af786c77fb6ee7e, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -17445,50 +17441,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1701651001 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1256434730472039423, guid: d24d552ddcc842948af786c77fb6ee7e, type: 3}
-  m_PrefabInstance: {fileID: 990466022}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1701651005 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1454995433905382977, guid: d24d552ddcc842948af786c77fb6ee7e, type: 3}
-  m_PrefabInstance: {fileID: 990466022}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1701651001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cea2ef6c5864bbc4fa2be71dc75375b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1701651008
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1701651001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e02eb7533882e444be06becdd9807da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: a8dabcef4cdfe0f4f86fac04c065ab8e, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1701651005}
-        m_TargetAssemblyTypeName: ClueFoundHandler, Assembly-CSharp
-        m_MethodName: Execute
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1001 &1717814665
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23250,14 +23202,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 599667570305117698, guid: 2b97e0ad93401414c95434b9925d8b11, type: 3}
-      propertyPath: gameEvent
-      value: 
-      objectReference: {fileID: 11400000, guid: 0827e67be852c8943a42b83111b5f9f0, type: 2}
-    - target: {fileID: 599667570305117698, guid: 2b97e0ad93401414c95434b9925d8b11, type: 3}
-      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AttemptExorcism
-      objectReference: {fileID: 0}
     - target: {fileID: 5565063765720171744, guid: 2b97e0ad93401414c95434b9925d8b11, type: 3}
       propertyPath: m_Name
       value: HauntingManager

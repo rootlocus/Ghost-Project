@@ -55,11 +55,29 @@ public class HauntingHandler : MonoBehaviour
         }
     }
 
-    IEnumerator DelayToWin()
+    IEnumerator PlaySuccessfulExorcism()
     {
-        yield return new WaitForSeconds(5f);
+        hasExorcist = true;
+        OnExorcist?.Raise();
+
+        yield return new WaitForSeconds(2f);
 
         OnLevelWin?.Raise();
+    }
+
+    IEnumerator PlayFailedExorcism()
+    {
+        yield return new WaitForSeconds(2f);
+
+        OnDamageTaken?.Raise();
+    }
+
+    IEnumerator RadioFailedEvents()
+    {
+        yield return new WaitForSeconds(2f);
+
+        Haunting roomDirector = roomsGO.Find(room => room.GetComponent<Room>().IsPlayerInRoom()).GetComponent<Haunting>();
+        roomDirector.EnableRoomAttack();
     }
 
     void ChooseHauntingRoom()
@@ -93,15 +111,14 @@ public class HauntingHandler : MonoBehaviour
 
     public void AttemptExorcism()
     {
+
         if (PlayerInChosenHauntingRoom() && FoundRestOfObjectives())
         {
-            hasExorcist = true;
-            OnExorcist?.Raise();
-            StartCoroutine(DelayToWin());
+            StartCoroutine(PlaySuccessfulExorcism());
         }
         else
         {
-            OnDamageTaken?.Raise();
+            StartCoroutine(PlayFailedExorcism());
         }
     }
 
@@ -118,7 +135,6 @@ public class HauntingHandler : MonoBehaviour
 
     bool PlayerInChosenHauntingRoom()
     {
-        // get room player is in
         return rooms[chosenHauntIndex].IsPlayerInRoom();
     }
 
@@ -140,8 +156,7 @@ public class HauntingHandler : MonoBehaviour
 
         if (hauntPlayerRoll >= hauntThreshold)
         {
-            Haunting roomDirector = roomsGO.Find(room => room.GetComponent<Room>().IsPlayerInRoom()).GetComponent<Haunting>();
-            roomDirector.EnableRoomAttack();
+            StartCoroutine(RadioFailedEvents());
         }
     }
 }

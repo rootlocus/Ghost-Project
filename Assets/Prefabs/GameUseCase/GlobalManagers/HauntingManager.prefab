@@ -191,13 +191,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e02eb7533882e444be06becdd9807da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: fc3dca9ca38ea1b4f85b59c3808283dd, type: 2}
+  gameEvent: {fileID: 11400000, guid: 0827e67be852c8943a42b83111b5f9f0, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5565063765720171775}
         m_TargetAssemblyTypeName: HauntingHandler, Assembly-CSharp
-        m_MethodName: OnExorcist
+        m_MethodName: AttemptExorcism
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
