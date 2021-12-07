@@ -92,8 +92,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 0}
   room: {fileID: 0}
+  roomDirector: {fileID: 0}
   hauntingLight: {fileID: 0}
   isLooking: 0
   maxDurationLook: 5
   maxDurationChill: 2
-  OnHauntStop: {fileID: 11400000, guid: 8618fd5121dcf55459e9eaa27e17f6c5, type: 2}
+  OnHauntEnd: {fileID: 11400000, guid: 8618fd5121dcf55459e9eaa27e17f6c5, type: 2}
+  OnDamageTaken: {fileID: 11400000, guid: fbaaa24e89a29cf478e1b45a2225c661, type: 2}

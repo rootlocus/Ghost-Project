@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Rosary : Item
 {
-    [SerializeField] GameEvent ExorcistGhost;
+    [SerializeField] GameEvent AttemptExorcist;
 
     public override void utilise()
     {
-        ExorcistGhost?.Raise();
+        AttemptExorcist?.Raise();
     }
 }

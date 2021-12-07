@@ -13,6 +13,7 @@ public class RoomHaunt : MonoBehaviour
     [SerializeField, BoxGroup("Attack Config")] float maxDurationLook = 5f;
     [SerializeField, BoxGroup("Attack Config")] float maxDurationChill = 3f;
     [SerializeField] GameEvent OnHauntEnd;
+    [SerializeField] GameEvent OnDamageTaken;
 
     void Awake()
     {
@@ -39,7 +40,7 @@ public class RoomHaunt : MonoBehaviour
 
             if (IsPlayerSpotted())
             {
-                roomDirector.HurtPlayer();
+                OnDamageTaken?.Raise();
                 roomDirector.DisableRoomAttack();
                 gameObject.SetActive(false);
             }

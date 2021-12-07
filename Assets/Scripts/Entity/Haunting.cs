@@ -10,16 +10,9 @@ public class Haunting : MonoBehaviour
     [SerializeField, BoxGroup("Entities")] GameObject enemy;
     [SerializeField, BoxGroup("Entities")] Room room;
 
-    //[SerializeField, BoxGroup("Haunting Mode")] bool isAttacking;
     [SerializeField, BoxGroup("Initializations")] RoomHaunt roomHaunt;
     [SerializeField, BoxGroup("Initializations")] bool isChosenHauntingRoom;
 
-    [SerializeField, BoxGroup("Haunting Objectives")] bool hasFoundMemorabilia = false;
-    [SerializeField, BoxGroup("Haunting Objectives")] bool hasFoundName = false;
-    [SerializeField, BoxGroup("Haunting Objectives")] bool hasExorcist = false;
-
-    [SerializeField, BoxGroup("Events")] GameEvent OnLevelWin;
-    [SerializeField, BoxGroup("Events")] GameEvent OnDamageTaken;
     [SerializeField, BoxGroup("Events")] GameEvent OnHauntStart;
     [SerializeField, BoxGroup("Events")] GameEvent OnHauntEnd;
     PolygonCollider2D hauntingZone;
@@ -45,13 +38,6 @@ public class Haunting : MonoBehaviour
         }
     }
 
-    IEnumerator DelayToWin()
-    {
-        yield return new WaitForSeconds(5f);
-
-        OnLevelWin?.Raise();
-    }
-
     IEnumerator SpawnDemonInArea()
     {
         Vector2 hauntHere = RandomPointInBounds(hauntingZone.bounds);
@@ -66,13 +52,6 @@ public class Haunting : MonoBehaviour
     {
         enemy = GameObject.FindGameObjectWithTag("Enemy");
     }
-
-    //[Button("Play Clue Sound")]
-    //public void PlayRandomSound()
-    //{
-    //    sfxPlayer.clip = roomSounds[Random.Range(0, roomSounds.Length)];
-    //    sfxPlayer.Play();
-    //}
 
     [Button("Trigger Markings")]
     public void TriggerMarking()
@@ -108,16 +87,6 @@ public class Haunting : MonoBehaviour
         );
     }
 
-    public void FoundMemorabilia()
-    {
-        hasFoundMemorabilia = true;
-    }
-
-    public void FoundName()
-    {
-        hasFoundName = true;
-    }
-
     public void SetChosenHauntingRoom()
     {
         isChosenHauntingRoom = true;
@@ -128,31 +97,4 @@ public class Haunting : MonoBehaviour
         return isChosenHauntingRoom;
     }
 
-    bool PlayerInChosenHauntingRoom()
-    {
-        return room.IsPlayerInRoom() && isChosenHauntingRoom;
-    }
-
-    bool FoundRestOfObjectives()
-    {
-        return hasFoundMemorabilia && hasFoundName;
-    }
-
-    public void OnExorcist()
-    {
-        if (PlayerInChosenHauntingRoom() && FoundRestOfObjectives())
-        {
-            hasExorcist = true;
-            StartCoroutine(DelayToWin());
-        } else
-        {
-            HurtPlayer();
-        }
-    }
-
-    public void HurtPlayer()
-    {
-        //show other animations
-        OnDamageTaken?.Raise();
-    }
 }

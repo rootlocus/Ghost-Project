@@ -8,15 +8,38 @@ public class CompleteScreenUI : MonoBehaviour
 {
     Canvas canvas;
     Image imageDisplay;
+    GameObject button;
 
     [SerializeField] Sprite winBackground;
     [SerializeField] Sprite loseBackground;
+    [SerializeField] Sprite tutorialBackground;
 
+    void Awake()
+    {
+        canvas = GetComponent<Canvas>();
+        imageDisplay = GetComponentInChildren<Image>();
+        button = GetComponentInChildren<Button>().gameObject;
+        button.SetActive(false);
+    }
 
     void Start()
     {
-        canvas = gameObject.GetComponent<Canvas>();
-        imageDisplay = gameObject.GetComponentInChildren<Image>();
+        ToggleTutorialScreen();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.T))
+        {
+            ToggleTutorialScreen();
+        }
+    }
+
+    public void ToggleTutorialScreen()
+    {
+        imageDisplay.sprite = tutorialBackground;
+        ToggleTitleScreen();
+        button.SetActive(!button.activeSelf);
     }
 
     public void ToggleWinScreen()

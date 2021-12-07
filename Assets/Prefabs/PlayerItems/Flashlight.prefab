@@ -135,5 +135,5 @@ MonoBehaviour:
   itemName: 
   isConsumable: 0
   isActivated: 0
-  intensity: 1.1
+  intensity: 0.6
   flashlight: {fileID: 3652549774923912263, guid: ba2df18ad7bbf5a4b89ffbc6c48ade11, type: 3}

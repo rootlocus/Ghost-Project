@@ -349,6 +349,14 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6619303621372073024, guid: 2d2e7553cbc016d40b7a81023e665d4c, type: 3}
+      propertyPath: defaultInventorySprite
+      value: 
+      objectReference: {fileID: 1143112349658930114, guid: 18f812ae42c7348438f2fc81b3219bc4, type: 3}
+    - target: {fileID: 6619303621372073024, guid: 2d2e7553cbc016d40b7a81023e665d4c, type: 3}
+      propertyPath: selectedInventorySprite
+      value: 
+      objectReference: {fileID: 8233166399751937168, guid: 18f812ae42c7348438f2fc81b3219bc4, type: 3}
     - target: {fileID: 6619303621372073025, guid: 2d2e7553cbc016d40b7a81023e665d4c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

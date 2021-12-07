@@ -9,7 +9,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] GameObject[] slots;
     [SerializeField] Sprite defaultInventorySprite;
     [SerializeField] Sprite selectedInventorySprite;
-    int selectedIndex = 0;
+    int selectedIndex = -1;
 
     void Update() 
     {

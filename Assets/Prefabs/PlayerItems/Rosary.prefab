@@ -134,4 +134,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Rosary
   isConsumable: 0
-  ExorcistGhost: {fileID: 11400000, guid: fc3dca9ca38ea1b4f85b59c3808283dd, type: 2}
+  AttemptExorcist: {fileID: 11400000, guid: 0827e67be852c8943a42b83111b5f9f0, type: 2}
