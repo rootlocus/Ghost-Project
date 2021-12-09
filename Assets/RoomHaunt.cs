@@ -14,13 +14,18 @@ public class RoomHaunt : MonoBehaviour
     [SerializeField, BoxGroup("Attack Config")] float maxDurationChill = 3f;
     [SerializeField] GameEvent OnHauntEnd;
     [SerializeField] GameEvent OnDamageTaken;
+    [SerializeField] BoxCollider2D attackBoundary;
+    [SerializeField] Enemy enemy;
+    float phase = 0.16f;
 
     void Awake()
     {
         playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<MovementV2>();
+        enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Enemy>();
         room = GetComponentInParent<Room>();
         roomDirector = GetComponentInParent<Haunting>();
         hauntingLight = GetComponent<Light2D>();
+        attackBoundary = GameObject.Find("AttackBoundary").GetComponent<BoxCollider2D>();
     }
 
     void OnDisable()
@@ -31,6 +36,15 @@ public class RoomHaunt : MonoBehaviour
         StopCoroutine(CheckPlayerSpotted());
         StopCoroutine(CheckPlayerExitRoom());
     }
+
+    static Vector2 RandomPointInBounds(Bounds bounds, float phase)
+    {
+        return new Vector2(
+            bounds.min.x + phase,
+            bounds.min.y + phase
+        );
+    }
+
 
     IEnumerator CheckPlayerSpotted()
     {
@@ -64,7 +78,14 @@ public class RoomHaunt : MonoBehaviour
         {
             isLooking = true;
             hauntingLight.enabled = true;
+
+            Vector2 nearerPosition = RandomPointInBounds(attackBoundary.bounds, phase);
+            enemy.transform.position = nearerPosition;
+            phase += 0.08f;
+
             yield return new WaitForSeconds(Random.Range(2f, maxDurationLook));
+
+            enemy.transform.position = new Vector2(1000f, 0f);
 
             isLooking = false;
             hauntingLight.enabled = false;
@@ -99,17 +120,8 @@ public class RoomHaunt : MonoBehaviour
         //audioManager.PlayBGM("BGM_1");
         roomDirector.DisableRoomAttack();
         gameObject.SetActive(false);
+
+        enemy.transform.position = new Vector2(1000f, 0f);
     }
 
-    //[Button("Spawn Ghost Haunt")]
-    //public void TransitionIntoHaunt()
-    //{
-    //    if (room.IsPlayerInRoom())
-    //    {
-    //        //audioManager.Play(ghostBreathing);
-    //        //audioManager.PlayBGM(ghostEntranceBGM);
-
-    //        StartCoroutine(CheckPlayerExitRoom());
-    //    }
-    //}
 }

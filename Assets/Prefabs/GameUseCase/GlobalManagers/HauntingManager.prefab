@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1344769492167993713}
   - component: {fileID: 599667570305117698}
   - component: {fileID: 74851555257283430}
+  - component: {fileID: 2388045903135135571}
   m_Layer: 0
   m_Name: HauntingManager
   m_TagString: Untagged
@@ -226,6 +227,34 @@ MonoBehaviour:
       - m_Target: {fileID: 5565063765720171775}
         m_TargetAssemblyTypeName: HauntingHandler, Assembly-CSharp
         m_MethodName: FoundName
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2388045903135135571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5565063765720171744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e02eb7533882e444be06becdd9807da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 37b877ba5a2ba6844ac8370a93b40b65, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5565063765720171775}
+        m_TargetAssemblyTypeName: HauntingHandler, Assembly-CSharp
+        m_MethodName: CheckHauntThreshold
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

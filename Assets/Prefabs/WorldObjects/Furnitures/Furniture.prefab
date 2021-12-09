@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2874567
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 4
   m_Sprite: {fileID: 9031543232680426034, guid: 060e8f98c86a65b41bd9db5761538b94, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -127,9 +127,11 @@ MonoBehaviour:
     name: 
     sentences: []
   interactSFX: {fileID: 8300000, guid: 7d5ebebfbe8dacf4686cc0d3d6ce0ce8, type: 3}
+  player: {fileID: 0}
   HasClue: 0
   isChecked: 0
   OnClueFound: {fileID: 11400000, guid: a8dabcef4cdfe0f4f86fac04c065ab8e, type: 2}
+  TriggerHauntRoll: {fileID: 11400000, guid: 37b877ba5a2ba6844ac8370a93b40b65, type: 2}
 --- !u!82 &1876786244
 AudioSource:
   m_ObjectHideFlags: 0

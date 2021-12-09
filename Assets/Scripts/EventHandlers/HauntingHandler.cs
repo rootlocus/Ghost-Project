@@ -72,7 +72,7 @@ public class HauntingHandler : MonoBehaviour
         OnDamageTaken?.Raise();
     }
 
-    IEnumerator RadioFailedEvents()
+    IEnumerator HauntPlayerRoom()
     {
         yield return new WaitForSeconds(2f);
 
@@ -150,13 +150,13 @@ public class HauntingHandler : MonoBehaviour
         foundNameEvent?.Raise();
     }
 
-    void CheckHauntThreshold()
+    public void CheckHauntThreshold()
     {
         float hauntPlayerRoll = Random.Range(0, 10);
 
         if (hauntPlayerRoll >= hauntThreshold)
         {
-            StartCoroutine(RadioFailedEvents());
+            StartCoroutine(HauntPlayerRoom());
         }
     }
 }

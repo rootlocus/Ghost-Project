@@ -3,7 +3,7 @@
 public class Player : MonoBehaviour
 {
     [SerializeField] StressUI stressUi;
-    [SerializeField] public int stress;
+    [SerializeField] int stress;
     [SerializeField] GameEvent OnLevelLose;
     [SerializeField] Animator animator;
     float interactRadius = 0.1f;
@@ -47,6 +47,11 @@ public class Player : MonoBehaviour
     {
         stress = --stress;
         stressUi.UpdateStressUi();
+
+        if (stress == 0)
+        {
+            Death();
+        }
     }
 
     public void Death()

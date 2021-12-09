@@ -8,6 +8,7 @@ public class Furniture : Interactable
     [SerializeField] bool HasClue = false;
     [SerializeField] bool isChecked = false;
     [SerializeField] GameEvent OnClueFound;
+    [SerializeField] GameEvent TriggerHauntRoll;
 
     public override void Interact()
     {
@@ -25,6 +26,9 @@ public class Furniture : Interactable
         {
             HasClue = false;
             OnClueFound?.Raise();
+        } else
+        {
+            TriggerHauntRoll.Raise();
         }
     }
 

@@ -26,8 +26,15 @@ public class MovementV2 : MonoBehaviour
         {
             GridMovement();
         }
+    }
 
-        CheckIfMoving();
+    IEnumerator CoFreezePlayerTemporary(float wait)
+    {
+        isFreeze = true;
+
+        yield return new WaitForSeconds(wait);
+
+        isFreeze = false;
     }
 
     public bool CheckIfMoving()
@@ -37,6 +44,16 @@ public class MovementV2 : MonoBehaviour
             return true;
         } 
         return false;
+    }
+
+    public void FreezePlayerTemporary(float time)
+    {
+        StartCoroutine(CoFreezePlayerTemporary(time));
+    }
+
+    public void ToggleFreezePlayer()
+    {
+        isFreeze = !isFreeze;
     }
 
     void GridMovement()
