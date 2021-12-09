@@ -9,14 +9,16 @@ public class RoomHaunt : MonoBehaviour
     [SerializeField, BoxGroup("Entities")] Room room;
     [SerializeField, BoxGroup("Entities")] Haunting roomDirector;
     [SerializeField, BoxGroup("Entities")] Light2D hauntingLight; 
-    [SerializeField] bool isLooking = false;
+    [SerializeField, BoxGroup("Entities")] Enemy enemy;
+    [SerializeField, BoxGroup("Entities")] BoxCollider2D attackBoundary;
     [SerializeField, BoxGroup("Attack Config")] float maxDurationLook = 5f;
     [SerializeField, BoxGroup("Attack Config")] float maxDurationChill = 3f;
-    [SerializeField] GameEvent OnHauntEnd;
-    [SerializeField] GameEvent OnDamageTaken;
-    [SerializeField] BoxCollider2D attackBoundary;
-    [SerializeField] Enemy enemy;
-    float phase = 0.16f;
+    [SerializeField, BoxGroup("Attack Config")] float attackTimeLeeway = 0.7f;
+    [SerializeField, BoxGroup("Attack Config")] bool isLooking = false;
+    [SerializeField, BoxGroup("Events")] GameEvent OnHauntEnd;
+    [SerializeField, BoxGroup("Events")] GameEvent OnDamageTaken;
+    [SerializeField, BoxGroup("Enemy Config")] float addedDistance = 0.16f;
+    float currentDistanceToPlayer = 0f;
 
     void Awake()
     {
@@ -37,26 +39,47 @@ public class RoomHaunt : MonoBehaviour
         StopCoroutine(CheckPlayerExitRoom());
     }
 
-    static Vector2 RandomPointInBounds(Bounds bounds, float phase)
+    static Vector2 RandomPointInBounds(Bounds bounds, float distanceToCenter)
     {
-        return new Vector2(
-            bounds.min.x + phase,
-            bounds.min.y + phase
-        );
+        float xPos;
+        float yPos;
+
+        if (Random.Range(0, 10) > 5)
+        {
+            xPos = bounds.min.x + distanceToCenter;
+            yPos = bounds.min.y + distanceToCenter;
+        }
+        else
+        {
+            xPos = bounds.max.x - distanceToCenter;
+            yPos = bounds.min.y + distanceToCenter;
+        }
+
+        return new Vector2(xPos, yPos);
     }
 
+    void SpawnEnemyNearer()
+    {
+        Vector2 nearerPosition = RandomPointInBounds(attackBoundary.bounds, currentDistanceToPlayer);
+        enemy.transform.position = nearerPosition;
+        currentDistanceToPlayer += addedDistance;
+    }
+
+    void HideEnemy()
+    {
+        enemy.transform.position = new Vector2(1000f, 0f);
+    }
 
     IEnumerator CheckPlayerSpotted()
     {
         while (true)
         {
-            yield return new WaitForSeconds(0.7f);
+            yield return new WaitForSeconds(attackTimeLeeway);
 
             if (IsPlayerSpotted())
             {
                 OnDamageTaken?.Raise();
-                roomDirector.DisableRoomAttack();
-                gameObject.SetActive(false);
+                TransitionOutOfHaunt();
             }
         }
     }
@@ -79,13 +102,9 @@ public class RoomHaunt : MonoBehaviour
             isLooking = true;
             hauntingLight.enabled = true;
 
-            Vector2 nearerPosition = RandomPointInBounds(attackBoundary.bounds, phase);
-            enemy.transform.position = nearerPosition;
-            phase += 0.08f;
+            SpawnEnemyNearer();
 
             yield return new WaitForSeconds(Random.Range(2f, maxDurationLook));
-
-            enemy.transform.position = new Vector2(1000f, 0f);
 
             isLooking = false;
             hauntingLight.enabled = false;
@@ -106,6 +125,7 @@ public class RoomHaunt : MonoBehaviour
     {
         return playerMovement.CheckIfMoving() && isLooking && room.IsPlayerInRoom();
     }
+
     public void ActivateRoomAttack()
     {
         StartCoroutine(HauntingMode());
@@ -118,10 +138,11 @@ public class RoomHaunt : MonoBehaviour
     public void TransitionOutOfHaunt()
     {
         //audioManager.PlayBGM("BGM_1");
+        currentDistanceToPlayer = 0f;
         roomDirector.DisableRoomAttack();
         gameObject.SetActive(false);
 
-        enemy.transform.position = new Vector2(1000f, 0f);
+        HideEnemy();
     }
 
 }
