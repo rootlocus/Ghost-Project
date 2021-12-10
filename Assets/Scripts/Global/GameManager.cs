@@ -7,36 +7,32 @@ using Sirenix.OdinInspector;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    [SerializeField] Player player;
-    [SerializeField] FloatingTextManager floatingTextManager;
+    [SerializeField, BoxGroup("Entities")] Player player;
 
     //float minTimeClueSound = 2.0f;
     //float maxTimeClueSound = 20.0f;
     //float initTimeSound = 2.0f;
-    [BoxGroup("Clues")]
-    [SerializeField] GameObject[] furnitures;
-    [BoxGroup("Clues")] 
-    [SerializeField] int maxClues = 2;
-    [SerializeField, BoxGroup("Clues"), DisableInEditorMode]
-    int foundMemorabilia = 0;
-    [BoxGroup("Clues")]
-    [SerializeField] Zone zone;
+    [SerializeField, BoxGroup("Clues")] GameObject[] furnitures;
+    [SerializeField, BoxGroup("Clues")] int maxClues = 5;
+    [SerializeField, BoxGroup("Clues"), DisableInEditorMode] int foundMemorabilia = 0;
+    [SerializeField, BoxGroup("Clues")] Zone zone;
 
     [BoxGroup("Inventory")]
     [SerializeField] GameObject[] defaultItems;
     [BoxGroup("Inventory")]
     [SerializeField] InventoryUI inventoryUI;
 
-    [BoxGroup("Other Managers")]
-    [SerializeField] AudioManager audioManager;
-    [BoxGroup("Other Managers")]
-    [SerializeField] CompleteScreenUI levelCompleteUI;
-    [BoxGroup("Other Managers")]
+    [SerializeField, BoxGroup("Other Managers")] FloatingTextManager floatingTextManager;
+    [SerializeField, BoxGroup("Other Managers")] AudioManager audioManager;
+    [SerializeField, BoxGroup("Other Managers")] CompleteScreenUI levelCompleteUI;
+    [SerializeField, BoxGroup("Other Managers")] DialogueManager dialogManager;
     [SerializeField] GameEvent foundAllMemorabilia;
+    [SerializeField] DialogSO initialDialog;
 
     void Awake() 
     {
         if (!audioManager) audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        if (!dialogManager) dialogManager = GameObject.Find("PlayerDialogCanvas").GetComponent<DialogueManager>();
         if (!levelCompleteUI) levelCompleteUI = GameObject.Find("CompletedCanvas").GetComponent<CompleteScreenUI>();
         if (!inventoryUI) inventoryUI = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryUI>();
         if (furnitures.Length == 0) furnitures = GameObject.FindGameObjectsWithTag("Furniture");
@@ -54,6 +50,14 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded += SaveState;
 
         DontDestroyOnLoad(gameObject);
+    }
+
+    [Button("Initial Dialog")]
+    public void TriggerInitialDialog()
+    {
+        //string name = initialDialog.GetEntityName();
+        //string[] dialogs = initialDialog.GetSentences();
+        dialogManager.StartDialogue(initialDialog);
     }
 
     void Start()

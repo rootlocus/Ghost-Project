@@ -1063,9 +1063,9 @@ MonoBehaviour:
   response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
-        m_MethodName: ToggleFreeze
+      - m_Target: {fileID: 1895037295}
+        m_TargetAssemblyTypeName: MovementV2, Assembly-CSharp
+        m_MethodName: ToggleFreezePlayer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1091,9 +1091,9 @@ MonoBehaviour:
   response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
-        m_MethodName: ToggleFreeze
+      - m_Target: {fileID: 1895037295}
+        m_TargetAssemblyTypeName: MovementV2, Assembly-CSharp
+        m_MethodName: ToggleFreezePlayer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

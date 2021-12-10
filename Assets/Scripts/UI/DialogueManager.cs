@@ -3,43 +3,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Sirenix.OdinInspector;
 
 public class DialogueManager : MonoBehaviour
 {
+    [SerializeField] GameObject dialogBox;
     [SerializeField] Text nameText = null;
     [SerializeField] Text dialogueText = null;
-    [SerializeField] Queue<string> sentences = null;
+    [SerializeField] Queue<string> newSentences = null;
     [SerializeField] Animator animator = null;
     [SerializeField] GameEvent OnDialogueStart = null;
     [SerializeField] GameEvent OnDialogueEnd = null;
 
-    void Start() {
-        sentences = new Queue<string>();
+    void Awake() {
+        newSentences = new Queue<string>();
     }
 
-    public void StartDialogue (Dialogue dialogue)
+    public void StartDialogue (DialogSO dialog)
     {
+        dialogBox.SetActive(true);
+
         OnDialogueStart?.Raise();
         animator.SetBool("isOpen", true);
-        nameText.text = dialogue.name;
-        sentences.Clear();
+        nameText.text = dialog.GetEntityName();
+        if (newSentences.Count > 0)
+            newSentences.Clear();
 
-        foreach (string sentence in dialogue.sentences)
+        foreach (string sentence in dialog.GetSentences())
         {
-            sentences.Enqueue(sentence);
+            newSentences.Enqueue(sentence);
         }
         DisplayNextSentence();
     }
 
-    void DisplayNextSentence()
+    public void DisplayNextSentence()
     {
-        if (sentences.Count == 0)
+        if (newSentences.Count == 0)
         {
             EndDialogue();
             return;
         }
 
-        string sentence = sentences.Dequeue();
+        string sentence = newSentences.Dequeue();
         dialogueText.text = sentence;
         
         StopAllCoroutines(); 
@@ -62,6 +67,7 @@ public class DialogueManager : MonoBehaviour
     {
         OnDialogueEnd?.Raise();
         animator.SetBool("isOpen", false);
+        dialogBox.SetActive(false);
     }
 
 }

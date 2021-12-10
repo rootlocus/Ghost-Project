@@ -12550,6 +12550,10 @@ PrefabInstance:
       propertyPath: maxClues
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1256434730472039422, guid: d24d552ddcc842948af786c77fb6ee7e, type: 3}
+      propertyPath: initialDialog
+      value: 
+      objectReference: {fileID: 11400000, guid: 98b47cf7ef65f484ba8ecf113fbfca0d, type: 2}
     - target: {fileID: 1256434730472039423, guid: d24d552ddcc842948af786c77fb6ee7e, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -22280,6 +22284,10 @@ PrefabInstance:
     - target: {fileID: 2681619921938484427, guid: f56496253842fc1478f7d5cc59179400, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3682668619744929946, guid: f56496253842fc1478f7d5cc59179400, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3682668619820476696, guid: f56496253842fc1478f7d5cc59179400, type: 3}
       propertyPath: m_Name
