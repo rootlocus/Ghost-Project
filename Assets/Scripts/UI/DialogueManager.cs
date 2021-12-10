@@ -17,23 +17,28 @@ public class DialogueManager : MonoBehaviour
 
     void Awake() {
         newSentences = new Queue<string>();
+        dialogBox.SetActive(false);
     }
 
     public void StartDialogue (DialogSO dialog)
     {
-        dialogBox.SetActive(true);
-
+        //if (newSentences.Count > 0)
+        //    newSentences.Clear();
         OnDialogueStart?.Raise();
+        dialogBox.SetActive(true);
         animator.SetBool("isOpen", true);
-        nameText.text = dialog.GetEntityName();
-        if (newSentences.Count > 0)
-            newSentences.Clear();
+        InitializeDialogData(dialog);
 
+        DisplayNextSentence();
+    }
+
+    private void InitializeDialogData(DialogSO dialog)
+    {
+        nameText.text = dialog.GetEntityName();
         foreach (string sentence in dialog.GetSentences())
         {
             newSentences.Enqueue(sentence);
         }
-        DisplayNextSentence();
     }
 
     public void DisplayNextSentence()
@@ -49,7 +54,6 @@ public class DialogueManager : MonoBehaviour
         
         StopAllCoroutines(); 
         StartCoroutine(TypeSentence(sentence));
-
     }
 
     IEnumerator TypeSentence (string sentence)
@@ -67,6 +71,7 @@ public class DialogueManager : MonoBehaviour
     {
         OnDialogueEnd?.Raise();
         animator.SetBool("isOpen", false);
+        newSentences.Clear();
         dialogBox.SetActive(false);
     }
 

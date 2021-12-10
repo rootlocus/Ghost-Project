@@ -24,7 +24,7 @@ public class CompleteScreenUI : MonoBehaviour
 
     void Start()
     {
-        ToggleTutorialScreen();
+        //ToggleTutorialScreen();
     }
 
     void Update()

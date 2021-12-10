@@ -25,14 +25,11 @@ public class GameManager : MonoBehaviour
     [SerializeField, BoxGroup("Other Managers")] FloatingTextManager floatingTextManager;
     [SerializeField, BoxGroup("Other Managers")] AudioManager audioManager;
     [SerializeField, BoxGroup("Other Managers")] CompleteScreenUI levelCompleteUI;
-    [SerializeField, BoxGroup("Other Managers")] DialogueManager dialogManager;
     [SerializeField] GameEvent foundAllMemorabilia;
-    [SerializeField] DialogSO initialDialog;
 
     void Awake() 
     {
         if (!audioManager) audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
-        if (!dialogManager) dialogManager = GameObject.Find("PlayerDialogCanvas").GetComponent<DialogueManager>();
         if (!levelCompleteUI) levelCompleteUI = GameObject.Find("CompletedCanvas").GetComponent<CompleteScreenUI>();
         if (!inventoryUI) inventoryUI = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryUI>();
         if (furnitures.Length == 0) furnitures = GameObject.FindGameObjectsWithTag("Furniture");
@@ -50,14 +47,6 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded += SaveState;
 
         DontDestroyOnLoad(gameObject);
-    }
-
-    [Button("Initial Dialog")]
-    public void TriggerInitialDialog()
-    {
-        //string name = initialDialog.GetEntityName();
-        //string[] dialogs = initialDialog.GetSentences();
-        dialogManager.StartDialogue(initialDialog);
     }
 
     void Start()
