@@ -20,6 +20,15 @@ public class DialogueManager : MonoBehaviour
         dialogBox.SetActive(false);
     }
 
+    void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Space) && newSentences.Count >= 0)
+        {
+            DisplayNextSentence();
+        }
+    }
+
+
     public void StartDialogue (DialogSO dialog)
     {
         //if (newSentences.Count > 0)
