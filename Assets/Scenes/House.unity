@@ -471,6 +471,8 @@ GameObject:
   - component: {fileID: 121329003}
   - component: {fileID: 121329004}
   - component: {fileID: 121329005}
+  - component: {fileID: 121329006}
+  - component: {fileID: 121329007}
   m_Layer: 0
   m_Name: AnimationAndDialogManager
   m_TagString: Untagged
@@ -498,6 +500,8 @@ MonoBehaviour:
   doorsLocked: {fileID: 11400000, guid: 27b74bcf80d67d442a5660142b03bfa1, type: 2}
   dangerousToGoAlone: {fileID: 11400000, guid: f1a9bc61cd67e254380d9315461d7df4, type: 2}
   inventoryTutorial: {fileID: 11400000, guid: 158db9a80b6689240965e28c02ecd13d, type: 2}
+  firstTimeClue: {fileID: 11400000, guid: e39edf203e0869741b700bad12e6d066, type: 2}
+  hauntingTutorial: {fileID: 11400000, guid: f6647d26f5cb9e74da95b43832d30bda, type: 2}
   ghostHunter: {fileID: 293488829}
 --- !u!4 &121329001
 Transform:
@@ -621,6 +625,62 @@ MonoBehaviour:
       - m_Target: {fileID: 121329000}
         m_TargetAssemblyTypeName: AnimationAndDialogManager, Assembly-CSharp
         m_MethodName: InventoryTutorial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &121329006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121328999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e02eb7533882e444be06becdd9807da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: e1eba3164af0b22409d25d0d6832672f, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 121329000}
+        m_TargetAssemblyTypeName: AnimationAndDialogManager, Assembly-CSharp
+        m_MethodName: FirstTimeClueFoundTutorial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &121329007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121328999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e02eb7533882e444be06becdd9807da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: fdcba984ab76baa408dca9f2479136fd, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 121329000}
+        m_TargetAssemblyTypeName: AnimationAndDialogManager, Assembly-CSharp
+        m_MethodName: HauntingTutorial
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -24301,6 +24361,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5565063765720171774, guid: 2b97e0ad93401414c95434b9925d8b11, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5565063765720171775, guid: 2b97e0ad93401414c95434b9925d8b11, type: 3}
+      propertyPath: tutorialComplete
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

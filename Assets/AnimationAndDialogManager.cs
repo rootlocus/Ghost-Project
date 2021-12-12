@@ -13,6 +13,8 @@ public class AnimationAndDialogManager : MonoBehaviour
     [SerializeField, BoxGroup("Dialogs")] DialogSO doorsLocked;
     [SerializeField, BoxGroup("Dialogs")] DialogSO dangerousToGoAlone;
     [SerializeField, BoxGroup("Dialogs")] DialogSO inventoryTutorial;
+    [SerializeField, BoxGroup("Dialogs")] DialogSO firstTimeClue;
+    [SerializeField, BoxGroup("Dialogs")] DialogSO hauntingTutorial;
     [SerializeField] GameObject ghostHunter;
 
     void Awake()
@@ -49,5 +51,15 @@ public class AnimationAndDialogManager : MonoBehaviour
     {
         dialogManager.StartDialogue(inventoryTutorial);
         inventoryUI.gameObject.SetActive(true);
+    }
+
+    public void FirstTimeClueFoundTutorial()
+    {
+        dialogManager.StartDialogue(firstTimeClue);
+    }
+
+    public void HauntingTutorial()
+    {
+        dialogManager.StartDialogue(hauntingTutorial);
     }
 }

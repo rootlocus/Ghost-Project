@@ -14,6 +14,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] Animator animator = null;
     [SerializeField] GameEvent OnDialogueStart = null;
     [SerializeField] GameEvent OnDialogueEnd = null;
+    [SerializeField] bool dialogPlaying = false;
 
     void Awake() {
         newSentences = new Queue<string>();
@@ -22,7 +23,7 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Space) && newSentences.Count >= 0)
+        if (Input.GetKeyUp(KeyCode.Space) && dialogPlaying)
         {
             DisplayNextSentence();
         }
@@ -33,6 +34,7 @@ public class DialogueManager : MonoBehaviour
     {
         //if (newSentences.Count > 0)
         //    newSentences.Clear();
+        dialogPlaying = true;
         OnDialogueStart?.Raise();
         dialogBox.SetActive(true);
         animator.SetBool("isOpen", true);
@@ -78,6 +80,7 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
+        dialogPlaying = false;
         OnDialogueEnd?.Raise();
         animator.SetBool("isOpen", false);
         newSentences.Clear();

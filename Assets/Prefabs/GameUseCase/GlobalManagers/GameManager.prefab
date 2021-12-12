@@ -85,9 +85,7 @@ MonoBehaviour:
   floatingTextManager: {fileID: 0}
   audioManager: {fileID: 0}
   levelCompleteUI: {fileID: 0}
-  dialogManager: {fileID: 0}
   foundAllMemorabilia: {fileID: 11400000, guid: d5e25baf628da424489b3aed82972eb6, type: 2}
-  initialDialog: {fileID: 11400000, guid: 98b47cf7ef65f484ba8ecf113fbfca0d, type: 2}
 --- !u!114 &1454995433905382977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,6 +101,8 @@ MonoBehaviour:
   player: {fileID: 0}
   audioManager: {fileID: 0}
   haunting: {fileID: 0}
+  firstTime: 0
+  firstTimeClue: {fileID: 11400000, guid: e1eba3164af0b22409d25d0d6832672f, type: 2}
 --- !u!114 &928510162
 MonoBehaviour:
   m_ObjectHideFlags: 0

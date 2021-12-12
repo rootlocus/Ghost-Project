@@ -9,6 +9,8 @@ public class ClueFoundHandler : MonoBehaviour
     [SerializeField] Player player;
     [SerializeField] AudioManager audioManager;
     [SerializeField] Haunting haunting;
+    [SerializeField] bool firstTime = false;
+    [SerializeField] GameEvent firstTimeClue;
 
     [Button("Initialize Prefabs")]
     void Awake()
@@ -39,11 +41,22 @@ public class ClueFoundHandler : MonoBehaviour
                 .GetComponent<Haunting>();
     }
 
+    void CheckFirstTimeTutorial()
+    {
+        if (firstTime)
+        {
+            firstTimeClue?.Raise();
+            firstTime = false;
+        }
+    }
+
     [Button("Clue Found Event")]
     public void Execute()
     {
         audioManager.Play("ClueFound");
         haunting.TriggerMarking();
+
+        CheckFirstTimeTutorial();
     }
 
 }

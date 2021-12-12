@@ -36,6 +36,9 @@ public class HauntingHandler : MonoBehaviour
     [SerializeField, BoxGroup("Events")] GameEvent OnDamageTaken;
     [SerializeField, BoxGroup("Events")] GameEvent OnExorcist;
 
+    [SerializeField, BoxGroup("Tutorial")] GameEvent TutorialHaunting;
+    [SerializeField, BoxGroup("Tutorial")] bool tutorialComplete = true;
+
     void Awake()
     {
         if (!zone) zone = GameObject.FindGameObjectWithTag("Zone").GetComponent<Zone>(); // if no zone then skip
@@ -78,6 +81,19 @@ public class HauntingHandler : MonoBehaviour
 
         Haunting roomDirector = roomsGO.Find(room => room.GetComponent<Room>().IsPlayerInRoom()).GetComponent<Haunting>();
         roomDirector.EnableRoomAttack();
+    }
+
+    IEnumerator TutorialHauntPlayerRoom()
+    {
+        yield return new WaitForSeconds(2f);
+
+        Haunting roomDirector = roomsGO.Find(room => room.GetComponent<Room>().IsPlayerInRoom()).GetComponent<Haunting>();
+        roomDirector.EnableRoomAttack();
+
+        yield return new WaitForSeconds(2f);
+        TutorialHaunting?.Raise();
+        roomDirector.DisableRoomAttack();
+        tutorialComplete = true;
     }
 
     void ChooseHauntingRoom()
@@ -156,7 +172,14 @@ public class HauntingHandler : MonoBehaviour
 
         if (hauntPlayerRoll >= hauntThreshold)
         {
-            StartCoroutine(HauntPlayerRoom());
+            if (!tutorialComplete)
+            {
+                StartCoroutine(TutorialHauntPlayerRoom());
+            }
+            else
+            {
+                StartCoroutine(HauntPlayerRoom());
+            }
         }
     }
 }
