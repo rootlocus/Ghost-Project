@@ -69,7 +69,7 @@ MonoBehaviour:
   OnDamageTaken: {fileID: 11400000, guid: fbaaa24e89a29cf478e1b45a2225c661, type: 2}
   OnExorcist: {fileID: 11400000, guid: fc3dca9ca38ea1b4f85b59c3808283dd, type: 2}
   TutorialHaunting: {fileID: 11400000, guid: fdcba984ab76baa408dca9f2479136fd, type: 2}
-  tutorialComplete: 1
+  tutorialComplete: 0
 --- !u!114 &5565063765720171773
 MonoBehaviour:
   m_ObjectHideFlags: 0

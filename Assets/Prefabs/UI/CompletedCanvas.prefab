@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 5763786011784238100}
   - component: {fileID: 5763786011784238101}
   - component: {fileID: 5763786011784238089}
+  - component: {fileID: 907684150}
   m_Layer: 5
   m_Name: CompletedCanvas
   m_TagString: Untagged
@@ -191,6 +192,34 @@ MonoBehaviour:
   winBackground: {fileID: 21300000, guid: 169f7622be888694bb87c8272212457c, type: 3}
   loseBackground: {fileID: 21300000, guid: 33613bd958ce3294db0480dfeee651fb, type: 3}
   tutorialBackground: {fileID: 21300000, guid: a8aad5095cd57c44ba4e2811e37fd46e, type: 3}
+--- !u!114 &907684150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5763786011784238098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e02eb7533882e444be06becdd9807da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 0d4b3739a07c75e48b662d6ab917ec0a, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5763786011784238089}
+        m_TargetAssemblyTypeName: CompleteScreenUI, Assembly-CSharp
+        m_MethodName: ToggleTutorialScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5763786012186764037
 GameObject:
   m_ObjectHideFlags: 0

@@ -244,3 +244,9 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: DoorsLocked
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0.1
+    loop: 0
+    source: {fileID: 0}
