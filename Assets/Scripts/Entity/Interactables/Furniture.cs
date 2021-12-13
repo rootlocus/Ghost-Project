@@ -27,7 +27,6 @@ public class Furniture : Interactable
         searchFurniture?.Raise();
         PlaySearchAnimation(true);
 
-        //freeze player movement here
         yield return new WaitForSeconds(2f);
 
         base.Interact();

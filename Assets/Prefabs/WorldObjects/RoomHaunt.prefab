@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1272625972939322970}
   - component: {fileID: 3906328274195320497}
   - component: {fileID: 4340477370961101271}
+  - component: {fileID: 5808226439199948337}
   m_Layer: 0
   m_Name: RoomHaunt
   m_TagString: Untagged
@@ -94,8 +95,40 @@ MonoBehaviour:
   room: {fileID: 0}
   roomDirector: {fileID: 0}
   hauntingLight: {fileID: 0}
-  isLooking: 0
+  enemy: {fileID: 0}
+  attackBoundary: {fileID: 0}
   maxDurationLook: 5
   maxDurationChill: 2
+  attackTimeLeeway: 0.7
+  isLooking: 0
   OnHauntEnd: {fileID: 11400000, guid: 8618fd5121dcf55459e9eaa27e17f6c5, type: 2}
   OnDamageTaken: {fileID: 11400000, guid: fbaaa24e89a29cf478e1b45a2225c661, type: 2}
+  addedDistance: 0.16
+--- !u!114 &5808226439199948337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9048964082894398892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e02eb7533882e444be06becdd9807da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: fbaaa24e89a29cf478e1b45a2225c661, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4340477370961101271}
+        m_TargetAssemblyTypeName: RoomHaunt, Assembly-CSharp
+        m_MethodName: TransitionOutOfHaunt
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

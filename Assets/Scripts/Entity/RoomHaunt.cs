@@ -18,6 +18,7 @@ public class RoomHaunt : MonoBehaviour
     [SerializeField, BoxGroup("Events")] GameEvent OnHauntEnd;
     [SerializeField, BoxGroup("Events")] GameEvent OnDamageTaken;
     [SerializeField, BoxGroup("Enemy Config")] float addedDistance = 0.16f;
+    bool chasePlayer = false;
     float currentDistanceToPlayer = 0f;
 
     void Awake()
@@ -38,6 +39,16 @@ public class RoomHaunt : MonoBehaviour
         StopCoroutine(CheckPlayerSpotted());
         StopCoroutine(CheckPlayerExitRoom());
         HideEnemy();
+    }
+
+    private void FixedUpdate()
+    {
+        if (chasePlayer)
+        {
+            Vector3 fromPosition = enemy.transform.position;
+            Vector3 toPosition = playerMovement.gameObject.transform.position;
+            enemy.transform.position = Vector3.MoveTowards(fromPosition, toPosition, 0.016f);
+        }
     }
 
     static Vector2 RandomPointInBounds(Bounds bounds, float distanceToCenter)
@@ -79,8 +90,9 @@ public class RoomHaunt : MonoBehaviour
 
             if (IsPlayerSpotted())
             {
-                OnDamageTaken?.Raise();
-                TransitionOutOfHaunt();
+                chasePlayer = true;
+                //OnDamageTaken?.Raise();
+                //TransitionOutOfHaunt();
             }
         }
     }
@@ -139,6 +151,7 @@ public class RoomHaunt : MonoBehaviour
     public void TransitionOutOfHaunt()
     {
         //audioManager.PlayBGM("BGM_1");
+        chasePlayer = false;
         currentDistanceToPlayer = 0f;
         roomDirector.DisableRoomAttack();
         gameObject.SetActive(false);
