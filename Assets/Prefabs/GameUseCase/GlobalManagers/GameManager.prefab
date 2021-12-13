@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1454995433905382977}
   - component: {fileID: 928510162}
   - component: {fileID: 2674305660243114157}
-  - component: {fileID: 1270313946}
   - component: {fileID: 1701651008}
   m_Layer: 0
   m_Name: GameManager
@@ -73,8 +72,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  maxClues: 5
-  foundMemorabilia: 0
+  maxMemorabiliaCount: 5
   zone: {fileID: 0}
   defaultItems:
   - {fileID: 6286348354836928338, guid: 1b0560627be9a8042b4ca6202da4b99b, type: 3}
@@ -85,7 +83,7 @@ MonoBehaviour:
   floatingTextManager: {fileID: 0}
   audioManager: {fileID: 0}
   levelCompleteUI: {fileID: 0}
-  foundAllMemorabilia: {fileID: 11400000, guid: d5e25baf628da424489b3aed82972eb6, type: 2}
+  memorabiliaManager: {fileID: 0}
 --- !u!114 &1454995433905382977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,8 +99,12 @@ MonoBehaviour:
   player: {fileID: 0}
   audioManager: {fileID: 0}
   haunting: {fileID: 0}
-  firstTime: 0
+  objectiveUI: {fileID: 0}
+  firstTime: 1
   firstTimeClue: {fileID: 11400000, guid: e1eba3164af0b22409d25d0d6832672f, type: 2}
+  maxMemorabiliaCount: 5
+  foundMemorabiliaCount: 0
+  foundAllMemorabilia: {fileID: 11400000, guid: d5e25baf628da424489b3aed82972eb6, type: 2}
 --- !u!114 &928510162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,34 +152,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1256434730472039422}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: LoseGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1270313946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1256434730472039423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e02eb7533882e444be06becdd9807da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: a8dabcef4cdfe0f4f86fac04c065ab8e, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1256434730472039422}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: FoundMemorabilia
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

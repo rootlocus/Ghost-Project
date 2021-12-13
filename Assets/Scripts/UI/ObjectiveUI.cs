@@ -6,10 +6,11 @@ using Sirenix.OdinInspector;
 
 public class ObjectiveUI : MonoBehaviour
 {
-    //[SerializeField] TMP_Text label = null;
     [SerializeField] TMP_Text nameObjective = null;
-    [SerializeField] TMP_Text memorabiliaObjective = null;
+    [SerializeField] TMP_Text memorabiliaText = null;
+    [SerializeField] TMP_Text memorabiliaCounterText = null;
     [SerializeField] TMP_Text exorcistObjective = null;
+    [SerializeField] GameObject memorabiliaObjective = null;
     [SerializeField] bool isDisplaying = false;
 
     void Start()
@@ -17,7 +18,7 @@ public class ObjectiveUI : MonoBehaviour
         StartCoroutine("CheckObjectives");
     }
 
-    private void Update()
+    void Update()
     {
         if (Input.GetKeyUp(KeyCode.J) && !isDisplaying)
         {
@@ -35,7 +36,8 @@ public class ObjectiveUI : MonoBehaviour
     [Button("Found Memorabilia")]
     public void FoundMemorabilia()
     {
-        memorabiliaObjective.fontStyle = FontStyles.Strikethrough;
+        memorabiliaText.fontStyle = FontStyles.Strikethrough;
+        memorabiliaCounterText.fontStyle = FontStyles.Strikethrough;
         StartCoroutine("CheckObjectives");
     }
 
@@ -51,7 +53,8 @@ public class ObjectiveUI : MonoBehaviour
     {
         //StartCoroutine(FadeInObjectives(0.5f, label));
         StartCoroutine(FadeInObjectives(0.5f, nameObjective));
-        StartCoroutine(FadeInObjectives(0.5f, memorabiliaObjective));
+        StartCoroutine(FadeInObjectives(0.5f, memorabiliaText));
+        StartCoroutine(FadeInObjectives(0.5f, memorabiliaCounterText));
         StartCoroutine(FadeInObjectives(0.5f, exorcistObjective));
     }
     
@@ -60,8 +63,14 @@ public class ObjectiveUI : MonoBehaviour
     {
         //StartCoroutine(FadeOutObjectives(0.5f, label));
         StartCoroutine(FadeOutObjectives(0.5f, nameObjective));
-        StartCoroutine(FadeOutObjectives(0.5f, memorabiliaObjective));
+        StartCoroutine(FadeOutObjectives(0.5f, memorabiliaText));
+        StartCoroutine(FadeOutObjectives(0.5f, memorabiliaCounterText));
         StartCoroutine(FadeOutObjectives(0.5f, exorcistObjective));
+    }
+
+    public void UpdateMemorabiliaCounter(int counter, int maxCounter)
+    {
+        memorabiliaCounterText.SetText("(" + counter + " / " + maxCounter + ")");
     }
 
     IEnumerator CheckObjectives()

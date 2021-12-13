@@ -13,8 +13,7 @@ public class GameManager : MonoBehaviour
     //float maxTimeClueSound = 20.0f;
     //float initTimeSound = 2.0f;
     [SerializeField, BoxGroup("Clues")] GameObject[] furnitures;
-    [SerializeField, BoxGroup("Clues")] int maxClues = 5;
-    [SerializeField, BoxGroup("Clues"), DisableInEditorMode] int foundMemorabilia = 0;
+    [SerializeField, BoxGroup("Clues"), DisableInEditorMode] int maxMemorabiliaCount = 5;
     [SerializeField, BoxGroup("Clues")] Zone zone;
 
     [BoxGroup("Inventory")]
@@ -25,7 +24,7 @@ public class GameManager : MonoBehaviour
     [SerializeField, BoxGroup("Other Managers")] FloatingTextManager floatingTextManager;
     [SerializeField, BoxGroup("Other Managers")] AudioManager audioManager;
     [SerializeField, BoxGroup("Other Managers")] CompleteScreenUI levelCompleteUI;
-    [SerializeField] GameEvent foundAllMemorabilia;
+    [SerializeField, BoxGroup("Other Managers")] ClueFoundHandler memorabiliaManager;
 
     void Awake() 
     {
@@ -34,6 +33,8 @@ public class GameManager : MonoBehaviour
         if (!inventoryUI) inventoryUI = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryUI>();
         if (furnitures.Length == 0) furnitures = GameObject.FindGameObjectsWithTag("Furniture");
         if (!zone) zone = GameObject.FindGameObjectWithTag("Zone").GetComponent<Zone>();
+        if (!memorabiliaManager) memorabiliaManager = GetComponent<ClueFoundHandler>();
+        maxMemorabiliaCount = memorabiliaManager.GetMaxMemorabilia();
 
         if (instance == null)
         {
@@ -78,7 +79,7 @@ public class GameManager : MonoBehaviour
     void SpawnMemorabiliaOnFurnitures()
     {
         furnitures = ShuffleGameObjects(furnitures);
-        for (int i = 0; i < maxClues; i++)
+        for (int i = 0; i < maxMemorabiliaCount; i++)
         {
             furnitures[i].GetComponent<Furniture>().AddClue();
         }
@@ -151,10 +152,10 @@ public class GameManager : MonoBehaviour
         audioManager.PlayBGM("LevelWin");
     }
 
-    public void FoundMemorabilia()
-    {
-        foundMemorabilia++;
-        if (foundMemorabilia == maxClues)
-            foundAllMemorabilia?.Raise();
-    }
+    //public void FoundMemorabilia()
+    //{
+    //    foundMemorabilia++;
+    //    if (foundMemorabilia == maxMemorabiliaCount)
+    //        foundAllMemorabilia?.Raise();
+    //}
 }

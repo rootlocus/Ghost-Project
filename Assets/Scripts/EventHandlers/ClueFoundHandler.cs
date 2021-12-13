@@ -9,33 +9,25 @@ public class ClueFoundHandler : MonoBehaviour
     [SerializeField, BoxGroup("Entity")] Player player;
     [SerializeField, BoxGroup("Entity")] AudioManager audioManager;
     [SerializeField, BoxGroup("Entity")] Haunting haunting;
+    [SerializeField, BoxGroup("Entity")] ObjectiveUI objectiveUI;
     [SerializeField, BoxGroup("Tutorial Config")] bool firstTime = false;
     [SerializeField, BoxGroup("Tutorial Config")] GameEvent firstTimeClue;
-    [SerializeField, BoxGroup("Clues Config")] int maxMemorabilia = 5;
-    [SerializeField, BoxGroup("Scoreboard"), DisableInEditorMode] int foundMemorabilia = 0;
+    [SerializeField, BoxGroup("Clues Config")] int maxMemorabiliaCount = 5;
+    [SerializeField, BoxGroup("Scoreboard"), DisableInEditorMode] int foundMemorabiliaCount = 0;
     [SerializeField] GameEvent foundAllMemorabilia;
 
 
     [Button("Initialize Prefabs")]
     void Awake()
     {
-        InitializePlayer();
-        InitializeAudioManager();
+        if (!player) player = GameObject.Find("Player").GetComponent<Player>();
+        if (!audioManager) audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        if (!objectiveUI) objectiveUI = GameObject.Find("ObjectiveUI").GetComponent<ObjectiveUI>();
     }
 
     void Start()
     {
         InitializeHaunting();
-    }
-
-    void InitializeAudioManager()
-    {
-        if (!audioManager) audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
-    }
-
-    void InitializePlayer()
-    {
-        if (!player) player = GameObject.Find("Player").GetComponent<Player>();
     }
 
     void InitializeHaunting()
@@ -56,10 +48,16 @@ public class ClueFoundHandler : MonoBehaviour
 
     void AddCounterToMemorabilia()
     {
-        foundMemorabilia++;
-        if (foundMemorabilia == maxMemorabilia)
+        foundMemorabiliaCount++;
+        if (foundMemorabiliaCount == maxMemorabiliaCount)
             foundAllMemorabilia?.Raise();
     }
+
+    void UpdateUI()
+    {
+        objectiveUI.UpdateMemorabiliaCounter(foundMemorabiliaCount, maxMemorabiliaCount);
+    }
+
 
     [Button("Clue Found Event")]
     public void Execute()
@@ -68,8 +66,12 @@ public class ClueFoundHandler : MonoBehaviour
         haunting.TriggerMarking();
 
         AddCounterToMemorabilia();
-
+        UpdateUI();
         CheckFirstTimeTutorial();
     }
 
+    public int GetMaxMemorabilia()
+    {
+        return maxMemorabiliaCount;
+    }
 }
