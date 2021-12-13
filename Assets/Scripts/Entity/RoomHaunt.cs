@@ -20,6 +20,7 @@ public class RoomHaunt : MonoBehaviour
     [SerializeField, BoxGroup("Enemy Config")] float addedDistance = 0.16f;
     bool chasePlayer = false;
     float currentDistanceToPlayer = 0f;
+    float enemyChaseSpeed = 0.032f;
 
     void Awake()
     {
@@ -47,7 +48,7 @@ public class RoomHaunt : MonoBehaviour
         {
             Vector3 fromPosition = enemy.transform.position;
             Vector3 toPosition = playerMovement.gameObject.transform.position;
-            enemy.transform.position = Vector3.MoveTowards(fromPosition, toPosition, 0.016f);
+            enemy.transform.position = Vector3.MoveTowards(fromPosition, toPosition, 0.032f);
         }
     }
 
@@ -91,8 +92,6 @@ public class RoomHaunt : MonoBehaviour
             if (IsPlayerSpotted())
             {
                 chasePlayer = true;
-                //OnDamageTaken?.Raise();
-                //TransitionOutOfHaunt();
             }
         }
     }

@@ -51,9 +51,14 @@ public class MovementV2 : MonoBehaviour
         StartCoroutine(CoFreezePlayerTemporary(time));
     }
 
-    public void ToggleFreezePlayer()
+    public void FreezePlayer()
     {
-        isFreeze = !isFreeze;
+        isFreeze = true;
+    }
+
+    public void UnfreezePlayer()
+    {
+        isFreeze = false;
     }
 
     void GridMovement()

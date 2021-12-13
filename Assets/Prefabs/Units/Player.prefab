@@ -1066,7 +1066,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1895037295}
         m_TargetAssemblyTypeName: MovementV2, Assembly-CSharp
-        m_MethodName: ToggleFreezePlayer
+        m_MethodName: UnfreezePlayer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1094,7 +1094,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1895037295}
         m_TargetAssemblyTypeName: MovementV2, Assembly-CSharp
-        m_MethodName: ToggleFreezePlayer
+        m_MethodName: FreezePlayer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
