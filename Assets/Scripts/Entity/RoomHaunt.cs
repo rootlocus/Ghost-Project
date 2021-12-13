@@ -37,6 +37,7 @@ public class RoomHaunt : MonoBehaviour
         StopCoroutine(FlickerLight());
         StopCoroutine(CheckPlayerSpotted());
         StopCoroutine(CheckPlayerExitRoom());
+        HideEnemy();
     }
 
     static Vector2 RandomPointInBounds(Bounds bounds, float distanceToCenter)

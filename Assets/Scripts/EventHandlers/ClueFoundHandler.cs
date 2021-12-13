@@ -6,11 +6,15 @@ using Sirenix.OdinInspector;
 
 public class ClueFoundHandler : MonoBehaviour
 {
-    [SerializeField] Player player;
-    [SerializeField] AudioManager audioManager;
-    [SerializeField] Haunting haunting;
-    [SerializeField] bool firstTime = false;
-    [SerializeField] GameEvent firstTimeClue;
+    [SerializeField, BoxGroup("Entity")] Player player;
+    [SerializeField, BoxGroup("Entity")] AudioManager audioManager;
+    [SerializeField, BoxGroup("Entity")] Haunting haunting;
+    [SerializeField, BoxGroup("Tutorial Config")] bool firstTime = false;
+    [SerializeField, BoxGroup("Tutorial Config")] GameEvent firstTimeClue;
+    [SerializeField, BoxGroup("Clues Config")] int maxMemorabilia = 5;
+    [SerializeField, BoxGroup("Scoreboard"), DisableInEditorMode] int foundMemorabilia = 0;
+    [SerializeField] GameEvent foundAllMemorabilia;
+
 
     [Button("Initialize Prefabs")]
     void Awake()
@@ -50,11 +54,20 @@ public class ClueFoundHandler : MonoBehaviour
         }
     }
 
+    void AddCounterToMemorabilia()
+    {
+        foundMemorabilia++;
+        if (foundMemorabilia == maxMemorabilia)
+            foundAllMemorabilia?.Raise();
+    }
+
     [Button("Clue Found Event")]
     public void Execute()
     {
         audioManager.Play("ClueFound");
         haunting.TriggerMarking();
+
+        AddCounterToMemorabilia();
 
         CheckFirstTimeTutorial();
     }

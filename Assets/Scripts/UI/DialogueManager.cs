@@ -15,6 +15,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] GameEvent OnDialogueStart = null;
     [SerializeField] GameEvent OnDialogueEnd = null;
     [SerializeField] bool dialogPlaying = false;
+    [SerializeField] float speedOfText = 0.05f;
 
     void Awake() {
         newSentences = new Queue<string>();
@@ -28,7 +29,6 @@ public class DialogueManager : MonoBehaviour
             DisplayNextSentence();
         }
     }
-
 
     public void StartDialogue (DialogSO dialog)
     {
@@ -73,7 +73,7 @@ public class DialogueManager : MonoBehaviour
         foreach (char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
-            yield return new WaitForSeconds(.05f);
+            yield return new WaitForSeconds(speedOfText);
             // yield return null; // this waits a single frame
         }
     }

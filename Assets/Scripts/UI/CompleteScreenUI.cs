@@ -22,11 +22,6 @@ public class CompleteScreenUI : MonoBehaviour
         button.SetActive(false);
     }
 
-    void Start()
-    {
-        //ToggleTutorialScreen();
-    }
-
     void Update()
     {
         if (Input.GetKeyUp(KeyCode.T))
