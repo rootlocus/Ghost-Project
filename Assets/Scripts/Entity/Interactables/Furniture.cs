@@ -9,18 +9,33 @@ public class Furniture : Interactable
     [SerializeField] bool isChecked = false;
     [SerializeField] GameEvent OnClueFound;
     [SerializeField] GameEvent TriggerHauntRoll;
+    [SerializeField] GameObject SearchBubble;
+    [SerializeField] GameEvent searchFurniture;
 
     public override void Interact()
     {
         if (!isChecked)
         {
-            base.Interact();
-            isChecked = true;
-            FoundClue();
+
+            StartCoroutine(StartSearching());
         }
     }
 
-    void FoundClue()
+    IEnumerator StartSearching()
+    {
+        isChecked = true;
+        searchFurniture?.Raise();
+        PlaySearchAnimation(true);
+
+        //freeze player movement here
+        yield return new WaitForSeconds(2f);
+
+        base.Interact();
+        PlaySearchAnimation(false);
+        SearchFurniture();
+    }
+
+    void SearchFurniture()
     {
         if (HasClue)
         {
@@ -40,5 +55,10 @@ public class Furniture : Interactable
     public bool GetIsChecked()
     {
         return isChecked;
+    }
+
+    public void PlaySearchAnimation(bool isSearching)
+    {
+        SearchBubble.SetActive(isSearching);
     }
 }
