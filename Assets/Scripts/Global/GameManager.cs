@@ -37,6 +37,18 @@ public class GameManager : MonoBehaviour
         if (!memorabiliaManager) memorabiliaManager = GetComponent<ClueFoundHandler>();
         maxMemorabiliaCount = memorabiliaManager.GetMaxMemorabilia();
 
+        MaintainSingletonInstance();
+    }
+
+    void Start()
+    {
+        InitializePlayerInventory();
+        InitializeLevelBGM();
+        SpawnMemorabiliaOnFurnitures(); // if no furnitures then skip
+    }
+
+    void MaintainSingletonInstance()
+    {
         if (instance == null)
         {
             instance = this;
@@ -46,16 +58,8 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        SceneManager.sceneLoaded += SaveState;
 
         DontDestroyOnLoad(gameObject);
-    }
-
-    void Start()
-    {
-        InitializePlayerInventory();
-        InitializeLevelBGM();
-        SpawnMemorabiliaOnFurnitures(); // if no furnitures then skip
     }
 
     void InitializePlayerInventory()
@@ -157,10 +161,5 @@ public class GameManager : MonoBehaviour
     {
         enableTutorial = flag;
     }
-    //public void FoundMemorabilia()
-    //{
-    //    foundMemorabilia++;
-    //    if (foundMemorabilia == maxMemorabiliaCount)
-    //        foundAllMemorabilia?.Raise();
-    //}
+
 }

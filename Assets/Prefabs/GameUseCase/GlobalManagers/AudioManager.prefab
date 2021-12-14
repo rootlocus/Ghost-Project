@@ -241,12 +241,48 @@ MonoBehaviour:
   - name: BGM_6
     clip: {fileID: 8300000, guid: a66ddbdfd88fbb04d8b5b75a94f6b6db, type: 3}
     volume: 1
-    pitch: 1
+    pitch: 0.5
     loop: 0
     source: {fileID: 0}
   - name: DoorsLocked
     clip: {fileID: 0}
     volume: 0
     pitch: 0.1
+    loop: 0
+    source: {fileID: 0}
+  - name: WoodCreek_01
+    clip: {fileID: 8300000, guid: 0ba336efdd236d64995b3fdab041d7e0, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: WoodCreek_02
+    clip: {fileID: 8300000, guid: fba88a95433fe00439e9b786bedc86d8, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: WoodCreek_03
+    clip: {fileID: 8300000, guid: 7a4a23ddc498e274abf83d8e48cec3b4, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: EatingGuts_01
+    clip: {fileID: 8300000, guid: 44c413e980154424593a8e6c04d2c801, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: GhostScare_01
+    clip: {fileID: 8300000, guid: 17e8c5ece77a7714a8a5545893e1b04b, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: DoorCreak_01
+    clip: {fileID: 8300000, guid: 08409d70eb6ef124c83104a3608333a4, type: 3}
+    volume: 0.8
+    pitch: 1
     loop: 0
     source: {fileID: 0}

@@ -100,7 +100,7 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   haunting: {fileID: 0}
   objectiveUI: {fileID: 0}
-  firstTime: 1
+  isDoneTutorial: 0
   firstTimeClue: {fileID: 11400000, guid: e1eba3164af0b22409d25d0d6832672f, type: 2}
   maxMemorabiliaCount: 5
   foundMemorabiliaCount: 0

@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
@@ -10,7 +9,7 @@ public class HauntingHandler : MonoBehaviour
     [SerializeField] List<GameObject> roomsGO;
     [BoxGroup("Haunting Room"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
     [SerializeField] List<Room> rooms;
-    [BoxGroup("Haunting Room"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
+    [BoxGroup("Haunting Room"), GUIColor(0.3f, 0.8f, 0.8f, 1f), DisableInEditorMode]
     [SerializeField] int chosenHauntIndex = 0;
     [BoxGroup("Haunting Room"), Range(0, 10), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
     [SerializeField] int hauntThreshold = 8;
@@ -18,11 +17,10 @@ public class HauntingHandler : MonoBehaviour
     [SerializeField] string ghostBreathing = "GhostBreath_01";
     [BoxGroup("Haunting Room"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
     [SerializeField] string ghostEntranceBGM = "PressureAtmos01";
-    [BoxGroup("Haunting Room"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
-    [SerializeField] Haunting chosenHauntingRoom;
-    [SerializeField] Room chosenRoom;
-    [BoxGroup("Haunt Objects")]
-    [SerializeField] Zone zone;
+
+    [SerializeField, BoxGroup("Haunt Objectives"), DisableInEditorMode] Haunting chosenHauntingRoom;
+    [SerializeField, BoxGroup("Haunt Objectives"), DisableInEditorMode] Room chosenRoom;
+    [SerializeField, BoxGroup("Haunt Objectives"), DisableInEditorMode] Zone zone;
     [SerializeField, BoxGroup("Haunting Objectives")] bool hasFoundMemorabilia = false;
     [SerializeField, BoxGroup("Haunting Objectives")] bool hasFoundName = false;
     [SerializeField, BoxGroup("Haunting Objectives")] bool hasExorcist = false;
@@ -37,6 +35,8 @@ public class HauntingHandler : MonoBehaviour
     [SerializeField, BoxGroup("Tutorial")] GameEvent TutorialHaunting;
     [SerializeField, BoxGroup("Tutorial")] bool tutorialComplete = true;
 
+    [SerializeField] string[] randomSFX;
+
     public static HauntingHandler instance;
 
 
@@ -47,6 +47,16 @@ public class HauntingHandler : MonoBehaviour
         if (!audioManager) audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         InitializeHauntingRooms();
         ChooseHauntingRoom();
+    }
+
+    void Start()
+    {
+        InvokeRepeating("PlayRandomSound", 20.0f, Random.Range(30.0f, 60.0f));
+    }
+
+    void PlayRandomSound()
+    {
+        audioManager.Play(randomSFX[Random.Range(0, randomSFX.Length)]);
     }
 
     void MaintainSingletonInstance()

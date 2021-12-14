@@ -54,7 +54,6 @@ MonoBehaviour:
   rooms: []
   chosenHauntIndex: 0
   hauntThreshold: 8
-  roomHauntDuration: 5
   ghostBreathing: GhostBreath_01
   ghostEntranceBGM: PressureAtmos01
   chosenHauntingRoom: {fileID: 0}
@@ -70,6 +69,13 @@ MonoBehaviour:
   OnExorcist: {fileID: 11400000, guid: fc3dca9ca38ea1b4f85b59c3808283dd, type: 2}
   TutorialHaunting: {fileID: 11400000, guid: fdcba984ab76baa408dca9f2479136fd, type: 2}
   tutorialComplete: 0
+  randomSFX:
+  - EatingGuts_01
+  - GhostScare_01
+  - WoodCreek_03
+  - WoodCreek_02
+  - DoorCreak_01
+  - WoodCreek_01
 --- !u!114 &5565063765720171773
 MonoBehaviour:
   m_ObjectHideFlags: 0
