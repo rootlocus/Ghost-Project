@@ -12,8 +12,8 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
-        if (!bgmPlayer) bgmPlayer = GameObject.Find("BGM").GetComponent<AudioSource>();
         MaintainSingletonInstance();
+        if (!bgmPlayer) bgmPlayer = GameObject.Find("BGM").GetComponent<AudioSource>();
         InitializeAudioSources(sounds);
     }
 

@@ -56,7 +56,6 @@ public class DialogueManager : MonoBehaviour
     {
         if (newSentences.Count == 0)
         {
-            Debug.Log("ENMTER");
             EndDialogue();
             return;
         }

@@ -39,12 +39,31 @@ public class HauntingHandler : MonoBehaviour
     [SerializeField, BoxGroup("Tutorial")] GameEvent TutorialHaunting;
     [SerializeField, BoxGroup("Tutorial")] bool tutorialComplete = true;
 
+    public static HauntingHandler instance;
+
+
     void Awake()
     {
+        MaintainSingletonInstance();
         if (!zone) zone = GameObject.FindGameObjectWithTag("Zone").GetComponent<Zone>(); // if no zone then skip
         if (!audioManager) audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         InitializeHauntingRooms();
         ChooseHauntingRoom();
+    }
+
+    void MaintainSingletonInstance()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        DontDestroyOnLoad(gameObject);
     }
 
     void InitializeHauntingRooms()
@@ -85,8 +104,6 @@ public class HauntingHandler : MonoBehaviour
 
     IEnumerator TutorialHauntPlayerRoom()
     {
-        yield return new WaitForSeconds(2f);
-
         Haunting roomDirector = roomsGO.Find(room => room.GetComponent<Room>().IsPlayerInRoom()).GetComponent<Haunting>();
         roomDirector.EnableRoomAttack();
 
