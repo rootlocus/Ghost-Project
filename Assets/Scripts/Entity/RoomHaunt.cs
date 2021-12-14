@@ -15,12 +15,10 @@ public class RoomHaunt : MonoBehaviour
     [SerializeField, BoxGroup("Attack Config")] float maxDurationChill = 3f;
     [SerializeField, BoxGroup("Attack Config")] float attackTimeLeeway = 0.7f;
     [SerializeField, BoxGroup("Attack Config")] bool isLooking = false;
-    [SerializeField, BoxGroup("Events")] GameEvent OnHauntEnd;
-    [SerializeField, BoxGroup("Events")] GameEvent OnDamageTaken;
-    [SerializeField, BoxGroup("Enemy Config")] float addedDistance = 0.16f;
+    [SerializeField, BoxGroup("Enemy Config")] float flickerDistance = 0.16f;
+    [SerializeField, BoxGroup("Enemy Config")] float enemyChaseSpeed = 0.018f;
     bool chasePlayer = false;
     float currentDistanceToPlayer = 0f;
-    float enemyChaseSpeed = 0.032f;
 
     void Awake()
     {
@@ -48,7 +46,7 @@ public class RoomHaunt : MonoBehaviour
         {
             Vector3 fromPosition = enemy.transform.position;
             Vector3 toPosition = playerMovement.gameObject.transform.position;
-            enemy.transform.position = Vector3.MoveTowards(fromPosition, toPosition, 0.032f);
+            enemy.transform.position = Vector3.MoveTowards(fromPosition, toPosition, enemyChaseSpeed);
         }
     }
 
@@ -75,7 +73,7 @@ public class RoomHaunt : MonoBehaviour
     {
         Vector2 nearerPosition = RandomPointInBounds(attackBoundary.bounds, currentDistanceToPlayer);
         enemy.transform.position = nearerPosition;
-        currentDistanceToPlayer += addedDistance;
+        currentDistanceToPlayer += flickerDistance;
     }
 
     void HideEnemy()

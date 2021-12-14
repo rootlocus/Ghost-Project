@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54d21f6ece3b46479f0c328f8c6007e0, type: 3}
-  m_Name: GoldGradient
+  m_Name: MenuRedGradient
   m_EditorClassIdentifier: 
   colorMode: 3
   topLeft: {r: 1, g: 0.29411766, b: 0.29411766, a: 1}
-  topRight: {r: 0.78039217, g: 0, b: 0, a: 1}
+  topRight: {r: 1, g: 0.29411766, b: 0.29411766, a: 1}
   bottomLeft: {r: 1, g: 0.09019608, b: 0.09019608, a: 1}
-  bottomRight: {r: 0.6039216, g: 0, b: 0, a: 1}
+  bottomRight: {r: 1, g: 0.09019608, b: 0.09019608, a: 1}

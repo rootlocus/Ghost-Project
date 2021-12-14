@@ -10,7 +10,7 @@ public class ClueFoundHandler : MonoBehaviour
     [SerializeField, BoxGroup("Entity")] AudioManager audioManager;
     [SerializeField, BoxGroup("Entity")] Haunting haunting;
     [SerializeField, BoxGroup("Entity")] ObjectiveUI objectiveUI;
-    [SerializeField, BoxGroup("Tutorial Config")] bool firstTime = false;
+    [SerializeField, BoxGroup("Tutorial Config")] bool isDoneTutorial = false;
     [SerializeField, BoxGroup("Tutorial Config")] GameEvent firstTimeClue;
     [SerializeField, BoxGroup("Clues Config")] int maxMemorabiliaCount = 5;
     [SerializeField, BoxGroup("Scoreboard"), DisableInEditorMode] int foundMemorabiliaCount = 0;
@@ -39,10 +39,10 @@ public class ClueFoundHandler : MonoBehaviour
 
     void CheckFirstTimeTutorial()
     {
-        if (firstTime)
+        if (GameManager.enableTutorial && !isDoneTutorial)
         {
             firstTimeClue?.Raise();
-            firstTime = false;
+            isDoneTutorial = true;
         }
     }
 

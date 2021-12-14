@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     [SerializeField, BoxGroup("Other Managers")] AudioManager audioManager;
     [SerializeField, BoxGroup("Other Managers")] CompleteScreenUI levelCompleteUI;
     [SerializeField, BoxGroup("Other Managers")] ClueFoundHandler memorabiliaManager;
+    public static bool enableTutorial = false;
 
     void Awake() 
     {
@@ -152,6 +153,10 @@ public class GameManager : MonoBehaviour
         audioManager.PlayBGM("LevelWin");
     }
 
+    public void SetEnableTutorial(bool flag)
+    {
+        enableTutorial = flag;
+    }
     //public void FoundMemorabilia()
     //{
     //    foundMemorabilia++;

@@ -15,8 +15,6 @@ public class HauntingHandler : MonoBehaviour
     [BoxGroup("Haunting Room"), Range(0, 10), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
     [SerializeField] int hauntThreshold = 8;
     [BoxGroup("Haunting Room"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
-    [SerializeField] int roomHauntDuration = 5;
-    [BoxGroup("Haunting Room"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
     [SerializeField] string ghostBreathing = "GhostBreath_01";
     [BoxGroup("Haunting Room"), GUIColor(0.3f, 0.8f, 0.8f, 1f)]
     [SerializeField] string ghostEntranceBGM = "PressureAtmos01";
@@ -189,14 +187,10 @@ public class HauntingHandler : MonoBehaviour
 
         if (hauntPlayerRoll >= hauntThreshold)
         {
-            if (!tutorialComplete)
-            {
+            if (GameManager.enableTutorial && !tutorialComplete)
                 StartCoroutine(TutorialHauntPlayerRoom());
-            }
             else
-            {
                 StartCoroutine(HauntPlayerRoom());
-            }
         }
     }
 }
